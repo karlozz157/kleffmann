@@ -1,0 +1,4 @@
+dev_tag_kleffmann:
+    resource: "@DevTagKleffmannBundle/Controller/"
+    type:     annotation
+    prefix:   /

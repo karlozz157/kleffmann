@@ -1,0 +1,14 @@
+app/bootstrap*
+app/config/parameters.ini
+app/config/parameters.yml
+app/cache/*
+app/logs/*
+build/
+vendor/*
+web/bundles/*
+web/css/*
+web/js/*
+web/uploads/*
+composer.phar
+*~
+reel.sublime-*

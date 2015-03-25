@@ -1,0 +1,4 @@
+services:
+    # controllers
+    kleffmann.project.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectController
