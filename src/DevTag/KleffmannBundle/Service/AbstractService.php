@@ -2,7 +2,7 @@
 
 namespace DevTag\KleffmannBundle\Service;
 
-use Doctrine\ORM\EntityManager
+use Doctrine\ORM\EntityManager;
 
 abstract class AbstractService
 {
@@ -20,7 +20,7 @@ abstract class AbstractService
     }
 
     /**
-     * @param Object $entity
+     * @param $entity
      */
     public function save($entity)
     {
@@ -28,7 +28,7 @@ abstract class AbstractService
     }
 
     /**
-     * @param Object $entity
+     * @param $entity
      */
     public function remove($entity)
     {
@@ -41,5 +41,13 @@ abstract class AbstractService
     public function setEntityManager(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @return EntityManager
+     */
+    public function getEntityManager()
+    {
+        return $this->entityManager;
     }
 }
