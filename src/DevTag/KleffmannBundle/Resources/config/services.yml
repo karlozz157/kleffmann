@@ -12,6 +12,12 @@ services:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
 
+    kleffmann.project_filter.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectFilterController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+
     # services
     kleffmann.project.service:
         class: DevTag\KleffmannBundle\Service\ProjectService
@@ -20,5 +26,10 @@ services:
 
     kleffmann.project_locale.service:
         class: DevTag\KleffmannBundle\Service\ProjectLocaleService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.project_filter.service:
+        class: DevTag\KleffmannBundle\Service\ProjectFilterService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
