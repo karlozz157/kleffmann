@@ -24,6 +24,12 @@ services:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
 
+    kleffmann.project_variable.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectVariableController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+
     # services
     kleffmann.interviewer.service:
         class: DevTag\KleffmannBundle\Service\InterviewerService
@@ -42,5 +48,10 @@ services:
 
     kleffmann.project_filter.service:
         class: DevTag\KleffmannBundle\Service\ProjectFilterService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.project_variable.service:
+        class: DevTag\KleffmannBundle\Service\ProjectVariableService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]

@@ -13,7 +13,7 @@ use DevTag\KleffmannBundle\Entity\ProjectVariable;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/project-variable")
+ * @Route("/project-variable", service="kleffmann.project_variable.controller")
  */
 class ProjectVariableController extends BaseController
 {
