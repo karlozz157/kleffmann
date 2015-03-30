@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Entity\ProjectFilter;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/project-filter")
+ * @Route("/project-filter", service="kleffmann.project_filter.controller")
  */
 class ProjectFilterController extends BaseController
 {
