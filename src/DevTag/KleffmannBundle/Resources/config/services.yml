@@ -1,5 +1,11 @@
 services:
     # controllers
+    kleffmann.interviewer.controller:
+        class: DevTag\KleffmannBundle\Controller\InterviewerController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+
     kleffmann.project.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectController
         calls:
@@ -19,6 +25,11 @@ services:
             - [ setRouter, ['@router']]
 
     # services
+    kleffmann.interviewer.service:
+        class: DevTag\KleffmannBundle\Service\InterviewerService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
     kleffmann.project.service:
         class: DevTag\KleffmannBundle\Service\ProjectService
         calls:

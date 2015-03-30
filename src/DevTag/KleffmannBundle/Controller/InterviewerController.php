@@ -2,17 +2,25 @@
 
 namespace DevTag\KleffmannBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Service\Aware\InterviewerAware;
+use DevTag\KleffmannBundle\Form\InterviewerType;
+use DevTag\KleffmannBundle\Entity\Interviewer;
 
 /**
- * @Route("/interviewers")
+ * @Route("/interviewer", service="kleffmann.interviewer.controller")
  */
 class InterviewerController extends BaseController
 {
+    use InterviewerAware;
+
     /**
-     * @Route("/")
+     * @Route("/list", name="interviewer_list")
      * @Template()
+     *
      * @return array
      */
     public function indexAction()
@@ -23,29 +31,65 @@ class InterviewerController extends BaseController
     /**
      * @Route("/new")
      * @Template()
+     *
+     * @param Request $request
+     *
      * @return array
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        return [];
+        $interviewer = new Interviewer();
+        $form = $this->createForm(new InterviewerType(), $interviewer);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->interviewerService->save($interviewer);
+            $this->interviewerService->flush();
+
+            return $this->redirectToRoute('interviewer_list');
+        }
+
+        return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{interviewer}")
+     * @Route("/edit/{id}")
+     * @ParamConverter()
      * @Template()
+     *
+     * @param Interviewer $interviewer
+     * @param Request $request
+     *
      * @return array
      */
-    public function editAction()
+    public function editAction(Interviewer $interviewer, Request $request)
     {
-        return [];
+        $form = $this->createForm(new InterviewerType(), $interviewer);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->interviewerService->save($interviewer);
+            $this->interviewerService->flush();
+
+            return $this->redirectToRoute('interviewer_list');
+        }
+
+        return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{interviewer}")
+     * @Route("/delete/{id}")
+     * @ParamConverter()
+     *
+     * @param Interviewer $interviewer
+     *
      * @return array
      */
-    public function deleteAction()
+    public function deleteAction(Interviewer $interviewer)
     {
-        return [];
+        $this->interviewerService->remove($interviewer);
+        $this->interviewerService->flush();
+
+        return $this->redirectToRoute('interviewer_list');
     }
 }
