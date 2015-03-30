@@ -6,8 +6,19 @@ services:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
 
+    kleffmann.project_locale.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectLocaleController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+
     # services
     kleffmann.project.service:
         class: DevTag\KleffmannBundle\Service\ProjectService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.project_locale.service:
+        class: DevTag\KleffmannBundle\Service\ProjectLocaleService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
