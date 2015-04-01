@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Interviewer{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="header">
+            <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
+            <h3 class="content-header">Interviewer List</h3>
+        </div>
+        <div class="porlets-content">
+            <p>{{ util.button_text('new_interviewer', {}, 'Add new', 'info') }}</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Full Name</th>
+                        <th>birthday</th>
+                        <th>Bank</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for interviewer in interviewers %}
+                        <tr>
+                            <td>{{ interviewer.state.name }}</td>
+                            <td>{{ interviewer.city.name }}</td>
+                            <td>{{ interviewer.name }} {{ interviewer.firstName }} {{ interviewer.secondName }}</td>
+                            <td>{{ interviewer.birthday | date('M, d') }}</td>
+                            <td>{{ interviewer.bank.name }}</td>
+                            <td>
+                                {{ util.button_icon('edit_interviewer', {id: interviewer.id}, 'Edit Interviewer', 'warning', 'pencil') }}
+                                {{ util.button_icon('delete_interviewer', {id: interviewer.id}, 'Delete Interviewer', 'danger', 'remove') }}
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div><!--/table-responsive-->
+        </div><!--/porlets-content-->
+    </div>
+{% endblock %}

@@ -25,11 +25,13 @@ class InterviewerController extends BaseController
      */
     public function indexAction()
     {
-        return [];
+        $interviewers = $this->interviewerRepository->findAll();
+
+        return ['interviewers' => $interviewers];
     }
 
     /**
-     * @Route("/new")
+     * @Route("/new", name="new_interviewer")
      * @Template()
      *
      * @param Request $request
@@ -53,7 +55,7 @@ class InterviewerController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}")
+     * @Route("/edit/{id}", name="edit_interviewer")
      * @ParamConverter()
      * @Template()
      *
@@ -78,7 +80,7 @@ class InterviewerController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}")
+     * @Route("/delete/{id}", name="delete_interviewer")
      * @ParamConverter()
      *
      * @param Interviewer $interviewer
