@@ -2,6 +2,7 @@
 
 namespace DevTag\KleffmannBundle\Service\Aware;
 
+use DevTag\KleffmannBundle\Repository\ProjectRepository;
 use DevTag\KleffmannBundle\Service\ProjectService;
 
 trait ProjectAware
@@ -10,6 +11,11 @@ trait ProjectAware
      * @var ProjectService $projectService
      */
     protected $projectService;
+
+    /**
+     * @var ProjectRepository $projectRepository
+     */
+    protected $projectRepository;
 
     /**
      * @param ProjectService $projectService
@@ -25,5 +31,21 @@ trait ProjectAware
     public function getProjectService()
     {
         return $this->projectService;
+    }
+
+    /**
+     * @param ProjectRepository $projectRepository
+     */
+    public function setProjectRepository(ProjectRepository $projectRepository)
+    {
+        $this->projectRepository = $projectRepository;
+    }
+
+    /**
+     * @return ProjectRepository
+     */
+    public function getProjectRepository()
+    {
+        return $this->projectRepository;
     }
 }
