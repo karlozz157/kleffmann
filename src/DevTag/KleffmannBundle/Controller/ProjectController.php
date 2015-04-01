@@ -19,7 +19,7 @@ class ProjectController extends BaseController
     use ProjectAware;
 
     /**
-     * @Route("/list", name="projects")
+     * @Route("/list", name="project_list")
      * @Template()
      *
      * @return array
@@ -32,7 +32,7 @@ class ProjectController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_project")
+     * @Route("/new", name="project_new")
      * @ParamConverter()
      * @Template()
      *
@@ -50,14 +50,14 @@ class ProjectController extends BaseController
             $this->projectService->save($project);
             $this->projectService->flush();
 
-            return $this->redirectToRoute('projects');
+            return $this->redirectToRoute('project_list');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_project")
+     * @Route("/edit/{id}", name="project_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -75,14 +75,14 @@ class ProjectController extends BaseController
             $this->projectService->save($project);
             $this->projectService->flush();
 
-            return $this->redirectToRoute('projects');
+            return $this->redirectToRoute('project_list');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_project")
+     * @Route("/delete/{id}", name="project_delete")
      * @ParamConverter()
      *
      * @param Project $project
@@ -94,6 +94,6 @@ class ProjectController extends BaseController
         $this->projectService->remove($project);
         $this->projectService->flush();
 
-        return $this->redirectToRoute('projects');
+        return $this->redirectToRoute('project_list');
     }
 }

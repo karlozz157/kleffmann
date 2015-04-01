@@ -19,7 +19,7 @@ class ProjectFilterController extends BaseController
     use ProjectFilterAware;
 
     /**
-     * @Route("/list/{id}", name="list_project_filter")
+     * @Route("/list/{id}", name="project_filter_list")
      * @ParamConverter()
      * @Template()
      *
@@ -36,7 +36,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/new/{id}", name="new_project_filter")
+     * @Route("/new/{id}", name="project_filter_new")
      * @ParamConverter()
      * @Template()
      *
@@ -56,7 +56,7 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->save($projectFilter);
             $this->projectFilterService->flush();
 
-            return $this->redirectToRoute('list_project_filter', [
+            return $this->redirectToRoute('project_filter_list', [
                 'id' => $project->getId(),
             ]);
         }
@@ -65,7 +65,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_project_filter")
+     * @Route("/edit/{id}", name="project_filter_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -83,7 +83,7 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->save($projectFilter);
             $this->projectFilterService->flush();
 
-            return $this->redirectToRoute('list_project_filter', [
+            return $this->redirectToRoute('project_filter_list', [
                 'id' => $projectFilter->getProject()->getId(),
             ]);
         }
@@ -92,7 +92,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_project_filter")
+     * @Route("/delete/{id}", name="project_filter_delete")
      * @ParamConverter()
      *
      * @param ProjectFilter $projectFilter
@@ -104,7 +104,7 @@ class ProjectFilterController extends BaseController
         $this->projectFilterService->remove($projectFilter);
         $this->projectFilterService->flush();
 
-        return $this->redirectToRoute('list_project_filter', [
+        return $this->redirectToRoute('project_filter_list', [
             'id' => $projectFilter->getProject()->getId()
         ]);
     }

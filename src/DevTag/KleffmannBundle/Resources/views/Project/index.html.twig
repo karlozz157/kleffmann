@@ -9,7 +9,7 @@
         <h3 class="content-header">Project List</h3>
     </div>
     <div class="porlets-content">
-        <p>{{ util.button_text('new_project', {}, 'Add new', 'info') }}</p>
+        <p>{{ util.button_text('project_new', {}, 'Add new', 'info') }}</p>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -33,9 +33,10 @@
                         <td>{{ project.manager }}</td>
                         <td>{{ project.status   }}</td>
                         <td>
-                            {{ util.button_icon('list_project_locale', {id: project.id}, 'Add Locale', 'success', 'map-marker') }}
-                            {{ util.button_icon('edit_project', {id: project.id}, 'Edit Project', 'warning', 'pencil') }}
-                            {{ util.button_icon('delete_project', {id: project.id}, 'Delete Project', 'danger', 'remove') }}
+                            {{ util.button_icon('project_filter_list', {id: project.id}, 'View Filters', 'info', 'filter') }}
+                            {{ util.button_icon('project_locale_list', {id: project.id}, 'View Locations', 'success', 'map-marker') }}
+                            {{ util.button_icon('project_edit', {id: project.id}, 'Edit Project', 'warning', 'pencil') }}
+                            {{ util.button_icon('project_delete', {id: project.id}, 'Delete Project', 'danger', 'remove') }}
                         </td>
                     </tr>
                 {% endfor %}

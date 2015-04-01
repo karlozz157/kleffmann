@@ -9,7 +9,7 @@
             <h3 class="content-header">Locale List</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('new_project_filter', {id: project.id}, 'Add new', 'info') }}</p>
+            <p>{{ util.button_text('project_filter_new', {id: project.id}, 'Add new', 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -33,8 +33,8 @@
                             <td>{{ projectFilter.state.name }}</td>
                             <td>{{ projectFilter.city.name }}</td>
                             <td>
-                                {{ util.button_icon('edit_project_filter', {id: projectFilter.id}, 'Edit Locale', 'warning', 'pencil') }}
-                                {{ util.button_icon('delete_project_filter', {id: projectFilter.id}, 'Delete Locale', 'danger', 'remove') }}
+                                {{ util.button_icon('project_filter_edit', {id: projectFilter.id}, 'Edit Locale', 'warning', 'pencil') }}
+                                {{ util.button_icon('project_filter_delete', {id: projectFilter.id}, 'Delete Locale', 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}

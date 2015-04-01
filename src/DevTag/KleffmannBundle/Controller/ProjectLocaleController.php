@@ -20,7 +20,7 @@ class ProjectLocaleController extends BaseController
     use ProjectLocaleAware;
 
     /**
-     * @Route("/list/{id}", name="list_project_locale")
+     * @Route("/list/{id}", name="project_locale_list")
      * @Template()
      * @ParamConverter()
      *
@@ -37,7 +37,7 @@ class ProjectLocaleController extends BaseController
     }
 
     /**
-     * @Route("/new/{id}", name="new_project_locale")
+     * @Route("/new/{id}", name="project_locale_new")
      * @Template()
      * @ParamConverter()
      *
@@ -57,7 +57,7 @@ class ProjectLocaleController extends BaseController
             $this->projectLocaleService->save($projectLocale);
             $this->projectLocaleService->flush();
 
-            return $this->redirectToRoute('list_project_locale', [
+            return $this->redirectToRoute('project_locale_list', [
                 'id' => $project->getId()
             ]);
         }
@@ -66,7 +66,7 @@ class ProjectLocaleController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_project_locale")
+     * @Route("/edit/{id}", name="project_locale_edit")
      * @Template()
      * @ParamConverter()
      *
@@ -84,7 +84,7 @@ class ProjectLocaleController extends BaseController
             $this->projectLocaleService->save($projectLocale);
             $this->projectLocaleService->flush();
 
-            return $this->redirectToRoute('list_project_locale', [
+            return $this->redirectToRoute('project_locale_list', [
                 'id' => $projectLocale->getProject()->getId()
             ]);
         }
@@ -93,7 +93,7 @@ class ProjectLocaleController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_project_locale")
+     * @Route("/delete/{id}", name="project_locale_delete")
      * @ParamConverter()
      *
      * @param ProjectLocale $projectLocale
@@ -105,7 +105,7 @@ class ProjectLocaleController extends BaseController
         $this->projectLocaleService->remove($projectLocale);
         $this->projectLocaleService->flush();
 
-        return $this->redirectToRoute('list_project_locale', [
+        return $this->redirectToRoute('project_locale_list', [
             'id' => $projectLocale->getProject()->getId()
         ]);
     }
