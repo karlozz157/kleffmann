@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DashboardController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="dashboard")
      * @Template()
      *
      * @return array
