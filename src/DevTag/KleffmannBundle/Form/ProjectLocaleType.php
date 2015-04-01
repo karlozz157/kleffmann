@@ -14,10 +14,6 @@ class ProjectLocaleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('project', 'entity', [
-                'class' => 'DevTag\KleffmannBundle\Entity\Project',
-                'property' => 'name',
-            ])
             ->add('state', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\State',
                 'property' => 'name',

@@ -33,6 +33,7 @@
                         <td>{{ project.manager }}</td>
                         <td>{{ project.status   }}</td>
                         <td>
+                            {{ util.button_icon('list_project_locale', {id: project.id}, 'Add Locale', 'success', 'map-marker') }}
                             {{ util.button_icon('edit_project', {id: project.id}, 'Edit Project', 'warning', 'pencil') }}
                             {{ util.button_icon('delete_project', {id: project.id}, 'Delete Project', 'danger', 'remove') }}
                         </td>

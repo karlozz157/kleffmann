@@ -20,7 +20,7 @@ class ProjectLocaleController extends BaseController
     use ProjectLocaleAware;
 
     /**
-     * @Route("/list/{project_id}", name="project_list")
+     * @Route("/list/{id}", name="list_project_locale")
      * @Template()
      * @ParamConverter()
      *
@@ -30,11 +30,14 @@ class ProjectLocaleController extends BaseController
      */
     public function indexAction(Project $project)
     {
-        return [];
+        $this->projectLocaleRepository->setProject($project);
+        $projectLocaleList = $this->projectLocaleRepository->findAll();
+
+        return ['projectLocaleList' => $projectLocaleList, 'project' => $project];
     }
 
     /**
-     * @Route("/new/{project_id}")
+     * @Route("/new/{id}", name="new_project_locale")
      * @Template()
      * @ParamConverter()
      *
@@ -54,16 +57,16 @@ class ProjectLocaleController extends BaseController
             $this->projectLocaleService->save($projectLocale);
             $this->projectLocaleService->flush();
 
-            return $this->redirectToRoute('project_list', [
-                'project_id' => $project
+            return $this->redirectToRoute('list_project_locale', [
+                'id' => $project->getId()
             ]);
         }
 
-        return ['form' => $form->createView()];
+        return ['form' => $form->createView(), 'project' => $project];
     }
 
     /**
-     * @Route("/edit/{id}")
+     * @Route("/edit/{id}", name="edit_project_locale")
      * @Template()
      * @ParamConverter()
      *
@@ -81,16 +84,16 @@ class ProjectLocaleController extends BaseController
             $this->projectLocaleService->save($projectLocale);
             $this->projectLocaleService->flush();
 
-            return $this->redirectToRoute('project_list', [
-                'project_id' => $projectLocale->getProject()
+            return $this->redirectToRoute('list_project_locale', [
+                'id' => $projectLocale->getProject()->getId()
             ]);
         }
 
-        return ['form' => $form->createView()];
+        return ['form' => $form->createView(), 'project' => $projectLocale->getProject()];
     }
 
     /**
-     * @Route("/delete/{id}")
+     * @Route("/delete/{id}", name="delete_project_locale")
      * @ParamConverter()
      *
      * @param ProjectLocale $projectLocale
@@ -102,6 +105,8 @@ class ProjectLocaleController extends BaseController
         $this->projectLocaleService->remove($projectLocale);
         $this->projectLocaleService->flush();
 
-        return $this->redirectToRoute('project_list');
+        return $this->redirectToRoute('list_project_locale', [
+            'id' => $projectLocale->getProject()->getId()
+        ]);
     }
 }
