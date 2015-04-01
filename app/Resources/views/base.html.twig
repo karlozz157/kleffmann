@@ -1,3 +1,4 @@
+{% import '::util.html.twig' as util %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,16 +45,16 @@
                 <div class="sidebar-user-name">John Doe</div>
             </div>
             <ul id="nav-accordion" class="sidebar-menu">
-                <li>
-                    <a href="index.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
-                </li>
-                <li class="sub-menu dcjq-parent-li"> <a href="javascript:;" class="dcjq-parent"> <i class="fa fa-book"></i> <span>UI Elements</span><b class="badge bg-danger pull-right">10</b></a>
-                    <ul class="sub">
-                        <li><a href="general.html"><i class="fa fa-angle-right"></i> General</a></li>
-                        <li><a href="buttons.html"><i class="fa fa-angle-right"></i> Buttons</a></li>
-                        <li><a href="slider.html"><i class="fa fa-angle-right"></i> Slider</a></li>
-                    </ul>
-                </li>
+                {% for menu in menu.main %}
+                    <li><a href="{{ path(menu.url) }}"><i class="fa fa-dashboard"></i><span>{{ menu.name}}</span></a></li>
+                    {% if menu.submenu is defined %}
+                        <ul class="sub">
+                            {% for submenu in menu.submenu %}
+                                <li><a href="general.html"><i class="fa fa-angle-right"></i> {{ submenu.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
             </ul><!--/nav-accordion sidebar-menu-->
         </div><!--/leftside-navigation-->
     </div><!--/sidebar-->

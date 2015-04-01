@@ -1,0 +1,13 @@
+twig:
+    globals:
+        menu:
+            main:
+                dashboard:
+                    name: 'Dashboard'
+                    url: 'dashboard'
+                interviewers:
+                    name: 'Interviewers'
+                    url: 'interviewer_list'
+                project:
+                    name: 'Projects'
+                    url: 'dashboard'

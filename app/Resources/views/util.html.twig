@@ -1,0 +1,11 @@
+{% macro button_icon(url, params, title, type, icon) %}
+    <a href="{{ path(url, params) }}" class="btn btn-{{ type }} btn-xs" data-placement="top" title="{{ title }}">
+        <i class="glyphicon glyphicon-{{ icon }}"></i>
+    </a>
+{% endmacro %}
+
+{% macro button_text(url, params, title, type) %}
+    <a href="{{ path(url, params) }}" class="btn btn-{{ type }} btn-sm">
+        {{ title }}
+    </a>
+{% endmacro %}
