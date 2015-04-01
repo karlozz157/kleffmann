@@ -18,6 +18,14 @@ class ProjectFilterType extends AbstractType
             ->add('value')
             ->add('subFilterName')
             ->add('subValueName')
+            ->add('state', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\State',
+                'property' => 'name',
+            ])
+            ->add('city', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\City',
+                'property' => 'name',
+            ])
         ;
     }
 

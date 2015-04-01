@@ -19,7 +19,7 @@ class ProjectFilterController extends BaseController
     use ProjectFilterAware;
 
     /**
-     * @Route("/list/{project_id}", name="project_filter_list")
+     * @Route("/list/{id}", name="list_project_filter")
      * @ParamConverter()
      * @Template()
      *
@@ -29,11 +29,14 @@ class ProjectFilterController extends BaseController
      */
     public function indexAction(Project $project)
     {
-        return [];
+        $this->projectFilterRepository->setProject($project);
+        $projectFilterList = $this->projectFilterRepository->findAll();
+
+        return ['projectFilterList' => $projectFilterList, 'project' => $project];
     }
 
     /**
-     * @Route("/new/{project_id}")
+     * @Route("/new/{id}", name="new_project_filter")
      * @ParamConverter()
      * @Template()
      *
@@ -53,16 +56,16 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->save($projectFilter);
             $this->projectFilterService->flush();
 
-            return $this->redirectToRoute('project_filter_list', [
-                'project_id' => $project,
+            return $this->redirectToRoute('list_project_filter', [
+                'id' => $project->getId(),
             ]);
         }
 
-        return ['form' => $form->createView()];
+        return ['form' => $form->createView(), 'project' => $project];
     }
 
     /**
-     * @Route("/edit/{project_filter_id}")
+     * @Route("/edit/{id}", name="edit_project_filter")
      * @ParamConverter()
      * @Template()
      *
@@ -80,16 +83,16 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->save($projectFilter);
             $this->projectFilterService->flush();
 
-            return $this->redirectToRoute('project_filter_list', [
-                'project_id' => $projectFilter->getProject(),
+            return $this->redirectToRoute('list_project_filter', [
+                'id' => $projectFilter->getProject()->getId(),
             ]);
         }
 
-        return ['form' => $form->createView()];
+        return ['form' => $form->createView(), 'project' => $projectFilter->getProject()];
     }
 
     /**
-     * @Route("/delete/{project_filter_id}")
+     * @Route("/delete/{id}", name="delete_project_filter")
      * @ParamConverter()
      *
      * @param ProjectFilter $projectFilter
@@ -101,6 +104,8 @@ class ProjectFilterController extends BaseController
         $this->projectFilterService->remove($projectFilter);
         $this->projectFilterService->flush();
 
-        return $this->redirectToRoute('');
+        return $this->redirectToRoute('list_project_filter', [
+            'id' => $projectFilter->getProject()->getId()
+        ]);
     }
 }

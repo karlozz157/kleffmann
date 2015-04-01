@@ -2,6 +2,7 @@
 
 namespace DevTag\KleffmannBundle\Service\Aware;
 
+use DevTag\KleffmannBundle\Repository\ProjectFilterRepository;
 use DevTag\KleffmannBundle\Service\ProjectFilterService;
 
 trait ProjectFilterAware
@@ -10,6 +11,11 @@ trait ProjectFilterAware
      * @var ProjectFilterService $projectFilterService
      */
     protected $projectFilterService;
+
+    /**
+     * @var ProjectFilterRepository $projectFilterRepository
+     */
+    protected $projectFilterRepository;
 
     /**
      * @param ProjectFilterService $projectFilterService
@@ -25,5 +31,21 @@ trait ProjectFilterAware
     public function getProjectFilterService()
     {
         return $this->projectFilterService;
+    }
+
+    /**
+     * @param ProjectFilterRepository $projectFilterRepository
+     */
+    public function setProjectFilterRepository(ProjectFilterRepository $projectFilterRepository)
+    {
+        $this->projectFilterRepository = $projectFilterRepository;
+    }
+
+    /**
+     * @return ProjectFilterRepository
+     */
+    public function getProjectFilterRepository()
+    {
+        return $this->projectFilterRepository;
     }
 }
