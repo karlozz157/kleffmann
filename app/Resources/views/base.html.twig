@@ -1,13 +1,93 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    <title>{% block title %}{% endblock %} | Kleffmann</title>
+
+    {% stylesheets
+        'bundles/devtagkleffmann/bootstrap/css/bootstrap.min.css'
+        'bundles/devtagkleffmann/css/font-awesome.min.css'
+        'bundles/devtagkleffmann/css/style.css'
+        'bundles/devtagkleffmann/css/style-responsive.css'
+        filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="light-theme">
+<div class="header navbar navbar-inverse box-shadow navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="header-seperation">
+            <ul class="nav navbar-nav">
+                <li class="sidebar-toggle-box"> <a href="#"><i class="fa fa-bars"></i></a> </li>
+                <li> <a href="index.html"><strong>Kleffmann</strong></a> </li>
+                <li id="last-one"> <a href="login.html">Log Out <i class="fa fa-angle-double-right"></i></a> </li>
+            </ul><!--/nav navbar-nav-->
+        </div><!--/header-seperation-->
+    </div><!--/navbar-inner-->
+</div><!--/header-->
+
+<div class="page-container">
+    <div class="nav-collapse top-margin fixed box-shadow2 hidden-xs" id="sidebar">
+        <div class="leftside-navigation">
+            <div class="sidebar-section sidebar-user clearfix">
+                <div class="sidebar-user-avatar"> <a href="#"> <img alt="avatar" src="images/avatar1.jpg" /> </div>
+                <div class="sidebar-user-name">John Doe</div>
+            </div>
+            <ul id="nav-accordion" class="sidebar-menu">
+                <li>
+                    <a href="index.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+                </li>
+                <li class="sub-menu dcjq-parent-li"> <a href="javascript:;" class="dcjq-parent"> <i class="fa fa-book"></i> <span>UI Elements</span><b class="badge bg-danger pull-right">10</b></a>
+                    <ul class="sub">
+                        <li><a href="general.html"><i class="fa fa-angle-right"></i> General</a></li>
+                        <li><a href="buttons.html"><i class="fa fa-angle-right"></i> Buttons</a></li>
+                        <li><a href="slider.html"><i class="fa fa-angle-right"></i> Slider</a></li>
+                    </ul>
+                </li>
+            </ul><!--/nav-accordion sidebar-menu-->
+        </div><!--/leftside-navigation-->
+    </div><!--/sidebar-->
+
+    <div id="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{ block('title') }}</h2>
+                </div><!--/col-md-12-->
+            </div><!--/row-->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block-web">
+                       {% block content %}{% endblock %}
+                    </div><!--/block-web-->
+                </div><!--/col-md-12-->
+            </div><!--/row-->
+
+
+        </div><!--/page-content end-->
+    </div><!--/main-content end-->
+</div><!--/page-container end-->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    {% javascripts
+        '@DevTagKleffmannBundle/Resources/public/js/jquery-2.0.2.min.js'
+        '@DevTagKleffmannBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+        '@DevTagKleffmannBundle/Resources/public/js/accordion.js'
+        '@DevTagKleffmannBundle/Resources/public/js/common-script.js'
+        '@DevTagKleffmannBundle/Resources/public/js/jquery.nicescroll.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts  %}
+</body>
 </html>
