@@ -71,6 +71,12 @@
 'Edit Customer': 'Editar Cliente'
 'Delete Customer': 'Eliminar Cliente'
 
+'Managers': 'Gerentes'
+'Manager List': 'Listado de Gerentes'
+'Add New Manager': 'Agregar Nuevo Gerente'
+'Edit Manager': 'Editar Gerente'
+'Delete Manager': 'Eliminar Gerente'
+
 'Add New': 'Agregar Nuevo'
 'Save': 'Guardar'
 'Cancel': 'Cancelar'

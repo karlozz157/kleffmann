@@ -54,6 +54,14 @@ services:
             - [ setCustomerService, ['@kleffmann.customer.service']]
             - [ setCustomerRepository, ['@kleffmann.customer.repository']]
 
+    kleffmann.manager.controller:
+        class: DevTag\KleffmannBundle\Controller\ManagerController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+            - [ setManagerService, ['@kleffmann.manager.service']]
+            - [ setManagerRepository, ['@kleffmann.manager.repository']]
+
     # services
     kleffmann.interviewer.service:
         class: DevTag\KleffmannBundle\Service\InterviewerService
@@ -87,6 +95,11 @@ services:
 
     kleffmann.customer.service:
         class: DevTag\KleffmannBundle\Service\CustomerService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.manager.service:
+        class: DevTag\KleffmannBundle\Service\ManagerService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
@@ -139,3 +152,10 @@ services:
        factory_method: getRepository
        arguments:
            - DevTag\KleffmannBundle\Entity\Customer
+
+    kleffmann.manager.repository:
+       class: Doctrine\ORM\EntityRepository
+       factory_service: doctrine.orm.default_entity_manager
+       factory_method: getRepository
+       arguments:
+           - DevTag\KleffmannBundle\Entity\Manager
