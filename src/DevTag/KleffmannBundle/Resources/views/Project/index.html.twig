@@ -1,25 +1,22 @@
 {% extends '::base.html.twig' %}
 
-{% block title %} Project List{% endblock %}
+{% block title %} <i class="fa fa-tasks"></i> {{ 'Projects'|trans }} {% endblock %}
+{% block subtitle %}{{ 'Project List'|trans }}{% endblock %}
 
 {% block content %}
 <div>
     <div class="header">
         <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
-        <h3 class="content-header">Project List</h3>
+        <h3 class="content-header">{{ block('subtitle') }}</h3>
     </div>
     <div class="porlets-content">
-        <p>{{ util.button_text('project_new', {}, 'Add new', 'info') }}</p>
+        <p>{{ util.button_text('project_new', {}, 'Add New'|trans, 'info') }}</p>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th>Name</th>
                     <th>Customer</th>
-                    <th>Total</th>
-                    <th>Year</th>
-                    <th>Manager</th>
-                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -27,16 +24,12 @@
                 {% for project in projects %}
                     <tr>
                         <td>{{ project.name }}</td>
-                        <td>{{ project.customer }}</td>
-                        <td>{{ project.total }}</td>
-                        <td>{{ project.year }}</td>
-                        <td>{{ project.manager }}</td>
-                        <td>{{ project.status   }}</td>
+                        <td>{{ project.customer.name }}</td>
                         <td>
-                            {{ util.button_icon('project_filter_list', {id: project.id}, 'View Filters', 'info', 'filter') }}
-                            {{ util.button_icon('project_locale_list', {id: project.id}, 'View Locations', 'success', 'map-marker') }}
-                            {{ util.button_icon('project_edit', {id: project.id}, 'Edit Project', 'warning', 'pencil') }}
-                            {{ util.button_icon('project_delete', {id: project.id}, 'Delete Project', 'danger', 'remove') }}
+                            {{ util.button_icon('project_filter_list', {id: project.id}, 'View Filters'|trans, 'info', 'filter') }}
+                            {{ util.button_icon('project_locale_list', {id: project.id}, 'View Locations'|trans, 'success', 'map-marker') }}
+                            {{ util.button_icon('project_edit', {id: project.id}, 'Edit Project'|trans, 'warning', 'pencil') }}
+                            {{ util.button_icon('project_delete', {id: project.id}, 'Delete Project'|trans, 'danger', 'remove') }}
                         </td>
                     </tr>
                 {% endfor %}

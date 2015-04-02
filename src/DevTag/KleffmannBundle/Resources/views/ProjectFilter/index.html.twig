@@ -1,26 +1,27 @@
 {% extends '::base.html.twig' %}
 
-{% block title %} Filters to {{ project.name | title }} Project{% endblock %}
+{% block title %}{{ 'Filters to'|trans }} {{ project.name|title }}{% endblock %}
+{% block subtitle %}{{ 'Filter List'|trans }}{% endblock %}
 
 {% block content %}
     <div>
         <div class="header">
             <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
-            <h3 class="content-header">Locale List</h3>
+            <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('project_filter_new', {id: project.id}, 'Add new', 'info') }}</p>
+            <p>{{ util.button_text('project_filter_new', {id: project.id}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Value</th>
-                        <th>Sub filter name</th>
-                        <th>Sub filter value</th>
-                        <th>State</th>
-                        <th>City</th>
-                        <th>Actions</th>
+                        <th>{{ 'Name'|trans }}</th>
+                        <th>{{ 'Value'|trans }}</th>
+                        <th>{{ 'Sub filter name'|trans }}</th>
+                        <th>{{ 'Sub value name'|trans }}</th>
+                        <th>{{ 'State'|trans }}</th>
+                        <th>{{ 'City'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -33,8 +34,8 @@
                             <td>{{ projectFilter.state.name }}</td>
                             <td>{{ projectFilter.city.name }}</td>
                             <td>
-                                {{ util.button_icon('project_filter_edit', {id: projectFilter.id}, 'Edit Locale', 'warning', 'pencil') }}
-                                {{ util.button_icon('project_filter_delete', {id: projectFilter.id}, 'Delete Locale', 'danger', 'remove') }}
+                                {{ util.button_icon('project_filter_edit', {id: projectFilter.id}, 'Edit Filter'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('project_filter_delete', {id: projectFilter.id}, 'Delete Filter'|trans, 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}

@@ -1,22 +1,23 @@
 {% extends '::base.html.twig' %}
 
-{% block title %} Locations to {{ project.name | title }} Project{% endblock %}
+{% block title %}{{ 'Locations to'|trans }} {{ project.name|title }}{% endblock %}
+{% block subtitle %}{{ 'Locations List'|trans }}{% endblock %}
 
 {% block content %}
     <div>
         <div class="header">
             <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
-            <h3 class="content-header">Locale List</h3>
+            <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('project_locale_new', {id: project.id}, 'Add new', 'info') }}</p>
+            <p>{{ util.button_text('project_locale_new', {id: project.id}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>State</th>
-                        <th>City</th>
-                        <th>Actions</th>
+                        <th>{{ 'State'|trans }}</th>
+                        <th>{{ 'City'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -25,8 +26,8 @@
                                 <td>{{ projectLocale.state.name }}</td>
                                 <td>{{ projectLocale.city.name }}</td>
                                 <td>
-                                    {{ util.button_icon('project_locale_edit', {id: projectLocale.id}, 'Edit Locale', 'warning', 'pencil') }}
-                                    {{ util.button_icon('project_locale_delete', {id: projectLocale.id}, 'Delete Locale', 'danger', 'remove') }}
+                                    {{ util.button_icon('project_locale_edit', {id: projectLocale.id}, 'Edit Location'|trans, 'warning', 'pencil') }}
+                                    {{ util.button_icon('project_locale_delete', {id: projectLocale.id}, 'Delete Location'|trans, 'danger', 'remove') }}
                                 </td>
                             </tr>
                         {% endfor %}

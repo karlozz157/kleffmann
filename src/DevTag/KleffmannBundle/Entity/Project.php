@@ -18,49 +18,79 @@ class Project
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=45)
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
+     */
+    protected $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Customer")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      */
     protected $customer;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="Methodology")
+     * @ORM\JoinColumn(name="methodology_id", referencedColumnName="id")
      */
-    protected $method;
+    protected $methodology;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=45)
      */
-    protected $total;
+    protected $fee;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    protected $year;
-
-    /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="Status")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      */
     protected $status;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="Manager")
+     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
      */
     protected $manager;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\ManyToOne(targetEntity="ProjectType")
+     * @ORM\JoinColumn(name="project_type_id", referencedColumnName="id")
      */
-    protected $region;
+    protected $projectType;
+
+    /**
+     * @ORM\Column(type="date", name="start_date")
+     */
+    protected $startDate;
+
+    /**
+     * @ORM\Column(type="date", name="estimate_date")
+     */
+    protected $estimateDate;
+
+    /**
+     * @ORM\Column(type="date", name="end_date")
+     */
+    protected $endDate;
+
+    /**
+     * @ORM\Column(type="datetime", name="created_at")
+     */
+    protected $createdAt;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime('now'));
+    }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -91,12 +121,150 @@ class Project
     }
 
     /**
-     * Set customer
+     * Set description
      *
-     * @param string $customer
+     * @param string $description
      * @return Project
      */
-    public function setCustomer($customer)
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set fee
+     *
+     * @param string $fee
+     * @return Project
+     */
+    public function setFee($fee)
+    {
+        $this->fee = $fee;
+
+        return $this;
+    }
+
+    /**
+     * Get fee
+     *
+     * @return string 
+     */
+    public function getFee()
+    {
+        return $this->fee;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return Project
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set estimateDate
+     *
+     * @param \DateTime $estimateDate
+     * @return Project
+     */
+    public function setEstimateDate($estimateDate)
+    {
+        $this->estimateDate = $estimateDate;
+
+        return $this;
+    }
+
+    /**
+     * Get estimateDate
+     *
+     * @return \DateTime 
+     */
+    public function getEstimateDate()
+    {
+        return $this->estimateDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     * @return Project
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime 
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Project
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Customer $customer
+     * @return Project
+     */
+    public function setCustomer(\DevTag\KleffmannBundle\Entity\Customer $customer = null)
     {
         $this->customer = $customer;
 
@@ -106,7 +274,7 @@ class Project
     /**
      * Get customer
      *
-     * @return string 
+     * @return \DevTag\KleffmannBundle\Entity\Customer 
      */
     public function getCustomer()
     {
@@ -114,81 +282,35 @@ class Project
     }
 
     /**
-     * Set method
+     * Set methodology
      *
-     * @param string $method
+     * @param \DevTag\KleffmannBundle\Entity\Methodology $methodology
      * @return Project
      */
-    public function setMethod($method)
+    public function setMethodology(\DevTag\KleffmannBundle\Entity\Methodology $methodology = null)
     {
-        $this->method = $method;
+        $this->methodology = $methodology;
 
         return $this;
     }
 
     /**
-     * Get method
+     * Get methodology
      *
-     * @return string 
+     * @return \DevTag\KleffmannBundle\Entity\Methodology 
      */
-    public function getMethod()
+    public function getMethodology()
     {
-        return $this->method;
-    }
-
-    /**
-     * Set total
-     *
-     * @param integer $total
-     * @return Project
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
-
-        return $this;
-    }
-
-    /**
-     * Get total
-     *
-     * @return integer 
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * Set year
-     *
-     * @param integer $year
-     * @return Project
-     */
-    public function setYear($year)
-    {
-        $this->year = $year;
-
-        return $this;
-    }
-
-    /**
-     * Get year
-     *
-     * @return integer 
-     */
-    public function getYear()
-    {
-        return $this->year;
+        return $this->methodology;
     }
 
     /**
      * Set status
      *
-     * @param string $status
+     * @param \DevTag\KleffmannBundle\Entity\Status $status
      * @return Project
      */
-    public function setStatus($status)
+    public function setStatus(\DevTag\KleffmannBundle\Entity\Status $status = null)
     {
         $this->status = $status;
 
@@ -198,7 +320,7 @@ class Project
     /**
      * Get status
      *
-     * @return string 
+     * @return \DevTag\KleffmannBundle\Entity\Status 
      */
     public function getStatus()
     {
@@ -208,10 +330,10 @@ class Project
     /**
      * Set manager
      *
-     * @param string $manager
+     * @param \DevTag\KleffmannBundle\Entity\Manager $manager
      * @return Project
      */
-    public function setManager($manager)
+    public function setManager(\DevTag\KleffmannBundle\Entity\Manager $manager = null)
     {
         $this->manager = $manager;
 
@@ -221,7 +343,7 @@ class Project
     /**
      * Get manager
      *
-     * @return string
+     * @return \DevTag\KleffmannBundle\Entity\Manager 
      */
     public function getManager()
     {
@@ -229,25 +351,25 @@ class Project
     }
 
     /**
-     * Set region
+     * Set projectType
      *
-     * @param string $region
+     * @param \DevTag\KleffmannBundle\Entity\ProjectType $projectType
      * @return Project
      */
-    public function setRegion($region)
+    public function setProjectType(\DevTag\KleffmannBundle\Entity\ProjectType $projectType = null)
     {
-        $this->region = $region;
+        $this->projectType = $projectType;
 
         return $this;
     }
 
     /**
-     * Get region
+     * Get projectType
      *
-     * @return string 
+     * @return \DevTag\KleffmannBundle\Entity\ProjectType 
      */
-    public function getRegion()
+    public function getProjectType()
     {
-        return $this->region;
+        return $this->projectType;
     }
 }

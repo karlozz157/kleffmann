@@ -52,12 +52,12 @@ class ProjectFilter
     protected $city;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="sub_filter_name")
      */
     protected $subFilterName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="sub_value_name")
      */
     protected $subValueName;
 

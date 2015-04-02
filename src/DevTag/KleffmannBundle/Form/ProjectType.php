@@ -15,13 +15,39 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('customer')
-            ->add('method')
-            ->add('total')
-            ->add('year')
-            ->add('manager')
-            ->add('status')
-            ->add('region')
+            ->add('description', 'textarea', [
+                'required' => false
+            ])
+            ->add('customer', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\Customer',
+                'property' => 'name',
+            ])
+            ->add('methodology', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\Methodology',
+                'property' => 'name',
+            ])
+            ->add('fee')
+            ->add('status', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\Status',
+                'property' => 'name',
+            ])
+            ->add('manager', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\Manager',
+                'property' => 'name',
+            ])
+            ->add('projectType', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\ProjectType',
+                'property' => 'name',
+            ])
+            ->add('startDate', 'date', [
+                'widget' => 'single_text'
+            ])
+            ->add('estimateDate', 'date', [
+                'widget' => 'single_text'
+            ])
+            ->add('endDate', 'date', [
+                'widget' => 'single_text'
+            ])
         ;
     }
 
