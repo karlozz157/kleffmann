@@ -41,12 +41,12 @@ class Interviewer
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", name="first_name", length=45)
      */
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", name="second_name", length=45)
      */
     protected $secondName;
 
@@ -56,32 +56,32 @@ class Interviewer
     protected $birthday;
 
     /**
-     * @ORM\Column(type="string", length=4)
+     * @ORM\Column(type="string", name="home_area_code", length=4)
      */
     protected $homeAreaCode;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", name="home_phone", length=10)
      */
     protected $homePhone;
 
     /**
-     * @ORM\Column(type="string", length=4)
+     * @ORM\Column(type="string", name="office_area_code", length=4)
      */
     protected $officeAreaCode;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", name="office_phone", length=10)
      */
     protected $officePhone;
 
     /**
-     * @ORM\Column(type="string", length=4)
+     * @ORM\Column(type="string", name="cell_area_code", length=4)
      */
     protected $cellAreaCode;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", name="cell_phone", length=10)
      */
     protected $cellPhone;
 
@@ -97,12 +97,12 @@ class Interviewer
     protected $clabe;
 
     /**
-     * @ORM\Column(type="integer", length=16)
+     * @ORM\Column(type="integer", name="debit_card", length=16)
      */
     protected $debitCard;
 
     /**
-     * @ORM\Column(type="integer", length=12)
+     * @ORM\Column(type="integer", name="   bank_account", length=12)
      */
     protected $bankAccount;
 
