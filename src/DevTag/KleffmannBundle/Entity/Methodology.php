@@ -23,6 +23,11 @@ class Methodology
     protected $name;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    protected $description;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -53,5 +58,28 @@ class Methodology
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Methodology
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
