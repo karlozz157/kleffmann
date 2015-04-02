@@ -29,6 +29,11 @@ class City
     protected $name;
 
     /**
+     * @ORM\Column(type="integer", name="external_id")
+     */
+    protected $externalId;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -82,5 +87,28 @@ class City
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set externalId
+     *
+     * @param integer $externalId
+     * @return City
+     */
+    public function setExternalId($externalId)
+    {
+        $this->externalId = $externalId;
+
+        return $this;
+    }
+
+    /**
+     * Get externalId
+     *
+     * @return integer
+     */
+    public function getExternalId()
+    {
+        return $this->externalId;
     }
 }
