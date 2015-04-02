@@ -35,6 +35,8 @@ class LoadDistrictData implements FixtureInterface, ContainerAwareInterface
 
             $manager->persist($district);
         }
+
+        $manager->flush();
     }
 
     /**
