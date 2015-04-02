@@ -1,18 +1,19 @@
 {% import '::util.html.twig' as util %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-    <title>{% block title %}{% endblock %} | Kleffmann</title>
+    <title>{% block subtitle %}{% endblock %} | Kleffmann</title>
 
     {% stylesheets
         'bundles/devtagkleffmann/bootstrap/css/bootstrap.min.css'
         'bundles/devtagkleffmann/css/font-awesome.min.css'
         'bundles/devtagkleffmann/css/style.css'
         'bundles/devtagkleffmann/css/style-responsive.css'
+        'bundles/devtagkleffmann/plugins/bootstrap-datepicker/css/datepicker.css'
         filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -24,13 +25,13 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="light-theme">
+<body class="dark-theme">
 <div class="header navbar navbar-inverse box-shadow navbar-fixed-top">
     <div class="navbar-inner">
         <div class="header-seperation">
             <ul class="nav navbar-nav">
                 <li class="sidebar-toggle-box"> <a href="#"><i class="fa fa-bars"></i></a> </li>
-                <li> <a href="index.html"><strong>Kleffmann</strong></a> </li>
+                <li> <a href="{{ path('dashboard') }}"><strong>Kleffmann Group</strong></a> </li>
                 <li id="last-one"> <a href="login.html">Log Out <i class="fa fa-angle-double-right"></i></a> </li>
             </ul><!--/nav navbar-nav-->
         </div><!--/header-seperation-->
@@ -40,13 +41,9 @@
 <div class="page-container">
     <div class="nav-collapse top-margin fixed box-shadow2 hidden-xs" id="sidebar">
         <div class="leftside-navigation">
-            <div class="sidebar-section sidebar-user clearfix">
-                <div class="sidebar-user-avatar"> <a href="#"> <img alt="avatar" src="images/avatar1.jpg" /> </div>
-                <div class="sidebar-user-name">John Doe</div>
-            </div>
             <ul id="nav-accordion" class="sidebar-menu">
                 {% for menu in menu.main %}
-                    <li><a href="{{ path(menu.url) }}"><i class="fa fa-dashboard"></i><span>{{ menu.name}}</span></a></li>
+                    <li><a href="{{ path(menu.url) }}"><i class="fa fa-{{ menu.icon }}"></i><span>{{ menu.name}}</span></a></li>
                     {% if menu.submenu is defined %}
                         <ul class="sub">
                             {% for submenu in menu.submenu %}
@@ -66,7 +63,6 @@
                     <h2>{{ block('title') }}</h2>
                 </div><!--/col-md-12-->
             </div><!--/row-->
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="block-web">
@@ -87,6 +83,8 @@
         '@DevTagKleffmannBundle/Resources/public/js/accordion.js'
         '@DevTagKleffmannBundle/Resources/public/js/common-script.js'
         '@DevTagKleffmannBundle/Resources/public/js/jquery.nicescroll.js'
+        '@DevTagKleffmannBundle/Resources/public/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js'
+        '@DevTagKleffmannBundle/Resources/public/js/custom/form.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts  %}
