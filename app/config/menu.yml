@@ -5,9 +5,16 @@ twig:
                 dashboard:
                     name: 'Dashboard'
                     url: 'dashboard'
+                    icon: 'dashboard'
                 interviewers:
-                    name: 'Interviewers'
+                    name: 'Encuestadores'
                     url: 'interviewer_list'
+                    icon: 'list-alt'
                 project:
-                    name: 'Projects'
-                    url: 'dashboard'
+                    name: 'Proyectos'
+                    url: 'project_list'
+                    icon: 'tasks'
+                invoices:
+                    name: 'Facturas'
+                    url: 'invoice_list'
+                    icon: 'folder-open'
