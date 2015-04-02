@@ -19,28 +19,34 @@ class Interviewer
 
     /**
      * @ORM\ManyToOne(targetEntity="State")
-     * @ORM\JoinColumn(name="state_id")
+     * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
      */
     protected $state;
 
     /**
      * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     protected $city;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="District")
+     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
+     */
+    protected $district;
+
+    /**
+     * @ORM\Column(type="string", length=45)
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=45)
      */
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=45)
      */
     protected $secondName;
 
@@ -50,24 +56,34 @@ class Interviewer
     protected $birthday;
 
     /**
-     * @ORM\Column(type="integer", length=3)
+     * @ORM\Column(type="string", length=4)
      */
     protected $homeAreaCode;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     protected $homePhone;
 
     /**
-     * @ORM\Column(type="integer", length=3)
+     * @ORM\Column(type="string", length=4)
      */
     protected $officeAreaCode;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     protected $officePhone;
+
+    /**
+     * @ORM\Column(type="string", length=4)
+     */
+    protected $cellAreaCode;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    protected $cellPhone;
 
     /**
      * @ORM\ManyToOne(targetEntity="Bank")
@@ -76,14 +92,29 @@ class Interviewer
     protected $bank;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=18)
      */
     protected $clabe;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", length=16)
      */
     protected $debitCard;
+
+    /**
+     * @ORM\Column(type="integer", length=12)
+     */
+    protected $bankAccount;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    protected $email;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $observation;
 
     /**
      * Get id
@@ -392,5 +423,143 @@ class Interviewer
     public function getBank()
     {
         return $this->bank;
+    }
+
+    /**
+     * Set cellAreaCode
+     *
+     * @param string $cellAreaCode
+     * @return Interviewer
+     */
+    public function setCellAreaCode($cellAreaCode)
+    {
+        $this->cellAreaCode = $cellAreaCode;
+
+        return $this;
+    }
+
+    /**
+     * Get cellAreaCode
+     *
+     * @return string
+     */
+    public function getCellAreaCode()
+    {
+        return $this->cellAreaCode;
+    }
+
+    /**
+     * Set cellPhone
+     *
+     * @param string $cellPhone
+     * @return Interviewer
+     */
+    public function setCellPhone($cellPhone)
+    {
+        $this->cellPhone = $cellPhone;
+
+        return $this;
+    }
+
+    /**
+     * Get cellPhone
+     *
+     * @return string
+     */
+    public function getCellPhone()
+    {
+        return $this->cellPhone;
+    }
+
+    /**
+     * Set bankAccount
+     *
+     * @param integer $bankAccount
+     * @return Interviewer
+     */
+    public function setBankAccount($bankAccount)
+    {
+        $this->bankAccount = $bankAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get bankAccount
+     *
+     * @return integer
+     */
+    public function getBankAccount()
+    {
+        return $this->bankAccount;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Interviewer
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set observation
+     *
+     * @param string $observation
+     * @return Interviewer
+     */
+    public function setObservation($observation)
+    {
+        $this->observation = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Get observation
+     *
+     * @return string
+     */
+    public function getObservation()
+    {
+        return $this->observation;
+    }
+
+    /**
+     * Set district
+     *
+     * @param \DevTag\KleffmannBundle\Entity\District $district
+     * @return Interviewer
+     */
+    public function setDistrict(\DevTag\KleffmannBundle\Entity\District $district = null)
+    {
+        $this->district = $district;
+
+        return $this;
+    }
+
+    /**
+     * Get district
+     *
+     * @return \DevTag\KleffmannBundle\Entity\District
+     */
+    public function getDistrict()
+    {
+        return $this->district;
     }
 }
