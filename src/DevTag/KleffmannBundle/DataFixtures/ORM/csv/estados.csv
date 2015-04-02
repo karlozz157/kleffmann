@@ -1,0 +1,33 @@
+id_estado,n_estado,fk_pais
+5201,Aguascalientes,1
+5202,Baja California,1
+5203,Baja California Sur,1
+5204,Campeche,1
+5207,Chiapas,1
+5208,Chihuahua,1
+5205,Coahuilia de Zaragoza,1
+5206,Colima,1
+5209,Distrito Federal,1
+5210,Durango,1
+5211,Guanajuato,1
+5212,Guerrero,1
+5213,Hidalgo,1
+5214,Jalisco,1
+5215,Mexico,1
+5216,Michoacán de Ocampo,1
+5217,Morelos,1
+5218,Nayarit,1
+5219,Nuevo León,1
+5220,Oaxaca,1
+5221,Puebla,1
+5222,Querétaro de Arteaga,1
+5223,Quintana Roo,1
+5224,San Luis Potosi,1
+5225,Sinaloa,1
+5226,Sonora,1
+5227,Tabasco,1
+5228,Tamaulipas,1
+5229,Tlaxcala,1
+5230,Veracruz del Valle de la Llav,1
+5231,Yucatán,1
+5232,Zacatecas,1
