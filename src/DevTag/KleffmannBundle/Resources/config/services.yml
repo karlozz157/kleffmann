@@ -5,30 +5,46 @@ services:
         calls:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
+            - [ setInterviewerService, ['@kleffmann.interviewer.service']]
+            - [ setInterviewerRepository, ['@kleffmann.interviewer.repository']]
 
     kleffmann.project.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectController
         calls:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
+            - [ setProjectService, ['@kleffmann.project.service']]
+            - [ setProjectRepository, ['@kleffmann.project.repository']]
 
     kleffmann.project_locale.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectLocaleController
         calls:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
+            - [ setProjectLocaleService, ['@kleffmann.project_locale.service']]
+            - [ setProjectLocaleRepository, ['@kleffmann.project_locale.repository']]
 
     kleffmann.project_filter.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectFilterController
         calls:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
+            - [ setProjectFilterService, ['@kleffmann.project_filter.service']]
+            - [ setProjectFilterRepository, ['@kleffmann.project_filter.repository']]
 
     kleffmann.project_variable.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectVariableController
         calls:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
+
+    kleffmann.invoice.controller:
+        class: DevTag\KleffmannBundle\Controller\InvoiceController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+            - [ setInvoiceService, ['@kleffmann.invoice.service']]
+            - [ setInvoiceRepository, ['@kleffmann.invoice.repository']]
 
     # services
     kleffmann.interviewer.service:
@@ -55,3 +71,51 @@ services:
         class: DevTag\KleffmannBundle\Service\ProjectVariableService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.invoice.service:
+        class: DevTag\KleffmannBundle\Service\InvoiceService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    # repositories
+    kleffmann.interviewer.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Interviewer
+
+    kleffmann.project.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Project
+
+    kleffmann.project_locale.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\ProjectLocale
+
+    kleffmann.project_filter.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\ProjectFilter
+
+    kleffmann.invoice.repository:
+       class: Doctrine\ORM\EntityRepository
+       factory_service: doctrine.orm.default_entity_manager
+       factory_method: getRepository
+       arguments:
+           - DevTag\KleffmannBundle\Entity\Invoice
+
+    kleffmann.state.repository:
+       class: Doctrine\ORM\EntityRepository
+       factory_service: doctrine.orm.default_entity_manager
+       factory_method: getRepository
+       arguments:
+           - DevTag\KleffmannBundle\Entity\State
