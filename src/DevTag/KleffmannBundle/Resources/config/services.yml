@@ -70,6 +70,14 @@ services:
             - [ setProjectTypeService, ['@kleffmann.project_type.service']]
             - [ setProjectTypeRepository, ['@kleffmann.project_type.repository']]
 
+    kleffmann.status.controller:
+        class: DevTag\KleffmannBundle\Controller\StatusController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+            - [ setStatusService, ['@kleffmann.status.service']]
+            - [ setStatusRepository, ['@kleffmann.status.repository']]
+
     # services
     kleffmann.interviewer.service:
         class: DevTag\KleffmannBundle\Service\InterviewerService
@@ -113,6 +121,11 @@ services:
 
     kleffmann.project_type.service:
         class: DevTag\KleffmannBundle\Service\ProjectTypeService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.status.service:
+        class: DevTag\KleffmannBundle\Service\StatusService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
@@ -179,3 +192,10 @@ services:
        factory_method: getRepository
        arguments:
            - DevTag\KleffmannBundle\Entity\ProjectType
+
+    kleffmann.status.repository:
+       class: Doctrine\ORM\EntityRepository
+       factory_service: doctrine.orm.default_entity_manager
+       factory_method: getRepository
+       arguments:
+           - DevTag\KleffmannBundle\Entity\Status

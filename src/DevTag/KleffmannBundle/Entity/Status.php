@@ -5,7 +5,7 @@ namespace DevTag\KleffmannBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="DevTag\KleffmannBundle\Repository\StatusRepository")
  * @ORM\Table(name="status")
  */
 class Status
