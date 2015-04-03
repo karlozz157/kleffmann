@@ -20,7 +20,7 @@ class LoadCityData implements FixtureInterface, ContainerAwareInterface
     /**
      * @var array $state
      */
-    protected static $state;
+    protected $state;
 
     /**
      * {@inheritDoc}
@@ -41,7 +41,7 @@ class LoadCityData implements FixtureInterface, ContainerAwareInterface
             $manager->persist($city);
         }
 
-        $manager->flush();
+            $manager->flush();
     }
 
     /**
@@ -51,14 +51,14 @@ class LoadCityData implements FixtureInterface, ContainerAwareInterface
      */
     public function getStateByExternalId($externalId)
     {
-        if (self::$state['external_id'] == $externalId) {
-            return self::$state['entity'];
+        if (isset($this->state['external_id']) && $this->state['external_id'] == $externalId) {
+            return $this->state['entity'];
         }
 
-        self::$state['external_id'] = $externalId;
-        self::$state['entity'] = $this->container->get('kleffmann.state.repository')->findOneBy(['externalId' => $externalId]);
+        $this->state['external_id'] = $externalId;
+        $this->state['entity'] = $this->container->get('kleffmann.state.repository')->findOneBy(['externalId' => $externalId]);
 
-        return self::$state['entity'];
+        return $this->state['entity'];
     }
 
     /**
