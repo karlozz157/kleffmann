@@ -77,6 +77,12 @@
 'Edit Manager': 'Editar Gerente'
 'Delete Manager': 'Eliminar Gerente'
 
+'Project Types': 'Tipo de Proyectos'
+'Project Types List': 'Listado de Tipo de Proyectos'
+'Add New Project Type': 'Agregar Nuevo Tipo de Proyecto'
+'Edit Project Type': 'Editar Tipo de Proyecto'
+'Delete Project Type': 'Eliminar Tipo de Proyecto'
+
 'Add New': 'Agregar Nuevo'
 'Save': 'Guardar'
 'Cancel': 'Cancelar'

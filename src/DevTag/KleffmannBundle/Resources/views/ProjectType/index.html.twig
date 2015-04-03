@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'Project Types'|trans }}{% endblock %}
+{% block subtitle %}{{ 'Project Types List'|trans }}{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="header">
+            <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
+            <h3 class="content-header">{{ block('subtitle') }}</h3>
+        </div>
+        <div class="porlets-content">
+            <p>{{ util.button_text('new_project_type', {}, 'Add New'|trans, 'info') }}</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>{{ 'Name'|trans }}</th>
+                        <th>{{ 'Description'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for projectType in projectTypes %}
+                        <tr>
+                            <td>{{ projectType.name }}</td>
+                            <td>{{ projectType.description }}</td>
+                            <td>
+                                {{ util.button_icon('edit_project_type', {id: projectType.id}, 'Edit Project Type'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('delete_project_type', {id: projectType.id}, 'Delete Project Type'|trans, 'danger', 'remove') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div><!--/table-responsive-->
+        </div><!--/porlets-content-->
+    </div>
+{% endblock %}
