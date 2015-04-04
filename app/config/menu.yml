@@ -18,3 +18,20 @@ twig:
                     name: 'Facturas'
                     url: 'invoice_list'
                     icon: 'folder-open'
+                catalog:
+                    name: 'Catálogos'
+                    url: 'dashboard'
+                    icon: 'files-o'
+                    submenu:
+                        customer:
+                            name: 'Clientes'
+                            url: 'customer_list'
+                        manager:
+                            name: 'Gerentes'
+                            url: 'manager_list'
+                        project_type:
+                            name: 'Tipos de Proyectos'
+                            url: 'project_type_list'
+                        status:
+                            name: 'Estatus'
+                            url: 'status_list'
