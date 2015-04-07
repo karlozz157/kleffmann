@@ -17,36 +17,72 @@ class InterviewerType extends AbstractType
             ->add('state', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\State',
                 'property' => 'name',
+                'empty_value' => '-- Choose a State --',
+                'required' => true,
             ])
             ->add('city', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\City',
                 'property' => 'name',
+                'empty_value' => '-- Choose a City --',
+                'required' => true,
             ])
             ->add('district', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\District',
-                'property' => 'name'
+                'property' => 'name',
+                'empty_value' => '-- Choose a District --'
             ])
-            ->add('email', 'email')
-            ->add('name', 'text')
-            ->add('first_name', 'text')
-            ->add('second_name', 'text')
+            ->add('email', 'email', [
+                'required' => true
+            ])
+            ->add('name', 'text', [
+                'required' => true,
+            ])
+            ->add('first_name', 'text', [
+                'required' => true,
+            ])
+            ->add('second_name', 'text', [
+                'required' => true,
+            ])
             ->add('birthday', 'date', [
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'required' => true,
             ])
-            ->add('home_area_code', 'integer')
-            ->add('home_phone', 'integer')
-            ->add('office_area_code', 'integer')
-            ->add('office_phone', 'integer')
-            ->add('cell_area_code', 'integer')
-            ->add('cell_phone', 'integer')
+            ->add('home_area_code', 'integer', [
+                'required' => true,
+            ])
+            ->add('home_phone', 'integer', [
+                'required' => true,
+            ])
+            ->add('office_area_code', 'integer', [
+                'required' => true,
+            ])
+            ->add('office_phone', 'integer', [
+                'required' => true,
+            ])
+            ->add('cell_area_code', 'integer', [
+                'required' => true,
+            ])
+            ->add('cell_phone', 'integer', [
+                'required' => true,
+            ])
             ->add('bank', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\Bank',
                 'property' => 'name',
+                'empty_value' => '-- Choose a Bank --',
+                'required' => true,
             ])
-            ->add('clabe', 'integer')
-            ->add('debit_card', 'integer')
-            ->add('bank_account', 'integer')
-            ->add('observation', 'textarea')
+            ->add('clabe', 'integer', [
+                'required' => true,
+            ])
+            ->add('debit_card', 'integer', [
+                'required' => true,
+            ])
+            ->add('bank_account', 'integer', [
+                'required' => true,
+            ])
+            ->add('observation', 'textarea', [
+                'required' => true,
+            ])
         ;
     }
 
