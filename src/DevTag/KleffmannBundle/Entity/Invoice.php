@@ -24,6 +24,12 @@ class Invoice
     protected $project;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Interviewer")
+     * @ORM\JoinColumn(name="interviewer_id", referencedColumnName="id")
+     */
+    protected $interviewer;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $file;
@@ -166,5 +172,28 @@ class Invoice
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set interviewer
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Interviewer $interviewer
+     * @return Invoice
+     */
+    public function setInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer = null)
+    {
+        $this->interviewer = $interviewer;
+
+        return $this;
+    }
+
+    /**
+     * Get interviewer
+     *
+     * @return \DevTag\KleffmannBundle\Entity\Interviewer
+     */
+    public function getInterviewer()
+    {
+        return $this->interviewer;
     }
 }

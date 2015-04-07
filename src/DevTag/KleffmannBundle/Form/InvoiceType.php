@@ -16,16 +16,33 @@ class InvoiceType extends AbstractType
         $builder
             ->add('project', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\Project',
-                'property' => 'name'
+                'property' => 'name',
+                'empty_value' => '-- Choose a Project --',
+                'required' => true,
             ])
-            ->add('file')
-            ->add('date')
-            ->add('amount')
+            ->add('interviewer', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\Interviewer',
+                'property' => 'name',
+                'empty_value' => '-- Choose a Project --',
+                'required' => true,
+            ])
+            ->add('date', 'date', [
+                'widget' => 'single_text',
+                'required' => true,
+            ])
+            ->add('file', 'text', [
+                'required' => true,
+            ])
+            ->add('amount', 'money', [
+                'required' => true,
+            ])
             ->add('status', 'choice', [
+                'empty_value' => '-- Choose a Project --',
                 'choices' => [
                     'pagada' => 'Pagada',
                     'pendiente' => 'Pendiente'
-                ]
+                ],
+                'required' => true,
             ])
         ;
     }
