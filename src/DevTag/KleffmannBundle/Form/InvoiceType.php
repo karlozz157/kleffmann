@@ -23,7 +23,7 @@ class InvoiceType extends AbstractType
             ->add('interviewer', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\Interviewer',
                 'property' => 'name',
-                'empty_value' => '-- Choose a Project --',
+                'empty_value' => '-- Choose an Interviewer --',
                 'required' => true,
             ])
             ->add('date', 'date', [
@@ -37,7 +37,7 @@ class InvoiceType extends AbstractType
                 'required' => true,
             ])
             ->add('status', 'choice', [
-                'empty_value' => '-- Choose a Project --',
+                'empty_value' => '-- Choose a Status --',
                 'choices' => [
                     'pagada' => 'Pagada',
                     'pendiente' => 'Pendiente'
