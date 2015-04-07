@@ -22,6 +22,10 @@
 'Bank account': 'Número de Banco'
 'Observation': 'Observaciones'
 'Actions': 'Acciones'
+'-- Choose a State --': '-- Escoge un Estado --'
+'-- Choose a City --': '-- Escoge una Ciudad --'
+'-- Choose a District --': '-- Escoge un Distrito --'
+'-- Choose a Bank --': '-- Escoge un Banco --'
 
 'Projects': 'Proyectos'
 'Project List': 'Listado de Proyectos'
@@ -41,6 +45,11 @@
 'Start date': 'Fecha de Inicio'
 'Estimate date': 'Fecha Estimada'
 'End date': 'Fecha Final'
+'-- Choose a Customer --': '-- Escoge un Cliente --'
+'-- Choose a Status --': '-- Escoge un Estatus --'
+'-- Choose a Methodology --': '-- Escoge una Metodología --'
+'-- Choose a Project Type --': '-- Escoge un Tipo de Proyecto --'
+'-- Choose a Manager --': '-- Escoge un Gerente --'
 
 'Filter List': 'Listado de Filtros'
 'Add New Filter': 'Agregar Nuevo Filtro'
@@ -63,7 +72,16 @@
 'Date': 'Fecha'
 'File': 'Archivo'
 'Amount': 'Monto'
+'Interviewer': 'Encuestador'
 'Add New Invoice': 'Agregar Nueva Factura'
+'-- Choose a Project --': '-- Escoge un Proyecto --'
+'-- Choose an Interviewer --': '-- Escoge un Encuestador --'
+
+'Banks': 'Bancos'
+'Bank List': 'Listado de Bancos'
+'Edit Bank': 'Editar Banco'
+'Delete Bank': 'Eliminar Banco'
+'Add New Bank': 'Agregar Nuevo Banco'
 
 'Customers': 'Clientes'
 'Customer List': 'Lista de Clientes'
@@ -84,8 +102,8 @@
 'Delete Project Type': 'Eliminar Tipo de Proyecto'
 
 'Status': 'Estatus'
-'Status List': 'Listado de Estados'
-'Add New Status': 'Agregar Nuevo Estado'
+'Status List': 'Listado de Estatus'
+'Add New Status': 'Agregar Nuevo Estatus'
 'Edit Status': 'Editar Estatus'
 'Delete Status': 'Eliminar Estatus'
 

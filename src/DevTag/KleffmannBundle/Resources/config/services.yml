@@ -78,6 +78,14 @@ services:
             - [ setStatusService, ['@kleffmann.status.service']]
             - [ setStatusRepository, ['@kleffmann.status.repository']]
 
+    kleffmann.bank.controller:
+        class: DevTag\KleffmannBundle\Controller\BankController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+            - [ setBankService, ['@kleffmann.bank.service']]
+            - [ setBankRepository, ['@kleffmann.bank.repository']]
+
     # services
     kleffmann.interviewer.service:
         class: DevTag\KleffmannBundle\Service\InterviewerService
@@ -126,6 +134,11 @@ services:
 
     kleffmann.status.service:
         class: DevTag\KleffmannBundle\Service\StatusService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.bank.service:
+        class: DevTag\KleffmannBundle\Service\BankService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
@@ -199,3 +212,10 @@ services:
        factory_method: getRepository
        arguments:
            - DevTag\KleffmannBundle\Entity\Status
+
+    kleffmann.bank.repository:
+       class: Doctrine\ORM\EntityRepository
+       factory_service: doctrine.orm.default_entity_manager
+       factory_method: getRepository
+       arguments:
+           - DevTag\KleffmannBundle\Entity\Bank

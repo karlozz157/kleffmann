@@ -23,6 +23,9 @@ twig:
                     url: 'dashboard'
                     icon: 'files-o'
                     submenu:
+                        bank:
+                            name: 'Bancos'
+                            url: 'bank_list'
                         customer:
                             name: 'Clientes'
                             url: 'customer_list'
