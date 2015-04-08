@@ -18,6 +18,10 @@ twig:
                     name: 'Facturas'
                     url: 'invoice_list'
                     icon: 'folder-open'
+                training:
+                    name: 'Capacitaciones'
+                    url: 'training_list'
+                    icon: 'book'
                 catalog:
                     name: 'Catálogos'
                     url: 'dashboard'
