@@ -2,7 +2,9 @@
 
 namespace DevTag\KleffmannBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use DevTag\KleffmannBundle\Entity\Methodology;
 
 /**
  * @ORM\Entity(repositoryClass="DevTag\KleffmannBundle\Repository\ProjectRepository")
@@ -34,10 +36,13 @@ class Project
     protected $customer;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Methodology")
-     * @ORM\JoinColumn(name="methodology_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Methodology")
+     * @ORM\JoinTable(name="projects_methodologies",
+     *     joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="methodology_id", referencedColumnName="id")}
+     * )
      */
-    protected $methodology;
+    protected $methodologies;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -85,6 +90,7 @@ class Project
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime('now'));
+        $this->methodologies = new ArrayCollection();
     }
 
     /**
@@ -282,29 +288,6 @@ class Project
     }
 
     /**
-     * Set methodology
-     *
-     * @param \DevTag\KleffmannBundle\Entity\Methodology $methodology
-     * @return Project
-     */
-    public function setMethodology(\DevTag\KleffmannBundle\Entity\Methodology $methodology = null)
-    {
-        $this->methodology = $methodology;
-
-        return $this;
-    }
-
-    /**
-     * Get methodology
-     *
-     * @return \DevTag\KleffmannBundle\Entity\Methodology 
-     */
-    public function getMethodology()
-    {
-        return $this->methodology;
-    }
-
-    /**
      * Set status
      *
      * @param \DevTag\KleffmannBundle\Entity\Status $status
@@ -371,5 +354,38 @@ class Project
     public function getProjectType()
     {
         return $this->projectType;
+    }
+
+    /**
+     * Add methodologies
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Methodology $methodologies
+     * @return Project
+     */
+    public function addMethodology(\DevTag\KleffmannBundle\Entity\Methodology $methodologies)
+    {
+        $this->methodologies[] = $methodologies;
+
+        return $this;
+    }
+
+    /**
+     * Remove methodologies
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Methodology $methodologies
+     */
+    public function removeMethodology(\DevTag\KleffmannBundle\Entity\Methodology $methodologies)
+    {
+        $this->methodologies->removeElement($methodologies);
+    }
+
+    /**
+     * Get methodologies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMethodologies()
+    {
+        return $this->methodologies;
     }
 }

@@ -26,13 +26,15 @@ class ProjectType extends AbstractType
                 'empty_value' => '-- Choose a Customer --',
                 'required' => true,
             ])
-            ->add('methodology', 'entity', [
+            ->add('methodologies', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\Methodology',
                 'property' => 'name',
                 'empty_value' => '-- Choose a Methodology --',
+                'multiple' => true,
                 'required' => true,
             ])
-            ->add('fee', 'money', [
+            ->add('fee', 'integer', [
+                'label' => 'Muestra',
                 'required' => true,
             ])
             ->add('status', 'entity', [
