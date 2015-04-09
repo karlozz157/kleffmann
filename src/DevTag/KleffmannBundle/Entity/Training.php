@@ -24,6 +24,12 @@ class Training
     protected $project;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Interviewer")
+     * @ORM\JoinColumn(name="interviewer_id", referencedColumnName="id")
+     */
+    protected $interviewer;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $name;
@@ -41,7 +47,12 @@ class Training
     /**
      * @ORM\Column(type="text")
      */
-    protected $note;
+    protected $comments;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $email;
 
     /**
      * Get id
@@ -123,29 +134,6 @@ class Training
     }
 
     /**
-     * Set note
-     *
-     * @param string $note
-     * @return Training
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return string 
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
      * Set project
      *
      * @param \DevTag\KleffmannBundle\Entity\Project $project
@@ -161,10 +149,79 @@ class Training
     /**
      * Get project
      *
-     * @return \DevTag\KleffmannBundle\Entity\Project 
+     * @return \DevTag\KleffmannBundle\Entity\Project
      */
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set comments
+     *
+     * @param string $comments
+     * @return Training
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return string
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Training
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set interviewer
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Interviewer $interviewer
+     * @return Training
+     */
+    public function setInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer = null)
+    {
+        $this->interviewer = $interviewer;
+
+        return $this;
+    }
+
+    /**
+     * Get interviewer
+     *
+     * @return \DevTag\KleffmannBundle\Entity\Interviewer
+     */
+    public function getInterviewer()
+    {
+        return $this->interviewer;
     }
 }

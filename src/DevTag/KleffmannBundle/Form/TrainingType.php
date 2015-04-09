@@ -19,17 +19,24 @@ class TrainingType extends AbstractType
                 'empty_value' => '-- Choose a Project --',
                 'required' => true,
             ])
-            ->add('name', 'text', [
-                'required' => true,
-            ])
             ->add('date', 'date', [
                 'widget' => 'single_text',
+                'required' => true,
+            ])
+            ->add('interviewer', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\Interviewer',
+                'property' => 'name',
+            ])
+            ->add('name', 'text', [
                 'required' => true,
             ])
             ->add('address', 'textarea', [
                 'required' => true,
             ])
-            ->add('note', 'textarea', [
+            ->add('comments', 'textarea', [
+                'required' => true,
+            ])
+            ->add('email', 'email', [
                 'required' => true,
             ])
         ;
