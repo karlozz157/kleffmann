@@ -40,7 +40,8 @@ class InvoiceType extends AbstractType
                 'empty_value' => '-- Choose a Status --',
                 'choices' => [
                     'pagada' => 'Pagada',
-                    'pendiente' => 'Pendiente'
+                    'pendiente' => 'Pendiente',
+                    'error' => 'Error',
                 ],
                 'required' => true,
             ])

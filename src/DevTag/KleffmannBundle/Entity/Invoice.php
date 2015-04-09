@@ -45,7 +45,7 @@ class Invoice
     protected $amount;
 
     /**
-     * @ORM\Column(type="string", columnDefinition="ENUM('pagada', 'pendiente')")
+     * @ORM\Column(type="string", columnDefinition="ENUM('pagada', 'pendiente', 'error')")
      */
     protected $status;
 
