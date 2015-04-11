@@ -10,7 +10,7 @@
         <h3 class="content-header">{{ block('subtitle') }}</h3>
     </div>
     <div class="porlets-content">
-        <p>{{ util.button_text('project_new', {}, 'Add New'|trans, 'info') }}</p>
+        <p>{{ util.button_text('projects_new', {}, 'Add New'|trans, 'info') }}</p>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -26,10 +26,9 @@
                         <td>{{ project.name }}</td>
                         <td>{{ project.customer.name }}</td>
                         <td>
-                            {{ util.button_icon('project_filter_list', {id: project.id}, 'View Filters'|trans, 'info', 'filter') }}
-                            {{ util.button_icon('project_locale_list', {id: project.id}, 'View Locations'|trans, 'success', 'map-marker') }}
-                            {{ util.button_icon('project_edit', {id: project.id}, 'Edit Project'|trans, 'warning', 'pencil') }}
-                            {{ util.button_icon('project_delete', {id: project.id}, 'Delete Project'|trans, 'danger', 'remove') }}
+                            {{ util.button_icon('project_zones', {project: project.id}, 'View Locations'|trans, 'success', 'globe') }}
+                            {{ util.button_icon('projects_edit', {id: project.id}, 'Edit Project'|trans, 'warning', 'pencil') }}
+                            {{ util.button_icon('projects_delete', {id: project.id}, 'Delete Project'|trans, 'danger', 'remove') }}
                         </td>
                     </tr>
                 {% endfor %}
