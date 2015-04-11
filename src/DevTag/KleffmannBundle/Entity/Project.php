@@ -68,6 +68,12 @@ class Project
     protected $projectType;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ProjectTypeUprising")
+     * @ORM\JoinColumn(name="project_type_uprising", referencedColumnName="id")
+     */
+    protected $projectTypeUprising;
+
+    /**
      * @ORM\Column(type="date", name="start_date")
      */
     protected $startDate;
@@ -387,5 +393,28 @@ class Project
     public function getMethodologies()
     {
         return $this->methodologies;
+    }
+
+    /**
+     * Set projectTypeUprising
+     *
+     * @param \DevTag\KleffmannBundle\Entity\ProjectTypeUprising $projectTypeUprising
+     * @return Project
+     */
+    public function setProjectTypeUprising(\DevTag\KleffmannBundle\Entity\ProjectTypeUprising $projectTypeUprising = null)
+    {
+        $this->projectTypeUprising = $projectTypeUprising;
+
+        return $this;
+    }
+
+    /**
+     * Get projectTypeUprising
+     *
+     * @return \DevTag\KleffmannBundle\Entity\ProjectTypeUprising
+     */
+    public function getProjectTypeUprising()
+    {
+        return $this->projectTypeUprising;
     }
 }

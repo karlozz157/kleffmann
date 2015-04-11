@@ -55,6 +55,12 @@ class ProjectType extends AbstractType
                 'empty_value' => '-- Choose a Project Type --',
                 'required' => true,
             ])
+            ->add('projectTypeUprising', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\ProjectTypeUprising',
+                'property' => 'name',
+                'empty_value' => '-- Choose a Project Type Uprising --',
+                'required' => true,
+            ])
             ->add('startDate', 'date', [
                 'widget' => 'single_text',
                 'required' => true,
