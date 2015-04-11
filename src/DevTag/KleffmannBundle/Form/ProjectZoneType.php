@@ -30,6 +30,6 @@ class ProjectZoneType extends AbstractType
      */
     public function getName()
     {
-        return 'project_locale_type';
+        return 'project_zone_type';
     }
 }
