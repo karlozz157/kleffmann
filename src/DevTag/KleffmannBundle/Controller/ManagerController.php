@@ -12,14 +12,14 @@ use DevTag\KleffmannBundle\Form\ManagerType;
 use DevTag\KleffmannBundle\Entity\Manager;
 
 /**
- * @Route("/manager", service="kleffmann.manager.controller")
+ * @Route("/managers", service="kleffmann.manager.controller")
  */
 class ManagerController extends BaseController
 {
     use ManagerAware;
 
     /**
-     * @Route("/list", name="manager_list")
+     * @Route("/", name="managers")
      * @Template()
      *
      * @return array
@@ -32,7 +32,7 @@ class ManagerController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_manager")
+     * @Route("/new", name="managers_new")
      * @Template()
      *
      * @param Request $request
@@ -49,14 +49,14 @@ class ManagerController extends BaseController
             $this->managerService->save($manager);
             $this->managerService->flush();
 
-            return $this->redirectToRoute('manager_list');
+            return $this->redirectToRoute('managers');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_manager")
+     * @Route("/edit/{id}", name="managers_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -74,14 +74,14 @@ class ManagerController extends BaseController
             $this->managerService->save($manager);
             $this->managerService->flush();
 
-            return $this->redirectToRoute('manager_list');
+            return $this->redirectToRoute('managers');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_manager")
+     * @Route("/delete/{id}", name="managers_delete")
      * @ParamConverter()
      *
      * @param Manager $manager
@@ -93,6 +93,6 @@ class ManagerController extends BaseController
         $this->managerService->remove($manager);
         $this->managerService->flush();
 
-        return $this->redirectToRoute('manager_list');
+        return $this->redirectToRoute('managers');
     }
 }

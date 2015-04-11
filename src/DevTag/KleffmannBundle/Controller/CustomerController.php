@@ -12,14 +12,14 @@ use DevTag\KleffmannBundle\Service\Aware\CustomerAware;
 
 
 /**
- * @Route("/customer", service="kleffmann.customer.controller")
+ * @Route("/customers", service="kleffmann.customer.controller")
  */
 class CustomerController extends BaseController
 {
     use CustomerAware;
 
     /**
-     * @Route("/list", name="customer_list")
+     * @Route("/", name="customers")
      * @Template()
      *
      * @return array
@@ -32,7 +32,7 @@ class CustomerController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_customer")
+     * @Route("/new", name="customers_new")
      * @Template()
      *
      * @param Request $request
@@ -49,14 +49,14 @@ class CustomerController extends BaseController
             $this->customerService->save($customer);
             $this->customerService->flush();
 
-            return $this->redirectToRoute('customer_list');
+            return $this->redirectToRoute('customers');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_customer")
+     * @Route("/edit/{id}", name="customers_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -74,14 +74,14 @@ class CustomerController extends BaseController
             $this->customerService->save($customer);
             $this->customerService->flush();
 
-            return $this->redirectToRoute('customer_list');
+            return $this->redirectToRoute('customers');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_customer")
+     * @Route("/delete/{id}", name="customers_delete")
      * @ParamConverter()
      *
      * @param Customer $customer
@@ -93,6 +93,6 @@ class CustomerController extends BaseController
         $this->customerService->remove($customer);
         $this->customerService->flush();
 
-        return $this->redirectToRoute('customer_list');
+        return $this->redirectToRoute('customers');
     }
 }

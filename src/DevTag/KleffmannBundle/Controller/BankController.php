@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use DevTag\KleffmannBundle\Service\Aware\BankAware;
 /**
- * @Route("/bank", service="kleffmann.bank.controller")
+ * @Route("/banks", service="kleffmann.bank.controller")
  */
 class BankController extends BaseController
 {
     use BankAware;
 
     /**
-     * @Route("/list", name="bank_list")
+     * @Route("/", name="banks")
      * @Template()
      *
      * @return array
@@ -30,7 +30,7 @@ class BankController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_bank")
+     * @Route("/new", name="banks_new")
      * @Template()
      *
      * @param Request $request
@@ -47,14 +47,14 @@ class BankController extends BaseController
             $this->bankService->save($bank);
             $this->bankService->flush();
 
-            return $this->redirectToRoute('bank_list');
+            return $this->redirectToRoute('banks');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_bank")
+     * @Route("/edit/{id}", name="banks_edit")
      * @Template()
      *
      * @param Bank $bank
@@ -71,14 +71,14 @@ class BankController extends BaseController
             $this->bankService->save($bank);
             $this->bankService->flush();
 
-            return $this->redirectToRoute('bank_list');
+            return $this->redirectToRoute('banks');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_bank")
+     * @Route("/delete/{id}", name="banks_delete")
      * @ParamConverter()
      *
      * @param Bank $bank
@@ -90,6 +90,6 @@ class BankController extends BaseController
         $this->bankService->remove($bank);
         $this->bankService->flush();
 
-        return $this->redirectToRoute('bank_list');
+        return $this->redirectToRoute('banks');
     }
 }

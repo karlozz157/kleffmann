@@ -10,7 +10,7 @@
             <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('new_manager', {}, 'Add New'|trans, 'info') }}</p>
+            <p>{{ util.button_text('managers_new', {}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -24,8 +24,8 @@
                         <tr>
                             <td>{{ manager.name }}</td>
                             <td>
-                                {{ util.button_icon('edit_manager', {id: manager.id}, 'Edit Manager'|trans, 'warning', 'pencil') }}
-                                {{ util.button_icon('delete_manager', {id: manager.id}, 'Delete Manager'|trans, 'danger', 'remove') }}
+                                {{ util.button_icon('managers_edit', {id: manager.id}, 'Edit Manager'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('managers_delete', {id: manager.id}, 'Delete Manager'|trans, 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}

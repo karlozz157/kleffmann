@@ -12,14 +12,14 @@ use DevTag\KleffmannBundle\Form\ProjectTypeType;
 use DevTag\KleffmannBundle\Entity\ProjectType;
 
 /**
- * @Route("/project-type", service="kleffmann.project_type.controller")
+ * @Route("/project-types", service="kleffmann.project_type.controller")
  */
 class ProjectTypeController extends BaseController
 {
     use ProjectTypeAware;
 
     /**
-     * @Route("/list", name="project_type_list")
+     * @Route("/", name="project_types")
      * @Template()
      *
      * @return array
@@ -32,7 +32,7 @@ class ProjectTypeController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_project_type")
+     * @Route("/new", name="project_types_new")
      * @Template()
      *
      * @param Request $request
@@ -49,14 +49,14 @@ class ProjectTypeController extends BaseController
             $this->projectTypeService->save($projectType);
             $this->projectTypeService->flush();
 
-            return $this->redirectToRoute('project_type_list');
+            return $this->redirectToRoute('project_types');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_project_type")
+     * @Route("/edit/{id}", name="project_types_edit")
      * @Template()
      * @ParamConverter()
      *
@@ -74,14 +74,14 @@ class ProjectTypeController extends BaseController
             $this->projectTypeService->save($projectType);
             $this->projectTypeService->flush();
 
-            return $this->redirectToRoute('project_type_list');
+            return $this->redirectToRoute('project_types');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_project_type")
+     * @Route("/delete/{id}", name="project_types_delete")
      * @ParamConverter()
      *
      * @param ProjectType $projectType
@@ -93,6 +93,6 @@ class ProjectTypeController extends BaseController
         $this->projectTypeService->remove($projectType);
         $this->projectTypeService->flush();
 
-        return $this->redirectToRoute('project_type_list');
+        return $this->redirectToRoute('project_types');
     }
 }
