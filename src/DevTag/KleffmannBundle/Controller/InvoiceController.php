@@ -11,14 +11,14 @@ use DevTag\KleffmannBundle\Entity\Invoice;
 use DevTag\KleffmannBundle\Service\Aware\InvoiceAware;
 
 /**
- * @Route("/invoice", service="kleffmann.invoice.controller")
+ * @Route("/invoices", service="kleffmann.invoice.controller")
  */
 class InvoiceController extends BaseController
 {
     use InvoiceAware;
 
     /**
-     * @Route("/list", name="invoice_list")
+     * @Route("/", name="invoices")
      * @Template()
      *
      * @return array
@@ -31,7 +31,7 @@ class InvoiceController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_invoice")
+     * @Route("/new", name="invoices_new")
      * @Template()
      *
      * @param Request $request
@@ -48,14 +48,14 @@ class InvoiceController extends BaseController
             $this->invoiceService->save($invoice);
             $this->invoiceService->flush();
 
-            return $this->redirectToRoute('invoice_list');
+            return $this->redirectToRoute('invoices');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}")
+     * @Route("/edit/{id}", name="invoices_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -73,14 +73,14 @@ class InvoiceController extends BaseController
             $this->invoiceService->save($invoice);
             $this->invoiceService->flush();
 
-            return $this->redirectToRoute('invoice_list');
+            return $this->redirectToRoute('invoices');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}")
+     * @Route("/delete/{id}", name="invoices_delete")
      * @ParamConverter()
      *
      * @param Invoice $invoice
@@ -92,6 +92,6 @@ class InvoiceController extends BaseController
         $this->invoiceService->remove($invoice);
         $this->invoiceService->flush();
 
-        return $this->redirectToRoute('invoice_list');
+        return $this->redirectToRoute('invoices');
     }
 }
