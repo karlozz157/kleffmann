@@ -11,14 +11,14 @@ use DevTag\KleffmannBundle\Form\InterviewerType;
 use DevTag\KleffmannBundle\Entity\Interviewer;
 
 /**
- * @Route("/interviewer", service="kleffmann.interviewer.controller")
+ * @Route("/interviewers", service="kleffmann.interviewer.controller")
  */
 class InterviewerController extends BaseController
 {
     use InterviewerAware;
 
     /**
-     * @Route("/list", name="interviewer_list")
+     * @Route("/", name="interviewers")
      * @Template()
      *
      * @return array
@@ -31,7 +31,7 @@ class InterviewerController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_interviewer")
+     * @Route("/new", name="interviewers_new")
      * @Template()
      *
      * @param Request $request
@@ -48,14 +48,14 @@ class InterviewerController extends BaseController
             $this->interviewerService->save($interviewer);
             $this->interviewerService->flush();
 
-            return $this->redirectToRoute('interviewer_list');
+            return $this->redirectToRoute('interviewers');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_interviewer")
+     * @Route("/edit/{id}", name="interviewers_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -73,14 +73,14 @@ class InterviewerController extends BaseController
             $this->interviewerService->save($interviewer);
             $this->interviewerService->flush();
 
-            return $this->redirectToRoute('interviewer_list');
+            return $this->redirectToRoute('interviewers');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_interviewer")
+     * @Route("/delete/{id}", name="interviewers_delete")
      * @ParamConverter()
      *
      * @param Interviewer $interviewer
@@ -92,6 +92,6 @@ class InterviewerController extends BaseController
         $this->interviewerService->remove($interviewer);
         $this->interviewerService->flush();
 
-        return $this->redirectToRoute('interviewer_list');
+        return $this->redirectToRoute('interviewers');
     }
 }
