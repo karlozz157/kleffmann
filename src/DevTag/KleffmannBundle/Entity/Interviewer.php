@@ -30,12 +30,6 @@ class Interviewer
     protected $city;
 
     /**
-     * @ORM\ManyToOne(targetEntity="District")
-     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
-     */
-    protected $district;
-
-    /**
      * @ORM\Column(type="string", length=45)
      */
     protected $name;
@@ -100,11 +94,6 @@ class Interviewer
      * @ORM\Column(type="integer", name="debit_card", length=16)
      */
     protected $debitCard;
-
-    /**
-     * @ORM\Column(type="integer", name="   bank_account", length=12)
-     */
-    protected $bankAccount;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -472,29 +461,6 @@ class Interviewer
     }
 
     /**
-     * Set bankAccount
-     *
-     * @param integer $bankAccount
-     * @return Interviewer
-     */
-    public function setBankAccount($bankAccount)
-    {
-        $this->bankAccount = $bankAccount;
-
-        return $this;
-    }
-
-    /**
-     * Get bankAccount
-     *
-     * @return integer
-     */
-    public function getBankAccount()
-    {
-        return $this->bankAccount;
-    }
-
-    /**
      * Set email
      *
      * @param string $email
@@ -538,28 +504,5 @@ class Interviewer
     public function getObservation()
     {
         return $this->observation;
-    }
-
-    /**
-     * Set district
-     *
-     * @param \DevTag\KleffmannBundle\Entity\District $district
-     * @return Interviewer
-     */
-    public function setDistrict(\DevTag\KleffmannBundle\Entity\District $district = null)
-    {
-        $this->district = $district;
-
-        return $this;
-    }
-
-    /**
-     * Get district
-     *
-     * @return \DevTag\KleffmannBundle\Entity\District
-     */
-    public function getDistrict()
-    {
-        return $this->district;
     }
 }

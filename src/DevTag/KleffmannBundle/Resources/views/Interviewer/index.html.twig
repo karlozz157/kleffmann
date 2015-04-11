@@ -29,6 +29,7 @@
                             <td>{{ interviewer.city.name }}</td>
                             <td>{{ interviewer.name }} {{ interviewer.firstName }} {{ interviewer.secondName }}</td>
                             <td>
+                                {{ util.button_icon('interviewer_zones', {interviewer: interviewer.id}, 'Interviewer Zones'|trans, 'success', 'globe') }}
                                 {{ util.button_icon('edit_interviewer', {id: interviewer.id}, 'Edit Interviewer'|trans, 'warning', 'pencil') }}
                                 {{ util.button_icon('delete_interviewer', {id: interviewer.id}, 'Delete Interviewer'|trans, 'danger', 'remove') }}
                             </td>

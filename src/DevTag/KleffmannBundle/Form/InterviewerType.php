@@ -26,11 +26,6 @@ class InterviewerType extends AbstractType
                 'empty_value' => '-- Choose a City --',
                 'required' => true,
             ])
-            ->add('district', 'entity', [
-                'class' => 'DevTag\KleffmannBundle\Entity\District',
-                'property' => 'name',
-                'empty_value' => '-- Choose a District --'
-            ])
             ->add('email', 'email', [
                 'required' => true
             ])
@@ -75,9 +70,6 @@ class InterviewerType extends AbstractType
                 'required' => true,
             ])
             ->add('debit_card', 'integer', [
-                'required' => true,
-            ])
-            ->add('bank_account', 'integer', [
                 'required' => true,
             ])
             ->add('observation', 'textarea', [
