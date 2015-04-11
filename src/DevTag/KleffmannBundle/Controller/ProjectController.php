@@ -12,14 +12,14 @@ use DevTag\KleffmannBundle\Form\ProjectType;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/project", service="kleffmann.project.controller")
+ * @Route("/projects", service="kleffmann.project.controller")
  */
 class ProjectController extends BaseController
 {
     use ProjectAware;
 
     /**
-     * @Route("/list", name="project_list")
+     * @Route("/", name="projects")
      * @Template()
      *
      * @return array
@@ -32,7 +32,7 @@ class ProjectController extends BaseController
     }
 
     /**
-     * @Route("/new", name="project_new")
+     * @Route("/new", name="projects_new")
      * @ParamConverter()
      * @Template()
      *
@@ -50,14 +50,14 @@ class ProjectController extends BaseController
             $this->projectService->save($project);
             $this->projectService->flush();
 
-            return $this->redirectToRoute('project_list');
+            return $this->redirectToRoute('projects');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="project_edit")
+     * @Route("/edit/{id}", name="projects_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -75,14 +75,14 @@ class ProjectController extends BaseController
             $this->projectService->save($project);
             $this->projectService->flush();
 
-            return $this->redirectToRoute('project_list');
+            return $this->redirectToRoute('projects');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="project_delete")
+     * @Route("/delete/{id}", name="projects_delete")
      * @ParamConverter()
      *
      * @param Project $project
@@ -94,6 +94,6 @@ class ProjectController extends BaseController
         $this->projectService->remove($project);
         $this->projectService->flush();
 
-        return $this->redirectToRoute('project_list');
+        return $this->redirectToRoute('projects');
     }
 }

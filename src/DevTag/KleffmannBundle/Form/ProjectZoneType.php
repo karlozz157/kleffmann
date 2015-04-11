@@ -5,7 +5,7 @@ namespace DevTag\KleffmannBundle\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 
-class ProjectLocaleType extends AbstractType
+class ProjectZoneType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
