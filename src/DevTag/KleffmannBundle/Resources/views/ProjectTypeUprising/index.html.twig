@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'Project Type Uprisings'|trans }}{% endblock %}
+{% block subtitle %}{{ 'Project Type Uprisings List'|trans }}{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="header">
+            <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
+            <h3 class="content-header">{{ block('subtitle') }}</h3>
+        </div>
+        <div class="porlets-content">
+            <p>{{ util.button_text('project_type_uprisings_new', {}, 'Add New'|trans, 'info') }}</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>{{ 'Name'|trans }}</th>
+                        <th>{{ 'Description'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for projectTypeUprising in projectTypeUprisings %}
+                        <tr>
+                            <td>{{ projectTypeUprising.name }}</td>
+                            <td>{{ projectTypeUprising.description }}</td>
+                            <td>
+                                {{ util.button_icon('project_type_uprisings_edit', {id: projectTypeUprising.id}, 'Edit Project Type Uprising'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('project_type_uprisings_delete', {id: projectTypeUprising.id}, 'Delete Project Type Uprising'|trans, 'danger', 'remove') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div><!--/table-responsive-->
+        </div><!--/porlets-content-->
+    </div>
+{% endblock %}
