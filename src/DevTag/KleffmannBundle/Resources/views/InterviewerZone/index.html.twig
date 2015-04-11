@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}<i class="fa fa-folder-open"></i> {{ 'Interviewer Zones'|trans }}{% endblock %}
+{% block subtitle %} {{ 'Interviewer Zones for'|trans }} {{ interviewer.name|title }} {% endblock %}
+
+{% block content %}
+    <div>
+        <div class="header">
+            <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
+            <h3 class="content-header">{{ block('subtitle') }}</h3>
+        </div>
+        <div class="porlets-content">
+            <p>{{ util.button_text('interviewer_zones_add', {'interviewer': interviewer.id}, 'Add New'|trans, 'info') }}</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>{{ 'State'|trans }}</th>
+                        <th>{{ 'District'|trans }}</th>
+                        <th>{{ 'City'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for interviewerZone in interviewerZones %}
+                        <tr>
+                            <td>{{ interviewerZone.state.name }}</td>
+                            <td>{{ interviewerZone.district.name }}</td>
+                            <td>{{ interviewerZone.city.name }}</td>
+                            <td>
+                                {{ util.button_icon('interviewer_zones_edit', {id: interviewerZone.id}, 'Edit Interviewer Zone'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('interviewer_zones_delete', {id: interviewerZone.id}, 'Delete Interviewer Zone'|trans, 'danger', 'remove') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div><!--/table-responsive-->
+        </div><!--/porlets-content-->
+    </div>
+{% endblock %}
