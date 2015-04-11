@@ -8,6 +8,14 @@ services:
             - [ setInterviewerService, ['@kleffmann.interviewer.service']]
             - [ setInterviewerRepository, ['@kleffmann.interviewer.repository']]
 
+    kleffmann.interviewer_zone.controller:
+        class: DevTag\KleffmannBundle\Controller\InterviewerZoneController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+            - [ setInterviewerZoneService, ['@kleffmann.interviewer_zone.service']]
+            - [ setInterviewerZoneRepository, ['@kleffmann.interviewer_zone.repository']]
+
     kleffmann.project.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectController
         calls:
@@ -16,13 +24,13 @@ services:
             - [ setProjectService, ['@kleffmann.project.service']]
             - [ setProjectRepository, ['@kleffmann.project.repository']]
 
-    kleffmann.project_locale.controller:
-        class: DevTag\KleffmannBundle\Controller\ProjectLocaleController
+    kleffmann.project_zone.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectZoneController
         calls:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
-            - [ setProjectLocaleService, ['@kleffmann.project_locale.service']]
-            - [ setProjectLocaleRepository, ['@kleffmann.project_locale.repository']]
+            - [ setProjectZoneService, ['@kleffmann.project_zone.service']]
+            - [ setProjectZoneRepository, ['@kleffmann.project_zone.repository']]
 
     kleffmann.project_filter.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectFilterController
@@ -100,13 +108,18 @@ services:
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
+    kleffmann.interviewer_zone.service:
+        class: DevTag\KleffmannBundle\Service\InterviewerZoneService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
     kleffmann.project.service:
         class: DevTag\KleffmannBundle\Service\ProjectService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
-    kleffmann.project_locale.service:
-        class: DevTag\KleffmannBundle\Service\ProjectLocaleService
+    kleffmann.project_zone.service:
+        class: DevTag\KleffmannBundle\Service\ProjectZoneService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
@@ -163,6 +176,13 @@ services:
         arguments:
             - DevTag\KleffmannBundle\Entity\Interviewer
 
+    kleffmann.interviewer_zone.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\InterviewerZone
+
     kleffmann.project.repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.default_entity_manager
@@ -170,12 +190,12 @@ services:
         arguments:
             - DevTag\KleffmannBundle\Entity\Project
 
-    kleffmann.project_locale.repository:
+    kleffmann.project_zone.repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.default_entity_manager
         factory_method: getRepository
         arguments:
-            - DevTag\KleffmannBundle\Entity\ProjectLocale
+            - DevTag\KleffmannBundle\Entity\ProjectZone
 
     kleffmann.project_filter.repository:
         class: Doctrine\ORM\EntityRepository
