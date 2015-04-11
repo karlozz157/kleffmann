@@ -6,7 +6,7 @@
 
 'Full Name': 'Nombre Completo'
 'State': 'Estado'
-'City': 'Ciudad'
+'City': 'Municipio'
 'District': 'Distrito'
 'Name': 'Nombre'
 'Birthday': 'Fecha de Nacimiento'
@@ -24,9 +24,16 @@
 'Observation': 'Observaciones'
 'Actions': 'Acciones'
 '-- Choose a State --': '-- Escoge un Estado --'
-'-- Choose a City --': '-- Escoge una Ciudad --'
+'-- Choose a City --': '-- Escoge una Municipio --'
 '-- Choose a District --': '-- Escoge un Distrito --'
 '-- Choose a Bank --': '-- Escoge un Banco --'
+
+'Interviewer Zones': 'Zonas de Trabajo'
+'Interviewer Zones List': 'Listado de Zonas de Trabajo'
+'Interviewer Zones for': 'Zonas de Trabajo para'
+'Add New Interviewer Zone': 'Agregar Nueva Zona de Trabajo'
+'Edit Interviewer Zone': 'Editar Zona de Trabajo'
+'Delete Interviewer Zone': 'Eliminar Zona de Trabajo'
 
 'Projects': 'Proyectos'
 'Project List': 'Listado de Proyectos'
@@ -34,7 +41,7 @@
 'Edit Project': 'Editar Proyecto'
 'Delete Project': 'Eliminar Proyecto'
 'View Filters': 'Filtros'
-'View Locations': 'Locaciones'
+'Project Zones': 'Plazas'
 'Methodologies': 'Metodologías'
 
 'Description': 'Descripción'
@@ -62,11 +69,11 @@
 'Edit Filter': 'Editar Filtro'
 'Delete Filter': 'Eliminar Filtro'
 
-'Locations to': 'Locaciones para'
-'Locations List': 'Listado de Locaciones'
-'New Location': 'Nueva Locación'
-'Edit Location': 'Editar Locación'
-'Delete Location': 'Eliminar Locación'
+'Project Zones to': 'Plazas para'
+'Project Zones List': 'Listado de Plazas'
+'New Project Zone': 'Nueva Plaza'
+'Edit Project Zone': 'Editar Plaza'
+'Delete Project Zone': 'Eliminar Plaza'
 
 'Invoices': 'Facturas'
 'Invoice List': 'Listado de Facturas'
