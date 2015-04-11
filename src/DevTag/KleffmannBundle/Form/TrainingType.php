@@ -25,18 +25,18 @@ class TrainingType extends AbstractType
             ])
             ->add('interviewer', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\Interviewer',
+                'multiple' => true,
                 'property' => 'name',
             ])
             ->add('name', 'text', [
+                'label' => 'Plaza de Capacitación',
                 'required' => true,
             ])
             ->add('address', 'textarea', [
+                'label' => 'Dirección / Hora',
                 'required' => true,
             ])
             ->add('comments', 'textarea', [
-                'required' => true,
-            ])
-            ->add('email', 'email', [
                 'required' => true,
             ])
         ;

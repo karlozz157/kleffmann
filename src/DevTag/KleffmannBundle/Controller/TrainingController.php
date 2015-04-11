@@ -12,14 +12,14 @@ use DevTag\KleffmannBundle\Form\TrainingType;
 use DevTag\KleffmannBundle\Entity\Training;
 
 /**
- * @Route("/training", service="kleffmann.training.controller")
+ * @Route("/trainings", service="kleffmann.training.controller")
  */
 class TrainingController extends BaseController
 {
     use TrainingAware;
 
     /**
-     * @Route("/list", name="training_list")
+     * @Route("/", name="trainings")
      * @Template()
      *
      * @return array
@@ -32,7 +32,7 @@ class TrainingController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_training")
+     * @Route("/new", name="trainings_new")
      * @Template()
      *
      * @param Request $request
@@ -49,14 +49,14 @@ class TrainingController extends BaseController
             $this->trainingService->save($training);
             $this->trainingService->flush();
 
-            return $this->redirectToRoute('training_list');
+            return $this->redirectToRoute('trainings');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_training")
+     * @Route("/edit/{id}", name="trainings_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -74,14 +74,14 @@ class TrainingController extends BaseController
             $this->trainingService->save($training);
             $this->trainingService->flush();
 
-            return $this->redirectToRoute('training_list');
+            return $this->redirectToRoute('trainings');
         }
 
         return ['form' => $form->createView()];
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_training")
+     * @Route("/delete/{id}", name="trainings_delete")
      * @ParamConverter()
      *
      * @param Training $training
@@ -93,6 +93,6 @@ class TrainingController extends BaseController
         $this->trainingService->remove($training);
         $this->trainingService->flush();
 
-        return $this->redirectToRoute('training_list');
+        return $this->redirectToRoute('trainings');
     }
 }

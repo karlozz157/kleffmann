@@ -24,8 +24,11 @@ class Training
     protected $project;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Interviewer")
-     * @ORM\JoinColumn(name="interviewer_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Interviewer")
+     * @ORM\JoinTable(name="trainings_interviewers",
+     *     joinColumns={@ORM\JoinColumn(name="training_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="interviewer_id", referencedColumnName="id")}
+     * )
      */
     protected $interviewer;
 
@@ -50,9 +53,12 @@ class Training
     protected $comments;
 
     /**
-     * @ORM\Column(type="string")
+     * Constructor
      */
-    protected $email;
+    public function __construct()
+    {
+        $this->interviewer = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -180,45 +186,32 @@ class Training
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return Training
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set interviewer
+     * Add interviewer
      *
      * @param \DevTag\KleffmannBundle\Entity\Interviewer $interviewer
      * @return Training
      */
-    public function setInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer = null)
+    public function addInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer)
     {
-        $this->interviewer = $interviewer;
+        $this->interviewer[] = $interviewer;
 
         return $this;
+    }
+
+    /**
+     * Remove interviewer
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Interviewer $interviewer
+     */
+    public function removeInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer)
+    {
+        $this->interviewer->removeElement($interviewer);
     }
 
     /**
      * Get interviewer
      *
-     * @return \DevTag\KleffmannBundle\Entity\Interviewer
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getInterviewer()
     {
