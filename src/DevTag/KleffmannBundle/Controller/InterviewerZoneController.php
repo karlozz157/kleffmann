@@ -86,7 +86,7 @@ class InterviewerZoneController extends BaseController
             ]);
         }
 
-        return ['form' => $form->createView()];
+        return ['form' => $form->createView(), 'interviewer' => $interviewerZone->getInterviewer()];
     }
 
     /**

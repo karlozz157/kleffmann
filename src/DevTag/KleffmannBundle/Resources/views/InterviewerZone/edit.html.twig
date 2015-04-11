@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}<i class="glyphicon glyphicon-list-alt"></i> {{ 'Interviewers'|trans }}{% endblock %}
-{% block subtitle %} {{ 'Add New Interviewer'|trans }} {% endblock %}
+{% block title %}<i class="fa fa-folder-open"></i> {{ 'Interviewer Zones for'|trans }} {{ interviewer.name|title }}{% endblock %}
+{% block subtitle %} {{ 'Edit Interviewer Zone'|trans }} {% endblock %}
 
 {% block content %}
     <div>
