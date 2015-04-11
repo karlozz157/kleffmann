@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}{{ 'Locations to'|trans }} {{ project.name|title }}{% endblock %}
-{% block subtitle %}{{ 'Locations List'|trans }}{% endblock %}
+{% block title %}{{ 'Project Zones to'|trans }} {{ project.name|title }}{% endblock %}
+{% block subtitle %}{{ 'Project Zones List'|trans }}{% endblock %}
 
 {% block content %}
     <div>
@@ -26,8 +26,8 @@
                                 <td>{{ projectZone.state.name }}</td>
                                 <td>{{ projectZone.city.name }}</td>
                                 <td>
-                                    {{ util.button_icon('project_zones_edit', {id: projectZone.id}, 'Edit Location'|trans, 'warning', 'pencil') }}
-                                    {{ util.button_icon('project_zones_delete', {id: projectZone.id}, 'Delete Location'|trans, 'danger', 'remove') }}
+                                    {{ util.button_icon('project_zones_edit', {id: projectZone.id}, 'Edit Project Zone'|trans, 'warning', 'pencil') }}
+                                    {{ util.button_icon('project_zones_delete', {id: projectZone.id}, 'Delete Project Zone'|trans, 'danger', 'remove') }}
                                 </td>
                             </tr>
                         {% endfor %}

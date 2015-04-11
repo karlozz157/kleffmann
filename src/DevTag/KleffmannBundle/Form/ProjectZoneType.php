@@ -18,6 +18,10 @@ class ProjectZoneType extends AbstractType
                 'class' => 'DevTag\KleffmannBundle\Entity\State',
                 'property' => 'name',
             ])
+            ->add('district', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\District',
+                'property' => 'name',
+            ])
             ->add('city', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\City',
                 'property' => 'name',
