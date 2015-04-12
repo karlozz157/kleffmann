@@ -19,7 +19,7 @@ class ProjectFilterController extends BaseController
     use ProjectFilterAware;
 
     /**
-     * @Route("/{id}", name="project_filters")
+     * @Route("/{project}", name="project_filters")
      * @ParamConverter()
      * @Template()
      *
