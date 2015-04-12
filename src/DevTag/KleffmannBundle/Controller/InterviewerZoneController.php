@@ -37,7 +37,7 @@ class InterviewerZoneController extends BaseController
 
     /**
      * @Route("/new/{interviewer}", name="interviewer_zones_add")
-     * @ParamConverter("interviewer")
+     * @ParamConverter()
      * @Template()
      *
      * @param Interviewer $interviewer
