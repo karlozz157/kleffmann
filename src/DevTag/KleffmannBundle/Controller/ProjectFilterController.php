@@ -36,7 +36,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/new/{id}", name="project_filters_new")
+     * @Route("/new/{project}", name="project_filters_new")
      * @ParamConverter()
      * @Template()
      *
@@ -57,7 +57,7 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->flush();
 
             return $this->redirectToRoute('project_filters', [
-                'id' => $project->getId(),
+                'project' => $project->getId(),
             ]);
         }
 
@@ -84,7 +84,7 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->flush();
 
             return $this->redirectToRoute('project_filters', [
-                'id' => $projectFilter->getProject()->getId(),
+                'project' => $projectFilter->getProject()->getId(),
             ]);
         }
 
@@ -105,7 +105,7 @@ class ProjectFilterController extends BaseController
         $this->projectFilterService->flush();
 
         return $this->redirectToRoute('project_filters', [
-            'id' => $projectFilter->getProject()->getId()
+            'project' => $projectFilter->getProject()->getId()
         ]);
     }
 }

@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}{{ 'Filters to'|trans }} {{ project.name|title }}{% endblock %}
-{% block subtitle %}{{ 'Filter List'|trans }}{% endblock %}
+{% block title %}{{ 'Subfilters to'|trans }} {{ project_filter.name|title }}{% endblock %}
+{% block subtitle %}{{ 'Subfilter List'|trans }}{% endblock %}
 
 {% block content %}
     <div>
@@ -10,29 +10,24 @@
             <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('project_filters_new', {project: project.id}, 'Add New'|trans, 'info') }}</p>
+            <p>{{ util.button_text('project_subfilters_new', {project_filter: project_filter.id}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>{{ 'Name'|trans }}</th>
                         <th>{{ 'Value'|trans }}</th>
-                        <th>{{ 'State'|trans }}</th>
-                        <th>{{ 'City'|trans }}</th>
                         <th>{{ 'Actions'|trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for projectFilter in projectFilterList %}
+                    {% for projectSubfilter in projectSubfilters %}
                         <tr>
-                            <td>{{ projectFilter.name }}</td>
-                            <td>{{ projectFilter.value }}</td>
-                            <td>{{ projectFilter.state.name }}</td>
-                            <td>{{ projectFilter.city.name }}</td>
+                            <td>{{ projectSubfilter.name }}</td>
+                            <td>{{ projectSubfilter.value }}</td>
                             <td>
-                                {{ util.button_icon('project_subfilters', {project_filter: projectFilter.id}, 'Subfilters'|trans, 'success', 'pencil') }}
-                                {{ util.button_icon('project_filters_edit', {id: projectFilter.id}, 'Edit Filter'|trans, 'warning', 'pencil') }}
-                                {{ util.button_icon('project_filters_delete', {id: projectFilter.id}, 'Delete Filter'|trans, 'danger', 'remove') }}
+                                {{ util.button_icon('project_subfilters_edit', {id: projectSubfilter.id}, 'Edit Subfilter'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('project_subfilters_delete', {id: projectSubfilter.id}, 'Delete Subfilter'|trans, 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}
