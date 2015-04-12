@@ -30,7 +30,7 @@
                             <td>{{ projectFilter.state.name }}</td>
                             <td>{{ projectFilter.city.name }}</td>
                             <td>
-                                {{ util.button_icon('project_subfilters', {project_filter: projectFilter.id}, 'Subfilters'|trans, 'success', 'flash') }}
+                                {{ util.button_icon('project_subfilters', {projectFilter: projectFilter.id}, 'Subfilters'|trans, 'success', 'flash') }}
                                 {{ util.button_icon('project_filters_edit', {id: projectFilter.id}, 'Edit Filter'|trans, 'warning', 'pencil') }}
                                 {{ util.button_icon('project_filters_delete', {id: projectFilter.id}, 'Delete Filter'|trans, 'danger', 'remove') }}
                             </td>

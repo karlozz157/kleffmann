@@ -20,8 +20,8 @@ class ProjectSubfilterController extends BaseController
     use ProjectSubfilterAware;
 
     /**
-     * @Route("/{project_filter}", name="project_subfilters")
-     * @ParamConverter("projectFilter", class="DevTagKleffmannBundle:ProjectFilter", options={"id" = "project_filter"})
+     * @Route("/{projectFilter}", name="project_subfilters")
+     * @ParamConverter()
      * @Template()
      *
      * @param ProjectFilter $projectFilter
@@ -37,8 +37,8 @@ class ProjectSubfilterController extends BaseController
     }
 
     /**
-     * @Route("/new/{project_filter}", name="project_subfilters_new")
-     * @ParamConverter("projectFilter", class="DevTagKleffmannBundle:ProjectFilter", options={"id" = "project_filter"})
+     * @Route("/new/{projectFilter}", name="project_subfilters_new")
+     * @ParamConverter()
      * @Template()
      *
      * @param ProjectFilter $projectFilter
