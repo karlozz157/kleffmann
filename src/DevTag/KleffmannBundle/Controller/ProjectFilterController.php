@@ -12,14 +12,14 @@ use DevTag\KleffmannBundle\Entity\ProjectFilter;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/project-filter", service="kleffmann.project_filter.controller")
+ * @Route("/project-filters", service="kleffmann.project_filter.controller")
  */
 class ProjectFilterController extends BaseController
 {
     use ProjectFilterAware;
 
     /**
-     * @Route("/list/{id}", name="project_filter_list")
+     * @Route("/{id}", name="project_filters")
      * @ParamConverter()
      * @Template()
      *
@@ -36,7 +36,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/new/{id}", name="project_filter_new")
+     * @Route("/new/{id}", name="project_filters_new")
      * @ParamConverter()
      * @Template()
      *
@@ -56,7 +56,7 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->save($projectFilter);
             $this->projectFilterService->flush();
 
-            return $this->redirectToRoute('project_filter_list', [
+            return $this->redirectToRoute('project_filters', [
                 'id' => $project->getId(),
             ]);
         }
@@ -65,7 +65,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="project_filter_edit")
+     * @Route("/edit/{id}", name="project_filters_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -83,7 +83,7 @@ class ProjectFilterController extends BaseController
             $this->projectFilterService->save($projectFilter);
             $this->projectFilterService->flush();
 
-            return $this->redirectToRoute('project_filter_list', [
+            return $this->redirectToRoute('project_filters', [
                 'id' => $projectFilter->getProject()->getId(),
             ]);
         }
@@ -92,7 +92,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="project_filter_delete")
+     * @Route("/delete/{id}", name="project_filters_delete")
      * @ParamConverter()
      *
      * @param ProjectFilter $projectFilter
@@ -104,7 +104,7 @@ class ProjectFilterController extends BaseController
         $this->projectFilterService->remove($projectFilter);
         $this->projectFilterService->flush();
 
-        return $this->redirectToRoute('project_filter_list', [
+        return $this->redirectToRoute('project_filters', [
             'id' => $projectFilter->getProject()->getId()
         ]);
     }

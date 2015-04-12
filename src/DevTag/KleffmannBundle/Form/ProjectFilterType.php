@@ -14,18 +14,20 @@ class ProjectFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('value')
-            ->add('subFilterName')
-            ->add('subValueName')
             ->add('state', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\State',
+                'property' => 'name',
+            ])
+            ->add('district', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\District',
                 'property' => 'name',
             ])
             ->add('city', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\City',
                 'property' => 'name',
             ])
+            ->add('name')
+            ->add('value')
         ;
     }
 

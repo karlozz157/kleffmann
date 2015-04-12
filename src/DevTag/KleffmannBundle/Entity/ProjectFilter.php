@@ -46,20 +46,16 @@ class ProjectFilter
     protected $state;
 
     /**
+     * @ORM\ManyToOne(targetEntity="District")
+     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
+     */
+    protected $district;
+
+    /**
      * @ORM\ManyToOne(targetEntity="City")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     protected $city;
-
-    /**
-     * @ORM\Column(type="string", name="sub_filter_name")
-     */
-    protected $subFilterName;
-
-    /**
-     * @ORM\Column(type="string", name="sub_value_name")
-     */
-    protected $subValueName;
 
     /**
      * Get id
@@ -115,52 +111,6 @@ class ProjectFilter
     public function getValue()
     {
         return $this->value;
-    }
-
-    /**
-     * Set subFilterName
-     *
-     * @param string $subFilterName
-     * @return ProjectFilter
-     */
-    public function setSubFilterName($subFilterName)
-    {
-        $this->subFilterName = $subFilterName;
-
-        return $this;
-    }
-
-    /**
-     * Get subFilterName
-     *
-     * @return string 
-     */
-    public function getSubFilterName()
-    {
-        return $this->subFilterName;
-    }
-
-    /**
-     * Set subValueName
-     *
-     * @param string $subValueName
-     * @return ProjectFilter
-     */
-    public function setSubValueName($subValueName)
-    {
-        $this->subValueName = $subValueName;
-
-        return $this;
-    }
-
-    /**
-     * Get subValueName
-     *
-     * @return string 
-     */
-    public function getSubValueName()
-    {
-        return $this->subValueName;
     }
 
     /**
@@ -253,5 +203,28 @@ class ProjectFilter
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set district
+     *
+     * @param \DevTag\KleffmannBundle\Entity\District $district
+     * @return ProjectFilter
+     */
+    public function setDistrict(\DevTag\KleffmannBundle\Entity\District $district = null)
+    {
+        $this->district = $district;
+
+        return $this;
+    }
+
+    /**
+     * Get district
+     *
+     * @return \DevTag\KleffmannBundle\Entity\District 
+     */
+    public function getDistrict()
+    {
+        return $this->district;
     }
 }
