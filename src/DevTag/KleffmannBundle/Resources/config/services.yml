@@ -40,6 +40,14 @@ services:
             - [ setProjectFilterService, ['@kleffmann.project_filter.service']]
             - [ setProjectFilterRepository, ['@kleffmann.project_filter.repository']]
 
+    kleffmann.project_subfilter.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectSubfilterController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+            - [ setProjectSubfilterService, ['@kleffmann.project_subfilter.service']]
+            - [ setProjectSubfilterRepository, ['@kleffmann.project_subfilter.repository']]
+
     kleffmann.project_variable.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectVariableController
         calls:
@@ -77,6 +85,14 @@ services:
             - [ setRouter, ['@router']]
             - [ setProjectTypeService, ['@kleffmann.project_type.service']]
             - [ setProjectTypeRepository, ['@kleffmann.project_type.repository']]
+
+    kleffmann.project_type_uprising.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectTypeUprisingController
+        calls:
+            - [ setFormFactory, ['@form.factory']]
+            - [ setRouter, ['@router']]
+            - [ setProjectTypeUprisingService, ['@kleffmann.project_type_uprising.service']]
+            - [ setProjectTypeUprisingRepository, ['@kleffmann.project_type_uprising.repository']]
 
     kleffmann.status.controller:
         class: DevTag\KleffmannBundle\Controller\StatusController
@@ -128,6 +144,11 @@ services:
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
+    kleffmann.project_subfilter.service:
+        class: DevTag\KleffmannBundle\Service\ProjectSubfilterService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
     kleffmann.project_variable.service:
         class: DevTag\KleffmannBundle\Service\ProjectVariableService
         calls:
@@ -150,6 +171,11 @@ services:
 
     kleffmann.project_type.service:
         class: DevTag\KleffmannBundle\Service\ProjectTypeService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.project_type_uprising.service:
+        class: DevTag\KleffmannBundle\Service\ProjectTypeUprisingService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
@@ -204,6 +230,13 @@ services:
         arguments:
             - DevTag\KleffmannBundle\Entity\ProjectFilter
 
+    kleffmann.project_subfilter.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\ProjectSubfilter
+
     kleffmann.invoice.repository:
        class: Doctrine\ORM\EntityRepository
        factory_service: doctrine.orm.default_entity_manager
@@ -238,6 +271,13 @@ services:
        factory_method: getRepository
        arguments:
            - DevTag\KleffmannBundle\Entity\ProjectType
+
+    kleffmann.project_type_uprising.repository:
+       class: Doctrine\ORM\EntityRepository
+       factory_service: doctrine.orm.default_entity_manager
+       factory_method: getRepository
+       arguments:
+           - DevTag\KleffmannBundle\Entity\ProjectTypeUprising
 
     kleffmann.status.repository:
        class: Doctrine\ORM\EntityRepository
