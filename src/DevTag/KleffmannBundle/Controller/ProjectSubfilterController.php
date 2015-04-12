@@ -58,7 +58,7 @@ class ProjectSubfilterController extends BaseController
             $this->projectSubfilterService->flush();
 
             return $this->redirectToRoute('project_subfilters', [
-                'project_filter' => $projectFilter->getId()
+                'projectFilter' => $projectFilter->getId()
             ]);
         }
 
@@ -85,7 +85,7 @@ class ProjectSubfilterController extends BaseController
             $this->projectSubfilterService->flush();
 
             return $this->redirectToRoute('project_subfilters', [
-                'project_filter' => $projectSubfilter->getFilter()->getId()
+                'projectFilter' => $projectSubfilter->getFilter()->getId()
             ]);
         }
 
@@ -106,7 +106,7 @@ class ProjectSubfilterController extends BaseController
         $this->projectSubfilterService->flush();
 
         return $this->redirectToRoute('project_subfilters', [
-            'project_filter' => $projectSubfilter->getFilter()->getId()
+            'projectFilter' => $projectSubfilter->getFilter()->getId()
         ]);
     }
 }
