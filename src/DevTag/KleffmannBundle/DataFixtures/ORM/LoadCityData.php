@@ -2,7 +2,8 @@
 
 namespace DevTag\KleffmannBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -10,7 +11,7 @@ use DevTag\KleffmannBundle\SpreadSheet\CsvParser;
 use DevTag\KleffmannBundle\Entity\State;
 use DevTag\KleffmannBundle\Entity\City;
 
-class LoadCityData implements FixtureInterface, ContainerAwareInterface
+class LoadCityData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -67,5 +68,13 @@ class LoadCityData implements FixtureInterface, ContainerAwareInterface
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 9;
     }
 }

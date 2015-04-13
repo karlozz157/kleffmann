@@ -2,11 +2,12 @@
 
 namespace DevTag\KleffmannBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use DevTag\KleffmannBundle\Entity\Country;
 
-class LoadCountryData implements FixtureInterface
+class LoadCountryData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -19,5 +20,13 @@ class LoadCountryData implements FixtureInterface
 
         $manager->persist($country);
         $manager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 7;
     }
 }

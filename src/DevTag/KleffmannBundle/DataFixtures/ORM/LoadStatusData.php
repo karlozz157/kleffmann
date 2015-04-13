@@ -2,11 +2,12 @@
 
 namespace DevTag\KleffmannBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use DevTag\KleffmannBundle\Entity\Status;
 
-class LoadStatusData implements FixtureInterface
+class LoadStatusData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -96,5 +97,13 @@ class LoadStatusData implements FixtureInterface
         }
 
         $manager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 6;
     }
 }

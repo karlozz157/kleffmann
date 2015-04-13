@@ -2,12 +2,13 @@
 
 namespace DevTag\KleffmannBundle\DataFixtures\ORM;
 
-use DevTag\KleffmannBundle\Entity\ProjectTypeUprising;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use DevTag\KleffmannBundle\Entity\ProjectTypeUprising;
 use DevTag\KleffmannBundle\Entity\ProjectType;
 
-class LoadProjectTypeUprisingData implements FixtureInterface
+class LoadProjectTypeUprisingData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -49,5 +50,13 @@ class LoadProjectTypeUprisingData implements FixtureInterface
         }
 
         $manager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 5;
     }
 }
