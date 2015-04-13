@@ -9,7 +9,7 @@ jQuery.fn.extend({
 
             $.getJSON(urlBase.replace('{state_id}', stateId) , function(cities)
             {
-                $(selectCity).html('<option value="" selected="selected">-- Escoge una Municipio --</option>');
+                $(selectCity).html('<option value="" selected="selected">-- Escoge un Municipio --</option>');
 
                 cities.forEach(function(city)
                 {
