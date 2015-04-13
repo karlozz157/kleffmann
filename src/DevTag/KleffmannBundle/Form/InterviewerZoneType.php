@@ -17,16 +17,19 @@ class InterviewerZoneType extends AbstractType
             ->add('state', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\State',
                 'property' => 'name',
+                'empty_value' => '-- Choose a State --',
                 'required' => true,
             ])
             ->add('district', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\District',
                 'property' => 'name',
+                'empty_value' => '-- Choose a District --',
                 'required' => true,
             ])
             ->add('city', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\City',
                 'property' => 'name',
+                'empty_value' => '-- Choose a City --',
                 'required' => true,
             ])
         ;

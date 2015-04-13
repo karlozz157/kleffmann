@@ -21,5 +21,6 @@ jQuery.fn.extend({
 });
 
 $('#interviewer_type_state').loadCities('#interviewer_type_city');
+$('#interviewer_zone_type_state').loadCities('#interviewer_zone_type_city');
 $('#project_zone_type_state').loadCities('#project_zone_type_city');
 $('#project_filter_type_state').loadCities('#project_filter_type_city');
