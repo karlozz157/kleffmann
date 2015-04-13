@@ -5,7 +5,7 @@ namespace DevTag\KleffmannBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="DevTag\KleffmannBundle\Repository\CityRepository")
  * @ORM\Table(name="cities")
  */
 class City
@@ -18,7 +18,7 @@ class City
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="state")
+     * @ORM\ManyToOne(targetEntity="State")
      * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
      */
     protected $state;

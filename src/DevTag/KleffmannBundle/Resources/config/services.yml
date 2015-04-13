@@ -118,6 +118,11 @@ services:
             - [ setTrainingService, ['@kleffmann.training.service']]
             - [ setTrainingRepository, ['@kleffmann.training.repository']]
 
+    kleffmann.city.controller:
+        class: DevTag\KleffmannBundle\Controller\CityController
+        calls:
+            - [ setCityRepository, ['@kleffmann.city.repository']]
+
     # services
     kleffmann.interviewer.service:
         class: DevTag\KleffmannBundle\Service\InterviewerService
@@ -299,3 +304,10 @@ services:
        factory_method: getRepository
        arguments:
            - DevTag\KleffmannBundle\Entity\Training
+
+    kleffmann.city.repository:
+       class: Doctrine\ORM\EntityRepository
+       factory_service: doctrine.orm.default_entity_manager
+       factory_method: getRepository
+       arguments:
+           - DevTag\KleffmannBundle\Entity\City
