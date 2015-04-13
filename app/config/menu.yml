@@ -8,19 +8,19 @@ twig:
                     icon: 'dashboard'
                 interviewers:
                     name: 'Encuestadores'
-                    url: 'interviewer_list'
+                    url: 'interviewers'
                     icon: 'list-alt'
                 project:
                     name: 'Proyectos'
-                    url: 'project_list'
+                    url: 'projects'
                     icon: 'tasks'
                 invoices:
                     name: 'Facturas'
-                    url: 'invoice_list'
+                    url: 'invoices'
                     icon: 'folder-open'
                 training:
                     name: 'Capacitaciones'
-                    url: 'training_list'
+                    url: 'trainings'
                     icon: 'book'
                 catalog:
                     name: 'Catálogos'
@@ -29,16 +29,16 @@ twig:
                     submenu:
                         bank:
                             name: 'Bancos'
-                            url: 'bank_list'
+                            url: 'banks'
                         customer:
                             name: 'Clientes'
-                            url: 'customer_list'
+                            url: 'customers'
                         manager:
                             name: 'Gerentes'
-                            url: 'manager_list'
+                            url: 'managers'
                         project_type:
                             name: 'Tipos de Proyectos'
-                            url: 'project_type_list'
+                            url: 'project_types'
                         status:
                             name: 'Estatus'
                             url: 'status_list'
