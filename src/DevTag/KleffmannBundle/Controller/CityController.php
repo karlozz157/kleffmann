@@ -3,7 +3,6 @@
 namespace DevTag\KleffmannBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use DevTag\KleffmannBundle\Repository\CityRepository;
@@ -29,8 +28,7 @@ class CityController
      */
     public function findByStateAction(State $state)
     {
-        $this->cityRepository->setState($state);
-        $cities = $this->cityRepository->findByState(['state' => $state->getId()]);
+        $cities = $this->cityRepository->findAllByStateAsArray($state);
 
         return new JsonResponse($cities);
     }
