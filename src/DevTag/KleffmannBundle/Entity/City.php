@@ -46,10 +46,10 @@ class City
     /**
      * Set state
      *
-     * @param \DevTag\KleffmannBundle\Entity\state $state
+     * @param \DevTag\KleffmannBundle\Entity\State $state
      * @return City
      */
-    public function setState(\DevTag\KleffmannBundle\Entity\state $state = null)
+    public function setState(\DevTag\KleffmannBundle\Entity\State $state = null)
     {
         $this->state = $state;
 
@@ -59,7 +59,7 @@ class City
     /**
      * Get state
      *
-     * @return \DevTag\KleffmannBundle\Entity\state
+     * @return \DevTag\KleffmannBundle\Entity\State
      */
     public function getState()
     {
