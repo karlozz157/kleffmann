@@ -20,7 +20,7 @@ class ProjectRepository extends EntityRepository
 
         $queryBuilder
             ->select('p')
-            ->from('DevTag\KleffmannBundle\Entity\Project', 'p')
+            ->from('DevTagKleffmannBundle:Project', 'p')
             ->orderBy('p.id', 'DESC');
 
         if (is_null($page)) {

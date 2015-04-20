@@ -21,11 +21,14 @@ class InvoiceController extends BaseController
      * @Route("/", name="invoices")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $invoices = $this->invoiceRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $invoices = $this->invoiceRepository->findAll($page);
 
         return ['invoices' => $invoices];
     }
