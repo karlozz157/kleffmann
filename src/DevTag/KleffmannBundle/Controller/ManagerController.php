@@ -22,11 +22,14 @@ class ManagerController extends BaseController
      * @Route("/", name="managers")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $managers = $this->managerRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $managers = $this->managerRepository->findAll($page);
 
         return ['managers' => $managers];
     }
