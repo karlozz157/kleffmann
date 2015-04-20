@@ -20,13 +20,16 @@ class BankController extends BaseController
      * @Route("/", name="banks")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $bankList = $this->bankRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $banks = $this->bankRepository->findAll($page);
 
-        return ['bankList' => $bankList];
+        return ['banks' => $banks];
     }
 
     /**
