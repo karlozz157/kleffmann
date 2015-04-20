@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Entity\ProjectFilter;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/project-filters", service="kleffmann.project_filter.controller")
+ * @Route("/proyectos/filtros", service="kleffmann.project_filter.controller")
  */
 class ProjectFilterController extends BaseController
 {
@@ -36,7 +36,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/new/{project}", name="project_filters_new")
+     * @Route("/nuevo/{project}", name="project_filters_new")
      * @ParamConverter()
      * @Template()
      *
@@ -65,7 +65,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="project_filters_edit")
+     * @Route("/editar/{id}", name="project_filters_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -92,7 +92,7 @@ class ProjectFilterController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="project_filters_delete")
+     * @Route("/eliminar/{id}", name="project_filters_delete")
      * @ParamConverter()
      *
      * @param ProjectFilter $projectFilter
