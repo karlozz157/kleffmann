@@ -53,6 +53,8 @@ services:
         calls:
             - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
+            - [ setProjectVariableService, ['@kleffmann.project_variable.service']]
+            - [ setProjectVariableRepository, ['@kleffmann.project_variable.repository']]
 
     kleffmann.invoice.controller:
         class: DevTag\KleffmannBundle\Controller\InvoiceController
@@ -236,6 +238,16 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\ProjectZone
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
+
+    kleffmann.project_variable.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\ProjectVariable
         calls:
             - [ setPaginator, ['@knp_paginator']]
             - [ setRecordsPerPage, ['%records_per_page%']]

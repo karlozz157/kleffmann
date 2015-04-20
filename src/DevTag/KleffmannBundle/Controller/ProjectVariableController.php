@@ -13,28 +13,33 @@ use DevTag\KleffmannBundle\Entity\ProjectVariable;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/project-variable", service="kleffmann.project_variable.controller")
+ * @Route("/proyectos/variables", service="kleffmann.project_variable.controller")
  */
 class ProjectVariableController extends BaseController
 {
     use ProjectVariableAware;
 
     /**
-     * @Route("/list/{project_id}", name="project_variable_list")
+     * @Route("/{project}", name="project_variable_list")
      * @ParamConverter()
      * @Template()
      *
      * @param Project $project
+     * @param Request $request
      *
      * @return array
      */
-    public function indexAction(Project $project)
+    public function indexAction(Project $project, Request $request)
     {
-        return [];
+        $page = $request->query->get('page', 1);
+        $options = ['project' => $project];
+        $projectVariables = $this->projectVariableRepository->findAll($page, $options);
+
+        return ['projectVariables' => $projectVariables];
     }
 
     /**
-     * @Route("/new/{project_id}")
+     * @Route("/nuevo/{project}")
      * @ParamConverter()
      * @Template()
      *
@@ -59,7 +64,7 @@ class ProjectVariableController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}")
+     * @Route("/editar/{id}")
      * @ParamConverter()
      * @Template()
      *
@@ -84,7 +89,7 @@ class ProjectVariableController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}")
+     * @Route("/eliminar/{id}")
      * @ParamConverter()
      *
      * @param ProjectVariable $projectVariable
