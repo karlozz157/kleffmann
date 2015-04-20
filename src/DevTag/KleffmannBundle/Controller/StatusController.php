@@ -22,11 +22,14 @@ class StatusController extends BaseController
      * @Route("/list", name="status_list")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $statusList = $this->statusRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $statusList = $this->statusRepository->findAll($page);
 
         return ['statusList' => $statusList];
     }
