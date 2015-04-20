@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use DevTag\KleffmannBundle\Service\Aware\BankAware;
 /**
- * @Route("/banks", service="kleffmann.bank.controller")
+ * @Route("/bancos", service="kleffmann.bank.controller")
  */
 class BankController extends BaseController
 {
@@ -33,7 +33,7 @@ class BankController extends BaseController
     }
 
     /**
-     * @Route("/new", name="banks_new")
+     * @Route("/nuevo", name="banks_new")
      * @Template()
      *
      * @param Request $request
@@ -57,7 +57,7 @@ class BankController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="banks_edit")
+     * @Route("/editar/{id}", name="banks_edit")
      * @Template()
      *
      * @param Bank $bank
@@ -81,7 +81,7 @@ class BankController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="banks_delete")
+     * @Route("/eliminar/{id}", name="banks_delete")
      * @ParamConverter()
      *
      * @param Bank $bank
