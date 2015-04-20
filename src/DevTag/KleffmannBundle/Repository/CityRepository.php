@@ -2,7 +2,7 @@
 
 namespace DevTag\KleffmannBundle\Repository;
 
-use \Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\EntityRepository;
 use DevTag\KleffmannBundle\Entity\State;

@@ -216,6 +216,9 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\InterviewerZone
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.project.repository:
         class: Doctrine\ORM\EntityRepository
@@ -223,6 +226,9 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\Project
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.project_zone.repository:
         class: Doctrine\ORM\EntityRepository
@@ -230,6 +236,9 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\ProjectZone
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.project_filter.repository:
         class: Doctrine\ORM\EntityRepository
@@ -237,6 +246,9 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\ProjectFilter
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.project_subfilter.repository:
         class: Doctrine\ORM\EntityRepository
@@ -244,73 +256,100 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\ProjectSubfilter
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.invoice.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\Invoice
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Invoice
+        calls:
+          - [ setPaginator, ['@knp_paginator']]
+          - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.state.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\State
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\State
 
     kleffmann.customer.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\Customer
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Customer
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.manager.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\Manager
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Manager
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.project_type.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\ProjectType
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\ProjectType
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.project_type_uprising.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\ProjectTypeUprising
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\ProjectTypeUprising
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.status.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\Status
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Status
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.bank.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\Bank
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Bank
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.training.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\Training
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\Training
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.city.repository:
-       class: Doctrine\ORM\EntityRepository
-       factory_service: doctrine.orm.default_entity_manager
-       factory_method: getRepository
-       arguments:
-           - DevTag\KleffmannBundle\Entity\City
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\City
