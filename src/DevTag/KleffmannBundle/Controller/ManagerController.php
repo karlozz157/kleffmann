@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Form\ManagerType;
 use DevTag\KleffmannBundle\Entity\Manager;
 
 /**
- * @Route("/managers", service="kleffmann.manager.controller")
+ * @Route("/gerentes", service="kleffmann.manager.controller")
  */
 class ManagerController extends BaseController
 {
@@ -35,7 +35,7 @@ class ManagerController extends BaseController
     }
 
     /**
-     * @Route("/new", name="managers_new")
+     * @Route("/nuevo", name="managers_new")
      * @Template()
      *
      * @param Request $request
@@ -59,7 +59,7 @@ class ManagerController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="managers_edit")
+     * @Route("/editar/{id}", name="managers_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -84,7 +84,7 @@ class ManagerController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="managers_delete")
+     * @Route("/eliminar/{id}", name="managers_delete")
      * @ParamConverter()
      *
      * @param Manager $manager
