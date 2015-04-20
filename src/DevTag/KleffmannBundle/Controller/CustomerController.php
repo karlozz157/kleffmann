@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Service\Aware\CustomerAware;
 
 
 /**
- * @Route("/customers", service="kleffmann.customer.controller")
+ * @Route("/clientes", service="kleffmann.customer.controller")
  */
 class CustomerController extends BaseController
 {
@@ -35,7 +35,7 @@ class CustomerController extends BaseController
     }
 
     /**
-     * @Route("/new", name="customers_new")
+     * @Route("/nuevo", name="customers_new")
      * @Template()
      *
      * @param Request $request
@@ -59,7 +59,7 @@ class CustomerController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="customers_edit")
+     * @Route("/editar/{id}", name="customers_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -84,7 +84,7 @@ class CustomerController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="customers_delete")
+     * @Route("/eliminar/{id}", name="customers_delete")
      * @ParamConverter()
      *
      * @param Customer $customer
