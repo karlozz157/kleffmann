@@ -23,6 +23,11 @@ class Manager
     protected $name;
 
     /**
+     * @ORM\Column(type="string", columnDefinition="ENUM('AMIS', 'AD-HOCS')")
+     */
+    protected $position;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -53,5 +58,28 @@ class Manager
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set position
+     *
+     * @param string $position
+     * @return Manager
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string 
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

@@ -15,6 +15,13 @@ class ManagerType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('position', 'choice', [
+                'empty_value' => '-- Choose a Position --',
+                'choices' => [
+                    'AMIS' => 'AMIS',
+                    'AD-HOCS' => 'AD-HOCS',
+                ]
+            ])
         ;
     }
 
