@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Form\ProjectTypeUprisingType;
 use DevTag\KleffmannBundle\Entity\ProjectTypeUprising;
 
 /**
- * @Route("/project-type-uprisings", service="kleffmann.project_type_uprising.controller")
+ * @Route("/proyectos/tipos-de-levantamientos", service="kleffmann.project_type_uprising.controller")
  */
 class ProjectTypeUprisingController extends BaseController
 {
@@ -32,7 +32,7 @@ class ProjectTypeUprisingController extends BaseController
     }
 
     /**
-     * @Route("/new", name="project_type_uprisings_new")
+     * @Route("/nuevo", name="project_type_uprisings_new")
      * @Template()
      *
      * @param Request $request
@@ -56,7 +56,7 @@ class ProjectTypeUprisingController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="project_type_uprisings_edit")
+     * @Route("/editar/{id}", name="project_type_uprisings_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -81,7 +81,7 @@ class ProjectTypeUprisingController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="project_type_uprisings_delete")
+     * @Route("/eliminar/{id}", name="project_type_uprisings_delete")
      * @ParamConverter()
      *
      * @param ProjectTypeUprising $projectTypeUprising
