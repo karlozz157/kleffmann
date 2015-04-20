@@ -206,6 +206,9 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\Interviewer
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]
 
     kleffmann.interviewer_zone.repository:
         class: Doctrine\ORM\EntityRepository

@@ -21,11 +21,14 @@ class InterviewerController extends BaseController
      * @Route("/", name="interviewers")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $interviewers = $this->interviewerRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $interviewers = $this->interviewerRepository->findAll($page);
 
         return ['interviewers' => $interviewers];
     }
