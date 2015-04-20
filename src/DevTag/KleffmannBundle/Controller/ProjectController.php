@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Form\ProjectType;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/projects", service="kleffmann.project.controller")
+ * @Route("/proyectos", service="kleffmann.project.controller")
  */
 class ProjectController extends BaseController
 {
@@ -35,7 +35,7 @@ class ProjectController extends BaseController
     }
 
     /**
-     * @Route("/new", name="projects_new")
+     * @Route("/nuevo", name="projects_new")
      * @ParamConverter()
      * @Template()
      *
@@ -60,7 +60,7 @@ class ProjectController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="projects_edit")
+     * @Route("/editar/{id}", name="projects_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -85,7 +85,7 @@ class ProjectController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="projects_delete")
+     * @Route("/eliminar/{id}", name="projects_delete")
      * @ParamConverter()
      *
      * @param Project $project

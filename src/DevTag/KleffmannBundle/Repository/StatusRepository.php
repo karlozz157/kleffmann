@@ -24,7 +24,7 @@ class StatusRepository extends EntityRepository
             ->orderBy('s.id', 'DESC');
 
         if (is_null($page)) {
-            $queryBuilder
+            return $queryBuilder
                 ->getQuery()->getResult();
         }
 
