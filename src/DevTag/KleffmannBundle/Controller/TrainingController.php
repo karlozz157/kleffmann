@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Form\TrainingType;
 use DevTag\KleffmannBundle\Entity\Training;
 
 /**
- * @Route("/trainings", service="kleffmann.training.controller")
+ * @Route("/capacitaciones", service="kleffmann.training.controller")
  */
 class TrainingController extends BaseController
 {
@@ -35,7 +35,7 @@ class TrainingController extends BaseController
     }
 
     /**
-     * @Route("/new", name="trainings_new")
+     * @Route("/nuevo", name="trainings_new")
      * @Template()
      *
      * @param Request $request
@@ -59,7 +59,7 @@ class TrainingController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="trainings_edit")
+     * @Route("/editar/{id}", name="trainings_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -84,7 +84,7 @@ class TrainingController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="trainings_delete")
+     * @Route("/eliminar/{id}", name="trainings_delete")
      * @ParamConverter()
      *
      * @param Training $training
