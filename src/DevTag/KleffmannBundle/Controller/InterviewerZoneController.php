@@ -12,7 +12,7 @@ use DevTag\KleffmannBundle\Entity\InterviewerZone;
 use DevTag\KleffmannBundle\Entity\Interviewer;
 
 /**
- * @Route("/interviewer-zones", service="kleffmann.interviewer_zone.controller")
+ * @Route("/encuestadores/zonas-de-trabajo", service="kleffmann.interviewer_zone.controller")
  */
 class InterviewerZoneController extends BaseController
 {
@@ -38,7 +38,7 @@ class InterviewerZoneController extends BaseController
     }
 
     /**
-     * @Route("/new/{interviewer}", name="interviewer_zones_add")
+     * @Route("/nuevo/{interviewer}", name="interviewer_zones_add")
      * @ParamConverter()
      * @Template()
      *
@@ -65,7 +65,7 @@ class InterviewerZoneController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="interviewer_zones_edit")
+     * @Route("/editar/{id}", name="interviewer_zones_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -92,7 +92,7 @@ class InterviewerZoneController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="interviewer_zones_delete")
+     * @Route("/eliminar/{id}", name="interviewer_zones_delete")
      * @ParamConverter()
      * @Template()
      *
