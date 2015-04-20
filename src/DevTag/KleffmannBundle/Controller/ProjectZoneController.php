@@ -13,7 +13,7 @@ use DevTag\KleffmannBundle\Entity\ProjectZone;
 use DevTag\KleffmannBundle\Entity\Project;
 
 /**
- * @Route("/project-zones", service="kleffmann.project_zone.controller")
+ * @Route("/proyectos/plazas", service="kleffmann.project_zone.controller")
  */
 class ProjectZoneController extends BaseController
 {
@@ -36,7 +36,7 @@ class ProjectZoneController extends BaseController
     }
 
     /**
-     * @Route("/new/{project}", name="project_zones_new")
+     * @Route("/nuevo/{project}", name="project_zones_new")
      * @ParamConverter()
      * @Template()
      *
@@ -63,7 +63,7 @@ class ProjectZoneController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="project_zones_edit")
+     * @Route("/editar/{id}", name="project_zones_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -90,7 +90,7 @@ class ProjectZoneController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="project_zones_delete")
+     * @Route("/eliminar/{id}", name="project_zones_delete")
      * @ParamConverter()
      *
      * @param ProjectZone $projectZone
