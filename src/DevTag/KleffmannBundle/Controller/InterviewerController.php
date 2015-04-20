@@ -11,7 +11,7 @@ use DevTag\KleffmannBundle\Form\InterviewerType;
 use DevTag\KleffmannBundle\Entity\Interviewer;
 
 /**
- * @Route("/interviewers", service="kleffmann.interviewer.controller")
+ * @Route("/encuestadores", service="kleffmann.interviewer.controller")
  */
 class InterviewerController extends BaseController
 {
@@ -34,7 +34,7 @@ class InterviewerController extends BaseController
     }
 
     /**
-     * @Route("/new", name="interviewers_new")
+     * @Route("/nuevo", name="interviewers_new")
      * @Template()
      *
      * @param Request $request
@@ -58,7 +58,7 @@ class InterviewerController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="interviewers_edit")
+     * @Route("/editar/{id}", name="interviewers_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -83,7 +83,7 @@ class InterviewerController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="interviewers_delete")
+     * @Route("/eliminar/{id}", name="interviewers_delete")
      * @ParamConverter()
      *
      * @param Interviewer $interviewer
