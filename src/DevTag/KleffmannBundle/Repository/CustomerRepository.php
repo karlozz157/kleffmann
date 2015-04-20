@@ -6,20 +6,28 @@ use Doctrine\ORM\EntityRepository;
 
 class CustomerRepository extends EntityRepository
 {
+    use PaginatorAware;
+
     /**
+     * @param int $page
+     *
      * @return array
      */
-    public function findAll()
+    public function findAll($page = null)
     {
         $queryBuilder = $this->getEntityManager()
             ->createQueryBuilder();
 
         $queryBuilder
             ->select('c')
-            ->from('DevTag\KleffmannBundle\Entity\Customer', 'c')
-            ->orderBy('c.id', 'DESC')
-        ;
+            ->from('DevTagKleffmannBundle:Customer', 'c')
+            ->orderBy('c.id', 'DESC');
 
-        return $queryBuilder->getQuery()->getResult();
+        if (is_null($page)) {
+            return $queryBuilder
+                ->getQuery()->getResult();
+        }
+
+        return $this->paginator->paginate($queryBuilder, $page, $this->recordsPerPage);
     }
 }

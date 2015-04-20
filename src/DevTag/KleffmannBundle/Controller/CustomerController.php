@@ -22,11 +22,14 @@ class CustomerController extends BaseController
      * @Route("/", name="customers")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $customers = $this->customerRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $customers = $this->customerRepository->findAll($page);
 
         return ['customers' => $customers];
     }
