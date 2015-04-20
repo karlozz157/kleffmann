@@ -22,13 +22,16 @@ class TrainingController extends BaseController
      * @Route("/", name="trainings")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $trainingList = $this->trainingRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $trainings = $this->trainingRepository->findAll($page);
 
-        return ['trainingList' => $trainingList];
+        return ['trainings' => $trainings];
     }
 
     /**
