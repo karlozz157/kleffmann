@@ -12,14 +12,14 @@ use DevTag\KleffmannBundle\Form\StatusType;
 use DevTag\KleffmannBundle\Entity\Status;
 
 /**
- * @Route("/status", service="kleffmann.status.controller")
+ * @Route("/proyectos/tipos-de-estatus", service="kleffmann.status.controller")
  */
 class StatusController extends BaseController
 {
     use StatusAware;
 
     /**
-     * @Route("/list", name="status_list")
+     * @Route("/", name="status_list")
      * @Template()
      *
      * @param Request $request
@@ -35,7 +35,7 @@ class StatusController extends BaseController
     }
 
     /**
-     * @Route("/new", name="new_status")
+     * @Route("/nuevo", name="new_status")
      * @Template()
      *
      * @param Request $request
@@ -59,7 +59,7 @@ class StatusController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit_status")
+     * @Route("/editar/{id}", name="edit_status")
      * @ParamConverter()
      * @Template()
      *
@@ -84,7 +84,7 @@ class StatusController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete_status")
+     * @Route("/eliminar/{id}", name="delete_status")
      * @ParamConverter()
      *
      * @param Status $status
