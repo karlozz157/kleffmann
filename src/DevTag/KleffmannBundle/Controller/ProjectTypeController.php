@@ -22,11 +22,14 @@ class ProjectTypeController extends BaseController
      * @Route("/", name="project_types")
      * @Template()
      *
+     * @param Request $request
+     *
      * @return array
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $projectTypes = $this->projectTypeRepository->findAll();
+        $page = $request->query->get('page', 1);
+        $projectTypes = $this->projectTypeRepository->findAll($page);
 
         return ['projectTypes' => $projectTypes];
     }
