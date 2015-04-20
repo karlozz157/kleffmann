@@ -7,27 +7,35 @@ use DevTag\KleffmannBundle\Entity\ProjectFilter;
 
 class ProjectSubfilterRepository extends EntityRepository
 {
+    use PaginatorAware;
+
     /**
      * @var ProjectFilter $projectFilter
      */
     protected $projectFilter;
 
     /**
+     * @param int $page
+     *
      * @return array
      */
-    public function findAll()
+    public function findAll($page = null)
     {
         $queryBuilder = $this->getEntityManager()
             ->createQueryBuilder();
 
         $queryBuilder
             ->select('ps')
-            ->from('DevTag\KleffmannBundle\Entity\ProjectSubfilter', 'ps')
+            ->from('DevTagKleffmannBundle:ProjectSubfilter', 'ps')
             ->where('ps.filter = :filter')
-            ->setParameter('filter', $this->projectFilter->getId())
-        ;
+            ->setParameter('filter', $this->projectFilter->getId());
 
-        return $queryBuilder->getQuery()->getResult();
+        if (is_null($page)) {
+            return $queryBuilder
+                ->getQuery()->getResult();
+        }
+
+        return $this->paginator->paginate($queryBuilder, $page, $this->recordsPerPage);
     }
 
     /**

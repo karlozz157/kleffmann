@@ -13,7 +13,7 @@ use DevTag\KleffmannBundle\Entity\ProjectSubfilter;
 use DevTag\KleffmannBundle\Entity\ProjectFilter;
 
 /**
- * @Route("/project-subfilters", service="kleffmann.project_subfilter.controller")
+ * @Route("/proyectos/subfiltros", service="kleffmann.project_subfilter.controller")
  */
 class ProjectSubfilterController extends BaseController
 {
@@ -37,7 +37,7 @@ class ProjectSubfilterController extends BaseController
     }
 
     /**
-     * @Route("/new/{projectFilter}", name="project_subfilters_new")
+     * @Route("/nuevo/{projectFilter}", name="project_subfilters_new")
      * @ParamConverter()
      * @Template()
      *
@@ -66,7 +66,7 @@ class ProjectSubfilterController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="project_subfilters_edit")
+     * @Route("/editar/{id}", name="project_subfilters_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -93,7 +93,7 @@ class ProjectSubfilterController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="project_subfilters_delete")
+     * @Route("/eliminar/{id}", name="project_subfilters_delete")
      * @ParamConverter()
      *
      * @param ProjectSubfilter $projectSubfilter
