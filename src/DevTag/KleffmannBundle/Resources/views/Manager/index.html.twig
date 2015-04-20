@@ -16,6 +16,7 @@
                     <thead>
                     <tr>
                         <th>{{ 'Name'|trans }}</th>
+                        <th>{{ 'Position'|trans }}</th>
                         <th>{{ 'Actions'|trans }}</th>
                     </tr>
                     </thead>
@@ -23,6 +24,7 @@
                     {% for manager in managers %}
                         <tr>
                             <td>{{ manager.name }}</td>
+                            <td>{{ manager.position }}</td>
                             <td>
                                 {{ util.button_icon('managers_edit', {id: manager.id}, 'Edit Manager'|trans, 'warning', 'pencil') }}
                                 {{ util.button_icon('managers_delete', {id: manager.id}, 'Delete Manager'|trans, 'danger', 'remove') }}
