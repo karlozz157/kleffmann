@@ -11,7 +11,7 @@ use DevTag\KleffmannBundle\Entity\Invoice;
 use DevTag\KleffmannBundle\Service\Aware\InvoiceAware;
 
 /**
- * @Route("/invoices", service="kleffmann.invoice.controller")
+ * @Route("/facturas", service="kleffmann.invoice.controller")
  */
 class InvoiceController extends BaseController
 {
@@ -34,7 +34,7 @@ class InvoiceController extends BaseController
     }
 
     /**
-     * @Route("/new", name="invoices_new")
+     * @Route("/nuevo", name="invoices_new")
      * @Template()
      *
      * @param Request $request
@@ -58,7 +58,7 @@ class InvoiceController extends BaseController
     }
 
     /**
-     * @Route("/edit/{id}", name="invoices_edit")
+     * @Route("/editar/{id}", name="invoices_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -83,7 +83,7 @@ class InvoiceController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", name="invoices_delete")
+     * @Route("/eliminar/{id}", name="invoices_delete")
      * @ParamConverter()
      *
      * @param Invoice $invoice
