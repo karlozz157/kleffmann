@@ -6,10 +6,14 @@ use Doctrine\ORM\EntityRepository;
 
 class ProjectRepository extends EntityRepository
 {
+    use PaginatorAware;
+
     /**
+     * @param int $page
+     *
      * @return array
      */
-    public function findAll()
+    public function findAll($page = null)
     {
         $queryBuilder = $this->getEntityManager()
             ->createQueryBuilder();
@@ -17,9 +21,13 @@ class ProjectRepository extends EntityRepository
         $queryBuilder
             ->select('p')
             ->from('DevTag\KleffmannBundle\Entity\Project', 'p')
-            ->orderBy('p.id', 'DESC')
-        ;
+            ->orderBy('p.id', 'DESC');
 
-        return $queryBuilder->getQuery()->getResult();
+        if (is_null($page)) {
+            return $queryBuilder
+                ->getQuery()->getResult();
+        }
+
+        return $this->paginator->paginate($queryBuilder, $page, $this->recordsPerPage);
     }
 }
