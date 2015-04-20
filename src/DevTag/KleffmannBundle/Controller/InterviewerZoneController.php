@@ -24,13 +24,15 @@ class InterviewerZoneController extends BaseController
      * @Template()
      *
      * @param Interviewer $interviewer
+     * @param Request $request
      *
      * @return array
      */
-    public function indexAction(Interviewer $interviewer)
+    public function indexAction(Interviewer $interviewer, Request $request)
     {
+        $page = $request->query->get('page', 1);
         $this->interviewerZoneRepository->setInterviewer($interviewer);
-        $interviewerZones = $this->interviewerZoneRepository->findAll();
+        $interviewerZones = $this->interviewerZoneRepository->findAll($page);
 
         return ['interviewerZones' => $interviewerZones, 'interviewer' => $interviewer];
     }
