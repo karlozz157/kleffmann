@@ -125,6 +125,11 @@ services:
         calls:
             - [ setCityRepository, ['@kleffmann.city.repository']]
 
+    kleffmann.district.controller:
+        class: DevTag\KleffmannBundle\Controller\DistrictController
+        calls:
+            - [ setDistrictRepository, ['@kleffmann.district.repository']]
+
     # services
     kleffmann.interviewer.service:
         class: DevTag\KleffmannBundle\Service\InterviewerService
@@ -365,3 +370,10 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\City
+
+    kleffmann.district.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\District
