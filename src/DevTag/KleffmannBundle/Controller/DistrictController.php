@@ -19,14 +19,14 @@ class DistrictController
     protected $districtRepository;
 
     /**
-     * @Route("/webservice/buscar-por-estado/{id}")
+     * @Route("/webservice/buscar-por-estado/{state}")
      * @ParamConverter()
      *
      * @param State $state
      *
      * @return array
      */
-    public function findAllByState(State $state)
+    public function findByStateAction(State $state)
     {
         $districts = $this->districtRepository->findAllByStateAsArray($state);
 

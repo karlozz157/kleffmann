@@ -18,7 +18,7 @@ class DistrictRepository extends EntityRepository
             ->createQueryBuilder();
 
         $queryBuilder
-            ->select('d')
+            ->select('d.id, d.name')
             ->from('DevTagKleffmannBundle:District', 'd')
             ->where('d.state = :state')
             ->setParameter('state', $state);
