@@ -84,6 +84,14 @@
 'Edit Project Zone': 'Editar Plaza'
 'Delete Project Zone': 'Eliminar Plaza'
 
+'Project Variables to': 'Variables para'
+'Add New Project Variable': 'Agregar Nueva Variable'
+'Variables List': 'Listado de Variables'
+'Variable Name': 'Variable'
+'Variable Value': 'Valor'
+'Edit Project Variable': 'Editar Variable'
+'Delete Project Variable': 'Eliminar Variable'
+
 'Invoices': 'Facturas'
 'Invoice List': 'Listado de Facturas'
 'Project': 'Proyecto'

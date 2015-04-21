@@ -20,7 +20,7 @@ class ProjectVariableController extends BaseController
     use ProjectVariableAware;
 
     /**
-     * @Route("/{project}", name="project_variable_list")
+     * @Route("/{project}", name="project_variables")
      * @ParamConverter()
      * @Template()
      *
@@ -35,11 +35,11 @@ class ProjectVariableController extends BaseController
         $options = ['project' => $project];
         $projectVariables = $this->projectVariableRepository->findAll($page, $options);
 
-        return ['projectVariables' => $projectVariables];
+        return ['projectVariables' => $projectVariables, 'project' => $project];
     }
 
     /**
-     * @Route("/nuevo/{project}")
+     * @Route("/nuevo/{project}", name="project_variables_new")
      * @ParamConverter()
      * @Template()
      *
@@ -47,9 +47,10 @@ class ProjectVariableController extends BaseController
      *
      * @return array
      */
-    public function newAction(Request $request)
+    public function newAction(Project $project, Request $request)
     {
         $projectVariable = new ProjectVariable();
+        $projectVariable->setProject($project);
         $form = $this->createForm(new ProjectVariableType(), $projectVariable);
         $form->handleRequest($request);
 
@@ -57,14 +58,16 @@ class ProjectVariableController extends BaseController
             $this->projectVariableService->save($projectVariable);
             $this->projectVariableService->flush();
 
-            return $this->redirectToRoute('project_variable_list');
+            return $this->redirectToRoute('project_variables', [
+                'project' => $project->getId()
+            ]);
         }
 
-        return ['form' => $form->createView()];
+        return ['form' => $form->createView(), 'project' => $project];
     }
 
     /**
-     * @Route("/editar/{id}")
+     * @Route("/editar/{id}", name="project_variables_edit")
      * @ParamConverter()
      * @Template()
      *
@@ -82,14 +85,16 @@ class ProjectVariableController extends BaseController
             $this->projectVariableService->save($projectVariable);
             $this->projectVariableService->flush();
 
-            return $this->redirectToRoute('project_variable_list');
+            return $this->redirectToRoute('project_variables', [
+                'project' => $projectVariable->getProject()->getId()
+            ]);
         }
 
-        return ['form' => $form->createView()];
+        return ['form' => $form->createView(), 'project' => $projectVariable->getProject()];
     }
 
     /**
-     * @Route("/eliminar/{id}")
+     * @Route("/eliminar/{id}", name="project_variables_delete")
      * @ParamConverter()
      *
      * @param ProjectVariable $projectVariable
@@ -101,6 +106,8 @@ class ProjectVariableController extends BaseController
         $this->projectVariableService->remove($projectVariable);
         $this->projectVariableService->flush();
 
-        return $this->redirectToRoute('project_variable_list');
+        return $this->redirectToRoute('project_variables', [
+            'project' => $projectVariable->getProject()->getId()
+        ]);
     }
 }

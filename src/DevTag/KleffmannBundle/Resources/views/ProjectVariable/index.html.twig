@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'Project Variables to'|trans }} {{ project.name|upper }}{% endblock %}
+{% block subtitle %}{{ 'Variables List'|trans }}{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="header">
+            <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
+            <h3 class="content-header">{{ block('subtitle') }}</h3>
+        </div>
+        <div class="porlets-content">
+            <p>{{ util.button_text('project_variables_new', {project: project.id}, 'Add New'|trans, 'info') }}</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>{{ 'Variable Name'|trans }}</th>
+                        <th>{{ 'Variable Value'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for projectVariable in projectVariables %}
+                        <tr>
+                            <td>{{ projectVariable.name }}</td>
+                            <td>{{ projectVariable.value }}</td>
+                            <td>
+                                {{ util.button_icon('project_variables_edit', {id: projectVariable.id}, 'Edit Project Variable'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('project_variables_delete', {id: projectVariable.id}, 'Delete Project Variable'|trans, 'danger', 'remove') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div><!--/table-responsive-->
+        </div><!--/porlets-content-->
+    </div>
+    <div>
+        {{ knp_pagination_render(projectVariables) }}
+    </div>
+{% endblock %}

@@ -29,6 +29,11 @@ class ProjectVariable
     protected $name;
 
     /**
+     * @ORM\Column(type="string", name="value_text")
+     */
+    protected $value;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -59,6 +64,29 @@ class ProjectVariable
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return ProjectVariable
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string 
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 
     /**

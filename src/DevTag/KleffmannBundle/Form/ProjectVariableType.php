@@ -8,18 +8,18 @@ use Symfony\Component\Form\AbstractType;
 class ProjectVariableType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name', 'text')
+            ->add('value', 'text')
         ;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
