@@ -9,7 +9,7 @@ use DevTag\KleffmannBundle\Repository\CityRepository;
 use DevTag\KleffmannBundle\Entity\State;
 
 /**
- * @Route("/cities", service="kleffmann.city.controller")
+ * @Route("/ciudades", service="kleffmann.city.controller")
  */
 class CityController
 {
@@ -19,7 +19,7 @@ class CityController
     protected $cityRepository;
 
     /**
-     * @Route("/webservice/find-by-state/{state}")
+     * @Route("/webservice/buscar-por-estado/{state}")
      * @ParamConverter()
      *
      * @param State $state
@@ -39,13 +39,5 @@ class CityController
     public function setCityRepository(CityRepository $cityRepository)
     {
         $this->cityRepository = $cityRepository;
-    }
-
-    /**
-     * @return CityRepository
-     */
-    public function getCityRepository()
-    {
-        return $this->cityRepository;
     }
 }

@@ -24,7 +24,7 @@ class CityRepository extends EntityRepository
             ->select('c.id', 'c.name')
             ->from('DevTagKleffmannBundle:City', 'c')
             ->where('c.state = :state')
-            ->setParameter('state', $state->getId());
+            ->setParameter('state', $state);
 
         return $queryBuilder->getQuery()->getArrayResult();
     }
