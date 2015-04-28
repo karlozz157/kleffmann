@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\InterviewerZoneAware;
 use DevTag\KleffmannBundle\Form\InterviewerZoneType;
 use DevTag\KleffmannBundle\Entity\InterviewerZone;
@@ -14,9 +15,14 @@ use DevTag\KleffmannBundle\Entity\Interviewer;
 /**
  * @Route("/encuestadores/zonas-de-trabajo", service="kleffmann.interviewer_zone.controller")
  */
-class InterviewerZoneController extends BaseController
+class InterviewerZoneController extends AbstractController
 {
     use InterviewerZoneAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_INTERVIEWER'];
 
     /**
      * @Route("/{interviewer}", name="interviewer_zones")

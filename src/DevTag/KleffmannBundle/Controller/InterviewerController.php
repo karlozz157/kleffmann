@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\InterviewerAware;
 use DevTag\KleffmannBundle\Form\InterviewerType;
 use DevTag\KleffmannBundle\Entity\Interviewer;
@@ -13,9 +14,14 @@ use DevTag\KleffmannBundle\Entity\Interviewer;
 /**
  * @Route("/encuestadores", service="kleffmann.interviewer.controller")
  */
-class InterviewerController extends BaseController
+class InterviewerController extends AbstractController
 {
     use InterviewerAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_INTERVIEWER'];
 
     /**
      * @Route("/", name="interviewers")
