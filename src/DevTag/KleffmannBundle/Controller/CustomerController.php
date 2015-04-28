@@ -2,21 +2,26 @@
 
 namespace DevTag\KleffmannBundle\Controller;
 
-use DevTag\KleffmannBundle\Entity\Customer;
-use DevTag\KleffmannBundle\Form\CustomerType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\CustomerAware;
-
+use DevTag\KleffmannBundle\Form\CustomerType;
+use DevTag\KleffmannBundle\Entity\Customer;
 
 /**
  * @Route("/clientes", service="kleffmann.customer.controller")
  */
-class CustomerController extends BaseController
+class CustomerController extends AbstractController
 {
     use CustomerAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_ADMIN'];
 
     /**
      * @Route("/", name="customers")
