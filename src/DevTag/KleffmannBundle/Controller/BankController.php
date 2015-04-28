@@ -18,6 +18,9 @@ class BankController extends AbstractController
 {
     use BankAware;
 
+    /**
+     * @var array $roles
+     */
     protected $roles = ['ROLE_ADMIN'];
 
     /**
