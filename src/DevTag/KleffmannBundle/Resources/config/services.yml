@@ -1,10 +1,18 @@
 services:
+    kleffmann.listener.before_controller:
+        class: DevTag\KleffmannBundle\EventListener\BeforeControllerListener
+        scope: request
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.controller', method: 'onKernelController' }
+        arguments:
+            - @security.context
+
     # controllers
     kleffmann.interviewer.controller:
         class: DevTag\KleffmannBundle\Controller\InterviewerController
         calls:
-            - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
+            - [ setFormFactory, ['@form.factory']]
             - [ setInterviewerService, ['@kleffmann.interviewer.service']]
             - [ setInterviewerRepository, ['@kleffmann.interviewer.repository']]
 

@@ -5,26 +5,32 @@ twig:
                 dashboard:
                     name: 'Dashboard'
                     url: 'dashboard'
+                    role: 'ROLE_USER'
                     icon: 'dashboard'
                 interviewers:
                     name: 'Encuestadores'
                     url: 'interviewers'
+                    role: 'ROLE_INTERVIEWER'
                     icon: 'list-alt'
                 project:
                     name: 'Proyectos'
                     url: 'projects'
+                    role: 'ROLE_PROJECT_MANAGER'
                     icon: 'tasks'
                 invoices:
                     name: 'Facturas'
                     url: 'invoices'
+                    role: 'ROLE_ADMINISTRATION'
                     icon: 'folder-open'
                 training:
                     name: 'Capacitaciones'
                     url: 'trainings'
+                    role: 'ROLE_ADMIN'
                     icon: 'book'
                 catalog:
                     name: 'Catálogos'
                     url: 'dashboard'
+                    role: 'ROLE_ADMIN'
                     icon: 'files-o'
                     submenu:
                         bank:

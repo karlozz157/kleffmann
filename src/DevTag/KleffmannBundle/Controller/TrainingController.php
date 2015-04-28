@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\TrainingAware;
 use DevTag\KleffmannBundle\Form\TrainingType;
 use DevTag\KleffmannBundle\Entity\Training;
@@ -14,9 +15,14 @@ use DevTag\KleffmannBundle\Entity\Training;
 /**
  * @Route("/capacitaciones", service="kleffmann.training.controller")
  */
-class TrainingController extends BaseController
+class TrainingController extends AbstractController
 {
     use TrainingAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_ADMIN'];
 
     /**
      * @Route("/", name="trainings")

@@ -3,14 +3,21 @@ security:
         Symfony\Component\Security\Core\User\User: plaintext
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_USER: ~
+        ROLE_PROJECT_MANAGER: ROLE_USER
+        ROLE_INTERVIEWER:     ROLE_USER
+        ROLE_ADMINISTRATION:  ROLE_INTERVIEWER
+        ROLE_ADMIN:           [ROLE_USER, ROLE_PROJECT_MANAGER, ROLE_INTERVIEWER, ROLE_ADMINISTRATION]
+        ROLE_SUPER_ADMIN:     [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    user:  { password: devtag, roles: [ 'ROLE_USER' ] }
+                    interviewer:  { password: devtag, roles: [ 'ROLE_INTERVIEWER' ] }
+                    project_manager:  { password: devtag, roles: [ 'ROLE_PROJECT_MANAGER' ] }
+                    administration:  { password: devtag, roles: [ 'ROLE_ADMINISTRATION' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
