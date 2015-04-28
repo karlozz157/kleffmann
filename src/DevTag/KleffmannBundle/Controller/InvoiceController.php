@@ -6,16 +6,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
+use DevTag\KleffmannBundle\Service\Aware\InvoiceAware;
 use DevTag\KleffmannBundle\Form\InvoiceType;
 use DevTag\KleffmannBundle\Entity\Invoice;
-use DevTag\KleffmannBundle\Service\Aware\InvoiceAware;
 
 /**
  * @Route("/facturas", service="kleffmann.invoice.controller")
  */
-class InvoiceController extends BaseController
+class InvoiceController extends AbstractController
 {
     use InvoiceAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_ADMINISTRATION'];
 
     /**
      * @Route("/", name="invoices")
