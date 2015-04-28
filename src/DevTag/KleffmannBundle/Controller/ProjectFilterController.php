@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\ProjectFilterAware;
 use DevTag\KleffmannBundle\Form\ProjectFilterType;
 use DevTag\KleffmannBundle\Entity\ProjectFilter;
@@ -14,9 +15,14 @@ use DevTag\KleffmannBundle\Entity\Project;
 /**
  * @Route("/proyectos/filtros", service="kleffmann.project_filter.controller")
  */
-class ProjectFilterController extends BaseController
+class ProjectFilterController extends AbstractController
 {
     use ProjectFilterAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_PROJECT_MANAGER'];
 
     /**
      * @Route("/{project}", name="project_filters")

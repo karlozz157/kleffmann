@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\ProjectTypeAware;
 use DevTag\KleffmannBundle\Form\ProjectTypeType;
 use DevTag\KleffmannBundle\Entity\ProjectType;
@@ -14,9 +15,14 @@ use DevTag\KleffmannBundle\Entity\ProjectType;
 /**
  * @Route("/proyectos/tipos", service="kleffmann.project_type.controller")
  */
-class ProjectTypeController extends BaseController
+class ProjectTypeController extends AbstractController
 {
     use ProjectTypeAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_PROJECT_MANAGER'];
 
     /**
      * @Route("/", name="project_types")

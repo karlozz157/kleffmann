@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\ProjectVariableAware;
 use DevTag\KleffmannBundle\Form\ProjectVariableType;
 use DevTag\KleffmannBundle\Entity\ProjectVariable;
@@ -15,9 +16,14 @@ use DevTag\KleffmannBundle\Entity\Project;
 /**
  * @Route("/proyectos/variables", service="kleffmann.project_variable.controller")
  */
-class ProjectVariableController extends BaseController
+class ProjectVariableController extends AbstractController
 {
     use ProjectVariableAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_PROJECT_MANAGER'];
 
     /**
      * @Route("/{project}", name="project_variables")

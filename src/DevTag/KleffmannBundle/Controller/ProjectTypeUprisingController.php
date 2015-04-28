@@ -8,15 +8,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use DevTag\KleffmannBundle\Service\Aware\ProjectTypeUprisingAware;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Form\ProjectTypeUprisingType;
 use DevTag\KleffmannBundle\Entity\ProjectTypeUprising;
 
 /**
  * @Route("/proyectos/tipos-de-levantamientos", service="kleffmann.project_type_uprising.controller")
  */
-class ProjectTypeUprisingController extends BaseController
+class ProjectTypeUprisingController extends AbstractController
 {
     use ProjectTypeUprisingAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_PROJECT_MANAGER'];
 
     /**
      * @Route("/", name="project_type_uprisings")

@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\ProjectZoneAware;
 use DevTag\KleffmannBundle\Form\ProjectZoneType;
 use DevTag\KleffmannBundle\Entity\ProjectZone;
@@ -15,9 +16,14 @@ use DevTag\KleffmannBundle\Entity\Project;
 /**
  * @Route("/proyectos/plazas", service="kleffmann.project_zone.controller")
  */
-class ProjectZoneController extends BaseController
+class ProjectZoneController extends AbstractController
 {
     use ProjectZoneAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_PROJECT_MANAGER'];
 
     /**
      * @Route("/{project}", name="project_zones")

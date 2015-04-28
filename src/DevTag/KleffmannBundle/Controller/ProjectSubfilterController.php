@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\ProjectSubfilterAware;
 use DevTag\KleffmannBundle\Form\ProjectSubfilterType;
 use DevTag\KleffmannBundle\Entity\ProjectSubfilter;
@@ -15,9 +16,14 @@ use DevTag\KleffmannBundle\Entity\ProjectFilter;
 /**
  * @Route("/proyectos/subfiltros", service="kleffmann.project_subfilter.controller")
  */
-class ProjectSubfilterController extends BaseController
+class ProjectSubfilterController extends AbstractController
 {
     use ProjectSubfilterAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_PROJECT_MANAGER'];
 
     /**
      * @Route("/{projectFilter}", name="project_subfilters")
