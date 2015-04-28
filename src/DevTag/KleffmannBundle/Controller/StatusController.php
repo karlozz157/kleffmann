@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\StatusAware;
 use DevTag\KleffmannBundle\Form\StatusType;
 use DevTag\KleffmannBundle\Entity\Status;
@@ -14,7 +15,7 @@ use DevTag\KleffmannBundle\Entity\Status;
 /**
  * @Route("/proyectos/tipos-de-estatus", service="kleffmann.status.controller")
  */
-class StatusController extends BaseController
+class StatusController extends AbstractController
 {
     use StatusAware;
 
