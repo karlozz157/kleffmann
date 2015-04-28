@@ -2,19 +2,23 @@
 
 namespace DevTag\KleffmannBundle\Controller;
 
-use DevTag\KleffmannBundle\Entity\Bank;
-use DevTag\KleffmannBundle\Form\BankType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\BankAware;
+use DevTag\KleffmannBundle\Form\BankType;
+use DevTag\KleffmannBundle\Entity\Bank;
+
 /**
  * @Route("/bancos", service="kleffmann.bank.controller")
  */
-class BankController extends BaseController
+class BankController extends AbstractController
 {
     use BankAware;
+
+    protected $roles = ['ROLE_ADMIN'];
 
     /**
      * @Route("/", name="banks")
