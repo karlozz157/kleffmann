@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\ManagerAware;
 use DevTag\KleffmannBundle\Form\ManagerType;
 use DevTag\KleffmannBundle\Entity\Manager;
@@ -14,9 +15,14 @@ use DevTag\KleffmannBundle\Entity\Manager;
 /**
  * @Route("/gerentes", service="kleffmann.manager.controller")
  */
-class ManagerController extends BaseController
+class ManagerController extends AbstractController
 {
     use ManagerAware;
+
+    /**
+     * @var array $roles
+     */
+    protected $roles = ['ROLE_ADMIN'];
 
     /**
      * @Route("/", name="managers")
