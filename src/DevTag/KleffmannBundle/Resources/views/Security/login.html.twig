@@ -30,6 +30,7 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
     </div>
     <div class="foot">
         <button type="submit" data-dismiss="modal" class="btn btn-primary">Log in</button>

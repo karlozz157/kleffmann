@@ -138,6 +138,14 @@ services:
         calls:
             - [ setDistrictRepository, ['@kleffmann.district.repository']]
 
+    kleffmann.user.controller:
+        class: DevTag\KleffmannBundle\Controller\UserController
+        calls:
+            - [ setRouter, ['@router']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setUserService, ['@kleffmann.user.service']]
+            - [ setUserRepository, ['@kleffmann.user.repository']]
+
     # services
     kleffmann.interviewer.service:
         class: DevTag\KleffmannBundle\Service\InterviewerService
@@ -211,6 +219,11 @@ services:
 
     kleffmann.training.service:
         class: DevTag\KleffmannBundle\Service\TrainingService
+        calls:
+            - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+
+    kleffmann.user.service:
+        class: DevTag\KleffmannBundle\Service\UserService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
 
@@ -385,3 +398,13 @@ services:
         factory_method: getRepository
         arguments:
             - DevTag\KleffmannBundle\Entity\District
+
+    kleffmann.user.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - DevTag\KleffmannBundle\Entity\User
+        calls:
+            - [ setPaginator, ['@knp_paginator']]
+            - [ setRecordsPerPage, ['%records_per_page%']]

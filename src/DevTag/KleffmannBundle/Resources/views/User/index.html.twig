@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'Users'|trans }}{% endblock %}
+{% block subtitle %}{{ 'User List'|trans }}{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="header">
+            <div class="actions"> <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a> <a href="#" class="refresh"><i class="fa fa-repeat"></i></a> <a href="#" class="close-down"><i class="fa fa-times"></i></a> </div>
+            <h3 class="content-header">{{ block('subtitle') }}</h3>
+        </div>
+        <div class="porlets-content">
+            <p>{{ util.button_text('users_new', {}, 'Add New'|trans, 'info') }}</p>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>{{ 'Username'|trans }}</th>
+                        <th>{{ 'Email'|trans }}</th>
+                        <th>{{ 'Roles' }}</th>
+                        <th>{{ 'Active'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                {% for role in user.roles %}
+                                    {{ role }},
+                                {% endfor %}
+                            </td>
+                            <td>{{ user.enabled }}</td>
+                            <td>
+                                {{ util.button_icon('users_edit', {id: user.id}, 'Edit User'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('users_delete', {id: user.id}, 'Delete User'|trans, 'danger', 'remove') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div><!--/table-responsive-->
+        </div><!--/porlets-content-->
+    </div>
+    <div>
+        {{ knp_pagination_render(users) }}
+    </div>
+{% endblock %}

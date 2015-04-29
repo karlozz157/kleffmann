@@ -1,7 +1,4 @@
 security:
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
-
     role_hierarchy:
         ROLE_USER: ~
         ROLE_PROJECT_MANAGER: ROLE_USER
@@ -11,14 +8,11 @@ security:
         ROLE_SUPER_ADMIN:     [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: devtag, roles: [ 'ROLE_USER' ] }
-                    interviewer:  { password: devtag, roles: [ 'ROLE_INTERVIEWER' ] }
-                    project_manager:  { password: devtag, roles: [ 'ROLE_PROJECT_MANAGER' ] }
-                    administration:  { password: devtag, roles: [ 'ROLE_ADMINISTRATION' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
 
     firewalls:
         dev:
@@ -32,8 +26,10 @@ security:
         secured_area:
             pattern:    ^/
             form_login:
-                check_path: _kleffmann_security_check
-                login_path: _kleffmann_login
+                provider:      fos_userbundle
+                csrf_provider: form.csrf_provider
+                check_path:    _kleffmann_security_check
+                login_path:    _kleffmann_login
             logout:
                 path:   _kleffmann_logout
             #anonymous: ~

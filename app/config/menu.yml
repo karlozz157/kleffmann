@@ -27,6 +27,11 @@ twig:
                     url: 'trainings'
                     role: 'ROLE_ADMIN'
                     icon: 'book'
+                users:
+                    name: 'Usuarios'
+                    url: 'users'
+                    role: 'ROLE_ADMIN'
+                    icon: 'user'
                 catalog:
                     name: 'Catálogos'
                     url: 'dashboard'
