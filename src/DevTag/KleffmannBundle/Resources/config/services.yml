@@ -132,10 +132,10 @@ services:
     kleffmann.training.controller:
         class: DevTag\KleffmannBundle\Controller\TrainingController
         calls:
-            - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
-            - [ setTrainingService, ['@kleffmann.training.service']]
-            - [ setTrainingRepository, ['@kleffmann.training.repository']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.training.service']]
+            - [ setRepository, ['@kleffmann.training.repository']]
 
     kleffmann.city.controller:
         class: DevTag\KleffmannBundle\Controller\CityController
