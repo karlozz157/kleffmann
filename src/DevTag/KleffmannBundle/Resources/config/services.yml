@@ -27,10 +27,10 @@ services:
     kleffmann.project.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectController
         calls:
-            - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
-            - [ setProjectService, ['@kleffmann.project.service']]
-            - [ setProjectRepository, ['@kleffmann.project.repository']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.project.service']]
+            - [ setRepository, ['@kleffmann.project.repository']]
 
     kleffmann.project_zone.controller:
         class: DevTag\KleffmannBundle\Controller\ProjectZoneController
