@@ -121,6 +121,14 @@ services:
             - [ setService, ['@kleffmann.project_type_uprising.service']]
             - [ setRepository, ['@kleffmann.project_type_uprising.repository']]
 
+    kleffmann.user.controller:
+        class: DevTag\KleffmannBundle\Controller\UserController
+        calls:
+            - [ setRouter, ['@router']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.user.service']]
+            - [ setRepository, ['@kleffmann.user.repository']]
+
     kleffmann.training.controller:
         class: DevTag\KleffmannBundle\Controller\TrainingController
         calls:
@@ -138,14 +146,6 @@ services:
         class: DevTag\KleffmannBundle\Controller\DistrictController
         calls:
             - [ setDistrictRepository, ['@kleffmann.district.repository']]
-
-    kleffmann.user.controller:
-        class: DevTag\KleffmannBundle\Controller\UserController
-        calls:
-            - [ setRouter, ['@router']]
-            - [ setFormFactory, ['@form.factory']]
-            - [ setUserService, ['@kleffmann.user.service']]
-            - [ setUserRepository, ['@kleffmann.user.repository']]
 
     # services
     kleffmann.interviewer.service:
