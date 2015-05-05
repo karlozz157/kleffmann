@@ -72,14 +72,6 @@ services:
             - [ setInvoiceService, ['@kleffmann.invoice.service']]
             - [ setInvoiceRepository, ['@kleffmann.invoice.repository']]
 
-    kleffmann.customer.controller:
-        class: DevTag\KleffmannBundle\Controller\CustomerController
-        calls:
-            - [ setFormFactory, ['@form.factory']]
-            - [ setRouter, ['@router']]
-            - [ setCustomerService, ['@kleffmann.customer.service']]
-            - [ setCustomerRepository, ['@kleffmann.customer.repository']]
-
     kleffmann.manager.controller:
         class: DevTag\KleffmannBundle\Controller\ManagerController
         calls:
@@ -120,6 +112,14 @@ services:
             - [ setFormFactory, ['@form.factory']]
             - [ setService, ['@kleffmann.bank.service']]
             - [ setRepository, ['@kleffmann.bank.repository']]
+
+    kleffmann.customer.controller:
+        class: DevTag\KleffmannBundle\Controller\CustomerController
+        calls:
+            - [ setRouter, ['@router']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.customer.service']]
+            - [ setRepository, ['@kleffmann.customer.repository']]
 
     kleffmann.training.controller:
         class: DevTag\KleffmannBundle\Controller\TrainingController
