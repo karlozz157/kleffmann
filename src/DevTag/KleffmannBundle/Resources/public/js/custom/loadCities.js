@@ -55,8 +55,26 @@ function loadDistricts()
     var url   = '/distritos/webservice/buscar-por-estado/{id}';
     var label = 'Escoge un Municipio';
 
+    $('#interviewer_type_state').select({
+        element: '#interviewer_type_district',
+        label: label,
+        url: url
+    });
+
+    $('#interviewer_zone_type_state').select({
+        element:  '#interviewer_zone_type_district',
+        label: label,
+        url: url
+    });
+
     $('#project_zone_type_state').select({
         element: '#project_zone_type_district',
+        label: label,
+        url: url
+    });
+
+    $('#project_filter_type_state').select({
+        element: '#project_filter_type_district',
         label: label,
         url: url
     });
