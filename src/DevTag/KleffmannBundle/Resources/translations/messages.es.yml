@@ -1,3 +1,5 @@
+'Welcome': 'Bienvenido'
+
 'Interviewers': 'Encuestadores'
 'List interviewers': 'Listado de Encuestadores'
 'Add New Interviewer': 'Agregar Nuevo Encuestador'
@@ -152,3 +154,12 @@
 'Add New': 'Agregar Nuevo'
 'Save': 'Guardar'
 'Cancel': 'Cancelar'
+
+
+# users module
+'Users': 'Usuarios'
+'User List': 'Listado de Usuarios'
+'Add New User': 'Agregar Nuevo Usuario'
+'Status': 'Estatus'
+'Edit User': 'Editar Usuario'
+'Delete User': 'Eliminar Usuario'

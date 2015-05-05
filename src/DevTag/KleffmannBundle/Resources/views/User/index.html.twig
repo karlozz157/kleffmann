@@ -18,7 +18,7 @@
                         <th>{{ 'Username'|trans }}</th>
                         <th>{{ 'Email'|trans }}</th>
                         <th>{{ 'Roles' }}</th>
-                        <th>{{ 'Active'|trans }}</th>
+                        <th>{{ 'Status'|trans }}</th>
                         <th>{{ 'Actions'|trans }}</th>
                     </tr>
                     </thead>
@@ -28,11 +28,9 @@
                             <td>{{ user.username }}</td>
                             <td>{{ user.email }}</td>
                             <td>
-                                {% for role in user.roles %}
-                                    {{ role }},
-                                {% endfor %}
+                                {% for role in user.roles %} {{ role }}, {% endfor %}
                             </td>
-                            <td>{{ user.enabled }}</td>
+                            <td>{%  if 1 == user.enabled %} <span class="label label-success">Activo</span> {% else %} <span class="label label-warning">Inactivo</span> {% endif %} </td>
                             <td>
                                 {{ util.button_icon('users_edit', {id: user.id}, 'Edit User'|trans, 'warning', 'pencil') }}
                                 {{ util.button_icon('users_delete', {id: user.id}, 'Delete User'|trans, 'danger', 'remove') }}
