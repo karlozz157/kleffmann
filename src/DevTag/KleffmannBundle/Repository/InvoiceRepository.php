@@ -30,4 +30,24 @@ class InvoiceRepository extends EntityRepository
 
         return $this->paginator->paginate($queryBuilder, $page, $this->recordsPerPage);
     }
+
+    /**
+     * @param string $fileName
+     *
+     * @return array
+     */
+    public function getLastInvoiceByFileName($fileName)
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder();
+
+        $queryBuilder
+            ->select('i')
+            ->from('DevTagKleffmannBundle:Invoice', 'i')
+            ->where('i.file LIKE :filename')
+            ->setParameter('filename', "$fileName%")
+            ->orderBy('i.id', 'DESC');
+
+        return $queryBuilder->getQuery()->setMaxResults(1)->getArrayResult();
+    }
 }

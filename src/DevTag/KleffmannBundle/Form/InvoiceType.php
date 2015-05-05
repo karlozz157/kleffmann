@@ -30,10 +30,10 @@ class InvoiceType extends AbstractType
                 'widget' => 'single_text',
                 'required' => true,
             ])
-            ->add('file', 'text', [
+            ->add('file', 'file', [
                 'required' => true,
             ])
-            ->add('amount', 'money', [
+            ->add('amount', 'number', [
                 'required' => true,
             ])
             ->add('status', 'choice', [
