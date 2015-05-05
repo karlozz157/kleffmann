@@ -10,7 +10,7 @@
             <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('project_types_new', {}, 'Add New'|trans, 'info') }}</p>
+            <p>{{ util.button_text('devtag_kleffmann_projecttype_new', {}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -21,13 +21,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for projectType in projectTypes %}
+                    {% for projectType in data %}
                         <tr>
                             <td>{{ projectType.name }}</td>
                             <td>{{ projectType.description }}</td>
                             <td>
-                                {{ util.button_icon('project_types_edit', {id: projectType.id}, 'Edit Project Type'|trans, 'warning', 'pencil') }}
-                                {{ util.button_icon('project_types_delete', {id: projectType.id}, 'Delete Project Type'|trans, 'danger', 'remove') }}
+                                {{ util.button_icon('devtag_kleffmann_projecttype_edit', {id: projectType.id}, 'Edit Project Type'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('devtag_kleffmann_projecttype_delete', {id: projectType.id}, 'Delete Project Type'|trans, 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}
@@ -37,6 +37,6 @@
         </div><!--/porlets-content-->
     </div>
     <div>
-        {{ knp_pagination_render(projectTypes) }}
+        {{ knp_pagination_render(data) }}
     </div>
 {% endblock %}
