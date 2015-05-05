@@ -88,14 +88,6 @@ services:
             - [ setProjectTypeUprisingService, ['@kleffmann.project_type_uprising.service']]
             - [ setProjectTypeUprisingRepository, ['@kleffmann.project_type_uprising.repository']]
 
-    kleffmann.status.controller:
-        class: DevTag\KleffmannBundle\Controller\StatusController
-        calls:
-            - [ setFormFactory, ['@form.factory']]
-            - [ setRouter, ['@router']]
-            - [ setStatusService, ['@kleffmann.status.service']]
-            - [ setStatusRepository, ['@kleffmann.status.repository']]
-
     # crud
     kleffmann.bank.controller:
         class: DevTag\KleffmannBundle\Controller\BankController
@@ -120,6 +112,15 @@ services:
             - [ setFormFactory, ['@form.factory']]
             - [ setService, ['@kleffmann.manager.service']]
             - [ setRepository, ['@kleffmann.manager.repository']]
+
+    kleffmann.status.controller:
+        class: DevTag\KleffmannBundle\Controller\StatusController
+        calls:
+            - [ setRouter, ['@router']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.status.service']]
+            - [ setRepository, ['@kleffmann.status.repository']]
+
 
     kleffmann.training.controller:
         class: DevTag\KleffmannBundle\Controller\TrainingController

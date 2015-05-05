@@ -10,7 +10,7 @@
             <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('new_status', {}, 'Add New'|trans, 'info') }}</p>
+            <p>{{ util.button_text('devtag_kleffmann_status_new', {}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -21,13 +21,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for status in statusList %}
+                    {% for status in data %}
                         <tr>
                             <td>{{ status.name }}</td>
                             <td>{{ status.description }}</td>
                             <td>
-                                {{ util.button_icon('edit_status', {id: status.id}, 'Edit Status'|trans, 'warning', 'pencil') }}
-                                {{ util.button_icon('delete_status', {id: status.id}, 'Delete Status'|trans, 'danger', 'remove') }}
+                                {{ util.button_icon('devtag_kleffmann_status_edit', {id: status.id}, 'Edit Status'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('devtag_kleffmann_status_delete', {id: status.id}, 'Delete Status'|trans, 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}
@@ -37,6 +37,6 @@
         </div><!--/porlets-content-->
     </div>
     <div>
-        {{ knp_pagination_render(statusList) }}
+        {{ knp_pagination_render(data) }}
     </div>
 {% endblock %}
