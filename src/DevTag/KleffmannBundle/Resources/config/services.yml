@@ -67,10 +67,10 @@ services:
     kleffmann.invoice.controller:
         class: DevTag\KleffmannBundle\Controller\InvoiceController
         calls:
-            - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
-            - [ setInvoiceService, ['@kleffmann.invoice.service']]
-            - [ setInvoiceRepository, ['@kleffmann.invoice.repository']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.invoice.service']]
+            - [ setRepository, ['@kleffmann.invoice.repository']]
 
     # crud
     kleffmann.bank.controller:

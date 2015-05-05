@@ -10,7 +10,7 @@
             <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('invoices_new', {}, 'Add New'|trans, 'info') }}</p>
+            <p>{{ util.button_text('devtag_kleffmann_invoice_new', {}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -22,7 +22,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for invoice in invoices %}
+                    {% for invoice in data %}
                         <tr>
                             <td>{{ invoice.project.name }}</td>
                             <td>{{ invoice.date | date('d/m/Y') }}</td>
@@ -36,6 +36,6 @@
         </div><!--/porlets-content-->
     </div>
     <div>
-        {{ knp_pagination_render(invoices) }}
+        {{ knp_pagination_render(data) }}
     </div>
 {% endblock %}
