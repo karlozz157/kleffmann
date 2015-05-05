@@ -9,27 +9,27 @@ twig:
                     icon: 'dashboard'
                 interviewers:
                     name: 'Encuestadores'
-                    url: 'interviewers'
+                    url: 'devtag_kleffmann_interviewer_index'
                     role: 'ROLE_INTERVIEWER'
                     icon: 'list-alt'
                 project:
                     name: 'Proyectos'
-                    url: 'projects'
+                    url: 'devtag_kleffmann_project_index'
                     role: 'ROLE_PROJECT_MANAGER'
                     icon: 'tasks'
                 invoices:
                     name: 'Facturas'
-                    url: 'invoices'
+                    url: 'devtag_kleffmann_invoice_index'
                     role: 'ROLE_ADMINISTRATION'
                     icon: 'folder-open'
                 training:
                     name: 'Capacitaciones'
-                    url: 'trainings'
+                    url: 'devtag_kleffmann_training_index'
                     role: 'ROLE_ADMIN'
                     icon: 'book'
                 users:
                     name: 'Usuarios'
-                    url: 'users'
+                    url: 'devtag_kleffmann_user_index'
                     role: 'ROLE_ADMIN'
                     icon: 'user'
                 catalog:
@@ -40,16 +40,19 @@ twig:
                     submenu:
                         bank:
                             name: 'Bancos'
-                            url: 'banks'
+                            url: 'devtag_kleffmann_bank_index'
                         customer:
                             name: 'Clientes'
-                            url: 'customers'
+                            url: 'devtag_kleffmann_customer_index'
                         manager:
                             name: 'Gerentes'
-                            url: 'managers'
+                            url: 'devtag_kleffmann_manager_index'
+                        status:
+                            name: 'Estatus de Proyectos'
+                            url: 'devtag_kleffmann_status_index'
                         project_type:
                             name: 'Tipos de Proyectos'
-                            url: 'project_types'
-                        status:
-                            name: 'Estatus'
-                            url: 'status_list'
+                            url: 'devtag_kleffmann_projecttype_index'
+                        project_type_uprising:
+                            name: 'Tipos de Levantamientos'
+                            url: 'devtag_kleffmann_projecttypeuprising_index'
