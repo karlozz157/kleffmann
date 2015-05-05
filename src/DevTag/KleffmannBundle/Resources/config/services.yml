@@ -112,13 +112,14 @@ services:
             - [ setStatusService, ['@kleffmann.status.service']]
             - [ setStatusRepository, ['@kleffmann.status.repository']]
 
+    # crud
     kleffmann.bank.controller:
         class: DevTag\KleffmannBundle\Controller\BankController
         calls:
-            - [ setFormFactory, ['@form.factory']]
             - [ setRouter, ['@router']]
-            - [ setBankService, ['@kleffmann.bank.service']]
-            - [ setBankRepository, ['@kleffmann.bank.repository']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.bank.service']]
+            - [ setRepository, ['@kleffmann.bank.repository']]
 
     kleffmann.training.controller:
         class: DevTag\KleffmannBundle\Controller\TrainingController

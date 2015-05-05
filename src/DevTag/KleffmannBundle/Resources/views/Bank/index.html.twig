@@ -9,7 +9,7 @@
             <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('banks_new', {}, 'Add New'|trans, 'info') }}</p>
+            <p>{{ util.button_text('devtag_kleffmann_bank_new', {}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -19,12 +19,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for bank in banks %}
+                    {% for bank in data %}
                         <tr>
                             <td>{{ bank.name }}</td>
                             <td>
-                                {{ util.button_icon('banks_edit', {id: bank.id}, 'Edit Bank'|trans, 'warning', 'pencil') }}
-                                {{ util.button_icon('banks_delete', {id: bank.id}, 'Delete Bank'|trans, 'danger', 'remove') }}
+                                {{ util.button_icon('devtag_kleffmann_bank_edit', {id: bank.id}, 'Edit Bank'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('devtag_kleffmann_bank_delete', {id: bank.id}, 'Delete Bank'|trans, 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}
@@ -34,6 +34,6 @@
         </div><!--/porlets-content-->
     </div>
     <div>
-        {{ knp_pagination_render(banks) }}
+        {{ knp_pagination_render(data) }}
     </div>
 {% endblock %}
