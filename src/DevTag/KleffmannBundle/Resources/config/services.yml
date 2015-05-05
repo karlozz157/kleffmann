@@ -13,8 +13,8 @@ services:
         calls:
             - [ setRouter, ['@router']]
             - [ setFormFactory, ['@form.factory']]
-            - [ setInterviewerService, ['@kleffmann.interviewer.service']]
-            - [ setInterviewerRepository, ['@kleffmann.interviewer.repository']]
+            - [ setService, ['@kleffmann.interviewer.service']]
+            - [ setRepository, ['@kleffmann.interviewer.repository']]
 
     kleffmann.interviewer_zone.controller:
         class: DevTag\KleffmannBundle\Controller\InterviewerZoneController
