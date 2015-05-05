@@ -1,26 +1,68 @@
 jQuery.fn.extend({
-    loadCities: function(selectCity){
-        $(selectCity).html('<option value="" selected="selected">-- Escoge un Estado --</option>');
+    select: function(params) {
+        var label = '<option value="" selected="selected"> -- ' + params.label + ' -- </option>';
 
-        $(this).on('click', function()
-        {
-            var urlBase = '/cities/webservice/find-by-state/{state_id}';
-            var stateId = $(this).val();
+        if ('' == $(params.element).val()) {
+            $(params.element).html(label);
+        }
 
-            $.getJSON(urlBase.replace('{state_id}', stateId) , function(cities)
-            {
-                $(selectCity).html('<option value="" selected="selected">-- Escoge un Municipio --</option>');
+        $(this).on('click', function(){
+            var url   = params.url.replace('{id}', $(this).val());
+            $(params.element).html(label);
 
-                cities.forEach(function(city)
-                {
-                    $(selectCity).append('<option value="'+city['id']+'">'+city['name']+'</option>');
+            $.getJSON(url, function(dataResult){
+                // append on the select each data result
+                dataResult.forEach(function(data) {
+                    $(params.element).append('<option value="' + data['id'] + '">' + data['name'] + '</option>');
                 });
             });
         });
     }
 });
 
-$('#interviewer_type_state').loadCities('#interviewer_type_city');
-$('#interviewer_zone_type_state').loadCities('#interviewer_zone_type_city');
-$('#project_zone_type_state').loadCities('#project_zone_type_city');
-$('#project_filter_type_state').loadCities('#project_filter_type_city');
+function loadCities()
+{
+    var url   = '/ciudades/webservice/buscar-por-estado/{id}';
+    var label = 'Escoge un Municipio';
+
+    $('#interviewer_type_state').select({
+        element: '#interviewer_type_city',
+        label: label,
+        url: url
+    });
+
+    $('#interviewer_zone_type_state').select({
+       element:  '#interviewer_zone_type_city',
+        label: label,
+        url: url
+    });
+
+    $('#project_zone_type_state').select({
+        element: '#project_zone_type_city',
+        label: label,
+        url: url
+    });
+
+    $('#project_filter_type_state').select({
+        element: '#project_filter_type_city',
+        label: label,
+        url: url
+    });
+}
+
+function loadDistricts()
+{
+    var url   = '/distritos/webservice/buscar-por-estado/{id}';
+    var label = 'Escoge un Municipio';
+
+    $('#project_zone_type_state').select({
+        element: '#project_zone_type_district',
+        label: label,
+        url: url
+    });
+}
+
+$(document).on('ready', function(){
+    loadDistricts();
+    loadCities();
+});

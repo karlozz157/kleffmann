@@ -30,7 +30,7 @@ class DistrictController
     {
         $districts = $this->districtRepository->findAllByStateAsArray($state);
 
-        return new JsonResponse(['districts' => $districts]);
+        return new JsonResponse($districts);
     }
 
     /**
