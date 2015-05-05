@@ -10,7 +10,7 @@
             <h3 class="content-header">{{ block('subtitle') }}</h3>
         </div>
         <div class="porlets-content">
-            <p>{{ util.button_text('project_type_uprisings_new', {}, 'Add New'|trans, 'info') }}</p>
+            <p>{{ util.button_text('devtag_kleffmann_projecttypeuprising_new', {}, 'Add New'|trans, 'info') }}</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -21,13 +21,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for projectTypeUprising in projectTypeUprisings %}
+                    {% for projectTypeUprising in data %}
                         <tr>
                             <td>{{ projectTypeUprising.name }}</td>
                             <td>{{ projectTypeUprising.description }}</td>
                             <td>
-                                {{ util.button_icon('project_type_uprisings_edit', {id: projectTypeUprising.id}, 'Edit Project Type Uprising'|trans, 'warning', 'pencil') }}
-                                {{ util.button_icon('project_type_uprisings_delete', {id: projectTypeUprising.id}, 'Delete Project Type Uprising'|trans, 'danger', 'remove') }}
+                                {{ util.button_icon('devtag_kleffmann_projecttypeuprising_edit', {id: projectTypeUprising.id}, 'Edit Project Type Uprising'|trans, 'warning', 'pencil') }}
+                                {{ util.button_icon('devtag_kleffmann_projecttypeuprising_delete', {id: projectTypeUprising.id}, 'Delete Project Type Uprising'|trans, 'danger', 'remove') }}
                             </td>
                         </tr>
                     {% endfor %}
@@ -35,5 +35,8 @@
                 </table>
             </div><!--/table-responsive-->
         </div><!--/porlets-content-->
+    </div>
+    <div>
+        {{ knp_pagination_render(data) }}
     </div>
 {% endblock %}

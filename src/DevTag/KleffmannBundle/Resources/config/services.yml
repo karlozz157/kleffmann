@@ -72,14 +72,6 @@ services:
             - [ setInvoiceService, ['@kleffmann.invoice.service']]
             - [ setInvoiceRepository, ['@kleffmann.invoice.repository']]
 
-    kleffmann.project_type_uprising.controller:
-        class: DevTag\KleffmannBundle\Controller\ProjectTypeUprisingController
-        calls:
-            - [ setFormFactory, ['@form.factory']]
-            - [ setRouter, ['@router']]
-            - [ setProjectTypeUprisingService, ['@kleffmann.project_type_uprising.service']]
-            - [ setProjectTypeUprisingRepository, ['@kleffmann.project_type_uprising.repository']]
-
     # crud
     kleffmann.bank.controller:
         class: DevTag\KleffmannBundle\Controller\BankController
@@ -120,6 +112,14 @@ services:
             - [ setFormFactory, ['@form.factory']]
             - [ setService, ['@kleffmann.project_type.service']]
             - [ setRepository, ['@kleffmann.project_type.repository']]
+
+    kleffmann.project_type_uprising.controller:
+        class: DevTag\KleffmannBundle\Controller\ProjectTypeUprisingController
+        calls:
+            - [ setRouter, ['@router']]
+            - [ setFormFactory, ['@form.factory']]
+            - [ setService, ['@kleffmann.project_type_uprising.service']]
+            - [ setRepository, ['@kleffmann.project_type_uprising.repository']]
 
     kleffmann.training.controller:
         class: DevTag\KleffmannBundle\Controller\TrainingController
