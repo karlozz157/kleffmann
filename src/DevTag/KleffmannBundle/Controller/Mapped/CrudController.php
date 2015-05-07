@@ -9,9 +9,10 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\AbstractType;
+use DevTag\KleffmannBundle\Controller\Mapped\NotifyActionInterface;
 use DevTag\KleffmannBundle\Service\AbstractService;
 
-abstract class CrudController extends AbstractController
+abstract class CrudController extends AbstractController implements NotifyActionInterface
 {
     /**
      * @var array $roles
@@ -90,6 +91,7 @@ abstract class CrudController extends AbstractController
         if ($form->isValid()) {
             $this->service->save($entity);
             $this->service->flush();
+            $this->notifyAction(__FUNCTION__, $entity);
 
             return $this->redirectToRoute(
                 sprintf(self::REDIRECT_ROUTE, strtolower($this->module))
@@ -159,5 +161,14 @@ abstract class CrudController extends AbstractController
     public function setRepository(EntityRepository $repository)
     {
         $this->repository = $repository;
+    }
+
+    /**
+     * @param string $action
+     * @param Object $entity
+     */
+    public function notifyAction($action , $entity)
+    {
+
     }
 }
