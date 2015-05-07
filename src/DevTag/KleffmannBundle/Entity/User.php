@@ -23,6 +23,11 @@ class User extends BaseUser
      */
     protected $fullName;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $cellPhone;
+
     public function __construct()
     {
         parent::__construct();
@@ -59,5 +64,28 @@ class User extends BaseUser
     public function getFullName()
     {
         return $this->fullName;
+    }
+
+    /**
+     * Set cellPhone
+     *
+     * @param string $cellPhone
+     * @return User
+     */
+    public function setCellPhone($cellPhone)
+    {
+        $this->cellPhone = $cellPhone;
+
+        return $this;
+    }
+
+    /**
+     * Get cellPhone
+     *
+     * @return string 
+     */
+    public function getCellPhone()
+    {
+        return $this->cellPhone;
     }
 }

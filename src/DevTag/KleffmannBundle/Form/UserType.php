@@ -20,6 +20,9 @@ class UserType extends BaseType
         parent::buildForm($builder, $options);
 
         $builder
+            ->add('cellPhone', 'integer', [
+                'required' => true,
+            ])
             ->add('roles', 'choice', [
                 'choices' => [
                     'ROLE_PROJECT_MANAGER' => 'ROLE_PROJECT_MANAGER',
