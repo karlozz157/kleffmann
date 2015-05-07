@@ -223,6 +223,7 @@ services:
         class: DevTag\KleffmannBundle\Service\TrainingService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+            - [ setMessageAdapter, ['@kleffmann.twilio_adapter.message']]
 
     kleffmann.user.service:
         class: DevTag\KleffmannBundle\Service\UserService
@@ -410,3 +411,8 @@ services:
         calls:
             - [ setPaginator, ['@knp_paginator']]
             - [ setRecordsPerPage, ['%records_per_page%']]
+
+
+    #message
+    kleffmann.twilio_adapter.message:
+        class: DevTag\KleffmannBundle\Message\SMS\TwilioAdapter

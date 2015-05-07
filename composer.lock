@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7e7d8ced6dfcf217c3237805f704839f",
+    "hash": "7979605afdc8478a0dc1390d5e2e3b2c",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1892,6 +1892,56 @@
                 "templating"
             ],
             "time": "2015-04-19 08:30:27"
+        },
+        {
+            "name": "twilio/sdk",
+            "version": "4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "9f217a39d3c96d31a40bb8e3363a331336244aff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/9f217a39d3c96d31a40bb8e3363a331336244aff",
+                "reference": "9f217a39d3c96d31a40bb8e3363a331336244aff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "mockery/mockery": ">=0.7.2",
+                "phpunit/phpunit": "4.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Services/Twilio.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Burke",
+                    "email": "kevin@twilio.com"
+                },
+                {
+                    "name": "Kyle Conroy",
+                    "email": "kyle+pear@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "http://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2015-04-29 17:51:28"
         }
     ],
     "packages-dev": [
