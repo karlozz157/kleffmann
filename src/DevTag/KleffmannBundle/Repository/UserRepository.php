@@ -30,4 +30,21 @@ class UserRepository extends EntityRepository
 
         return $this->paginator->paginate($queryBuilder, $page, $this->recordsPerPage);
     }
+
+    /**
+     * @return array
+     */
+    public function findAllByRoleAdmin()
+    {
+        $queryBuilder = $this->getEntityManager()
+            ->createQueryBuilder();
+
+        $queryBuilder
+            ->select('u')
+            ->from('DevTagKleffmannBundle:User', 'u')
+            ->where('u.roles LIKE :roles')
+            ->setParameter('roles', '%admin%');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
