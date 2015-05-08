@@ -2,14 +2,14 @@
 
 namespace DevTag\KleffmannBundle\Service;
 
-use DevTag\KleffmannBundle\Message\MessageAdapterAware;
+use DevTag\KleffmannBundle\Sms\SmsAdapterAware;
 use DevTag\KleffmannBundle\Entity\Interviewer;
 use DevTag\KleffmannBundle\Entity\Training;
 use DevTag\KleffmannBundle\Entity\Message;
 
 class TrainingService extends AbstractService
 {
-    use MessageAdapterAware;
+    use SmsAdapterAware;
 
     /**
      * @param Training $training
@@ -30,10 +30,10 @@ class TrainingService extends AbstractService
         foreach ($training->getInterviewer() as $interviewer) {
             $message = new Message();
             $message->setTo($interviewer->getCellPhone());
-            $message->setContent($content);
+            $message->setContent(strtoupper($content));
 
             try {
-                $this->messageAdapter->send($message);
+                $this->smsAdapter->send($message);
             } catch (\Exception $ex) {
                 // log the exception
             }

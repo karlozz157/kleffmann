@@ -223,7 +223,7 @@ services:
         class: DevTag\KleffmannBundle\Service\TrainingService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
-            - [ setMessageAdapter, ['@kleffmann.twilio_adapter.message']]
+            - [ setSmsAdapter, ['@kleffmann.twilio_adapter.message']]
 
     kleffmann.user.service:
         class: DevTag\KleffmannBundle\Service\UserService
@@ -415,7 +415,7 @@ services:
 
     #message
     kleffmann.twilio_adapter.message:
-        class: DevTag\KleffmannBundle\Message\SMS\TwilioAdapter
+        class: DevTag\KleffmannBundle\Sms\Adapter\TwilioAdapter
 
     # email
     kleffmann.swift_mailer.email:
