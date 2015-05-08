@@ -13,9 +13,6 @@ parameters:
     mailer_host:      smtp.gmail.com
     mailer_user:      noreply.kleffmann@gmail.com
     mailer_password:  kl3ffm4nn
-    auth_mode:        login
-    port:             587
-    encryption:       tls
 
     locale:            en
 

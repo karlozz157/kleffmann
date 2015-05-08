@@ -8,11 +8,6 @@ services:
             - @security.context
 
     # controllers
-    kleffmann.test_email.controller:
-        class: DevTag\KleffmannBundle\Controller\TestEmailController
-        calls:
-            - [ setEmailAdapter, ['@kleffmann.swift_mailer.email']]
-
     kleffmann.interviewer.controller:
         class: DevTag\KleffmannBundle\Controller\InterviewerController
         calls:
