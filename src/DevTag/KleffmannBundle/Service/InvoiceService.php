@@ -48,7 +48,7 @@ class InvoiceService extends AbstractService
     {
         $file = $this->getFileNameInfo($invoice->getFile());
         $content = sprintf(
-            'La factura %s se ha generado/cambiado con el status %s.',
+            'La factura %s se ha generado/cambiado con el estatus %s.',
             $file['filename'],
             $invoice->getStatus()
         );
