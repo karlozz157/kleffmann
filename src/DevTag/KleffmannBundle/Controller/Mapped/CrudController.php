@@ -91,7 +91,7 @@ abstract class CrudController extends AbstractController implements NotifyAction
         if ($form->isValid()) {
             $this->service->save($entity);
             $this->service->flush();
-            $this->notifyAction(__FUNCTION__, $entity);
+            $this->notifyAction($entity, __FUNCTION__);
 
             return $this->redirectToRoute(
                 sprintf(self::REDIRECT_ROUTE, strtolower($this->module))
@@ -164,10 +164,10 @@ abstract class CrudController extends AbstractController implements NotifyAction
     }
 
     /**
-     * @param string $action
      * @param Object $entity
+     * @param string $method
      */
-    public function notifyAction($action , $entity)
+    public function notifyAction($entity = null, $method = '')
     {
 
     }

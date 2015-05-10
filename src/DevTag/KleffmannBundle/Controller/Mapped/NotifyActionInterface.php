@@ -5,8 +5,8 @@ namespace DevTag\KleffmannBundle\Controller\Mapped;
 interface NotifyActionInterface
 {
     /**
-     * @param string $action
      * @param Object $entity
+     * @param string $method
      */
-    public function notifyAction($action, $entity);
+    public function notifyAction($entity = null, $method = '');
 }
