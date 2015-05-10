@@ -13,8 +13,9 @@ class TrainingService extends AbstractService
 
     /**
      * @param Training $training
+     * @param string $action
      */
-    public function notifyTraining($action, Training $training)
+    public function notifyTraining(Training $training, $action)
     {
         $action  = str_replace('Action' , '', $action);
         $action  = ('new' == $action) ? 'generado' : 'editado';

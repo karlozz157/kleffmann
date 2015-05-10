@@ -13,16 +13,16 @@ use DevTag\KleffmannBundle\Entity\Training;
 class TrainingController extends CrudController implements NotifyActionInterface
 {
     /**
-     * @param string $action
      * @param Object $entity
+     * @param string $action
      */
-    public function notifyAction($action, $entity)
+    public function notifyAction($entity = null, $action = '')
     {
         if (!$entity instanceof Training) {
             return;
         }
         /** @var Training $training */
         $training = $entity;
-        $this->service->notifyTraining($action, $training);
+        $this->service->notifyTraining($training, $action);
     }
 }
