@@ -6,7 +6,7 @@ interface NotifyActionInterface
 {
     /**
      * @param Object $entity
-     * @param string $method
+     * @param string $action
      */
-    public function notifyAction($entity = null, $method = '');
+    public function notifyAction($entity = null, $action = '');
 }
