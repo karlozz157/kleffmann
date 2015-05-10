@@ -187,6 +187,7 @@ services:
         class: DevTag\KleffmannBundle\Service\InvoiceService
         calls:
             - [ setEntityManager, ['@doctrine.orm.entity_manager']]
+            - [ setSmsAdapter, ['@kleffmann.twilio_adapter.message']]
             - [ setInvoiceRepository, ['@kleffmann.invoice.repository']]
 
     kleffmann.customer.service:
