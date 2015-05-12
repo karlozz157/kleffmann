@@ -33,11 +33,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         ];
 
 
-        foreach ($usersGroup as $userGroup) {
+        foreach ($users as $basicUser) {
             $user = new User();
-            $user->setEmail($userGroup['email']);
-            $user->setUsername($userGroup['username']);
-            $user->setPassword($userGroup['password']);
+            $user->setEmail($basicUser['email']);
+            $user->setUsername($basicUser['username']);
+            $user->setPlainPassword ($basicUser['password']);
             $user->setEnabled(true);
             $user->setSuperAdmin(true);
 
