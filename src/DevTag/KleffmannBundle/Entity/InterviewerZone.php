@@ -30,14 +30,11 @@ class InterviewerZone
     protected $state;
 
     /**
-     * @ORM\ManyToOne(targetEntity="District")
-     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
-     */
-    protected $district;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="City")
+     * @ORM\JoinTable(name="interviewer_zones_cities",
+     *     joinColumns={@ORM\JoinColumn(name="interviewer_zone_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="cities_id", referencedColumnName="id")}
+     * )
      */
     protected $city;
 
@@ -99,45 +96,40 @@ class InterviewerZone
     }
 
     /**
-     * Set district
-     *
-     * @param \DevTag\KleffmannBundle\Entity\District $district
-     * @return InterviewerZone
+     * Constructor
      */
-    public function setDistrict(\DevTag\KleffmannBundle\Entity\District $district = null)
+    public function __construct()
     {
-        $this->district = $district;
-
-        return $this;
+        $this->city = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Get district
-     *
-     * @return \DevTag\KleffmannBundle\Entity\District
-     */
-    public function getDistrict()
-    {
-        return $this->district;
-    }
-
-    /**
-     * Set city
+     * Add city
      *
      * @param \DevTag\KleffmannBundle\Entity\City $city
      * @return InterviewerZone
      */
-    public function setCity(\DevTag\KleffmannBundle\Entity\City $city = null)
+    public function addCity(\DevTag\KleffmannBundle\Entity\City $city)
     {
-        $this->city = $city;
+        $this->city[] = $city;
 
         return $this;
+    }
+
+    /**
+     * Remove city
+     *
+     * @param \DevTag\KleffmannBundle\Entity\City $city
+     */
+    public function removeCity(\DevTag\KleffmannBundle\Entity\City $city)
+    {
+        $this->city->removeElement($city);
     }
 
     /**
      * Get city
      *
-     * @return \DevTag\KleffmannBundle\Entity\City
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getCity()
     {

@@ -20,16 +20,11 @@ class InterviewerZoneType extends AbstractType
                 'empty_value' => '-- Choose a State --',
                 'required' => true,
             ])
-            ->add('district', 'entity', [
-                'class' => 'DevTag\KleffmannBundle\Entity\District',
-                'property' => 'name',
-                'empty_value' => '-- Choose a District --',
-                'required' => true,
-            ])
             ->add('city', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\City',
                 'property' => 'name',
                 'empty_value' => '-- Choose a City --',
+                'multiple' => true,
                 'required' => true,
             ])
         ;

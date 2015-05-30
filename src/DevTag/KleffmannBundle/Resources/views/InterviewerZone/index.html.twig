@@ -16,8 +16,6 @@
                     <thead>
                     <tr>
                         <th>{{ 'State'|trans }}</th>
-                        <th>{{ 'District'|trans }}</th>
-                        <th>{{ 'City'|trans }}</th>
                         <th>{{ 'Actions'|trans }}</th>
                     </tr>
                     </thead>
@@ -25,8 +23,7 @@
                     {% for interviewerZone in interviewerZones %}
                         <tr>
                             <td>{{ interviewerZone.state.name }}</td>
-                            <td>{{ interviewerZone.district.name }}</td>
-                            <td>{{ interviewerZone.city.name }}</td>
+
                             <td>
                                 {{ util.button_icon('interviewer_zones_edit', {id: interviewerZone.id}, 'Edit Interviewer Zone'|trans, 'warning', 'pencil') }}
                                 {{ util.button_icon('interviewer_zones_delete', {id: interviewerZone.id}, 'Delete Interviewer Zone'|trans, 'danger', 'remove') }}
