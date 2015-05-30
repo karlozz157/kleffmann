@@ -20,6 +20,13 @@ class ProjectType extends AbstractType
             ->add('description', 'textarea', [
                 'required' => true,
             ])
+            ->add('interviewer', 'entity', [
+                'class' => 'DevTag\KleffmannBundle\Entity\Interviewer',
+                'property' => 'name',
+                'empty_value' => '-- Choose an Interviewer --',
+                'required' => true,
+                'multiple' => true,
+            ])
             ->add('customer', 'entity', [
                 'class' => 'DevTag\KleffmannBundle\Entity\Customer',
                 'property' => 'name',

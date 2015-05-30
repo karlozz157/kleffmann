@@ -30,6 +30,15 @@ class Project
     protected $description;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Interviewer")
+     * @ORM\JoinTable(name="projects_interviewers",
+     *     joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="interviewer_id", referencedColumnName="id")}
+     * )
+     */
+    protected $interviewer;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Customer")
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      */
@@ -416,5 +425,38 @@ class Project
     public function getProjectTypeUprising()
     {
         return $this->projectTypeUprising;
+    }
+
+    /**
+     * Add interviewer
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Interviewer $interviewer
+     * @return Project
+     */
+    public function addInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer)
+    {
+        $this->interviewer[] = $interviewer;
+
+        return $this;
+    }
+
+    /**
+     * Remove interviewer
+     *
+     * @param \DevTag\KleffmannBundle\Entity\Interviewer $interviewer
+     */
+    public function removeInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer)
+    {
+        $this->interviewer->removeElement($interviewer);
+    }
+
+    /**
+     * Get interviewer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInterviewer()
+    {
+        return $this->interviewer;
     }
 }
