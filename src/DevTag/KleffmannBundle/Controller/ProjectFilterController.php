@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use DevTag\KleffmannBundle\Controller\Mapped\AbstractController;
 use DevTag\KleffmannBundle\Service\Aware\ProjectFilterAware;
 use DevTag\KleffmannBundle\Form\ProjectFilterType;
+use DevTag\KleffmannBundle\Entity\ProjectVariable;
 use DevTag\KleffmannBundle\Entity\ProjectFilter;
-use DevTag\KleffmannBundle\Entity\Project;
 
 /**
  * @Route("/proyectos/filtros", service="kleffmann.project_filter.controller")
@@ -25,36 +25,38 @@ class ProjectFilterController extends AbstractController
     protected $roles = ['ROLE_PROJECT_MANAGER'];
 
     /**
-     * @Route("/{project}", name="project_filters")
+     * @Route("/{id}", name="project_filters")
      * @ParamConverter()
      * @Template()
      *
-     * @param Project $project
-     *
-     * @return array
-     */
-    public function indexAction(Project $project)
-    {
-        $this->projectFilterRepository->setProject($project);
-        $projectFilterList = $this->projectFilterRepository->findAll();
-
-        return ['projectFilterList' => $projectFilterList, 'project' => $project];
-    }
-
-    /**
-     * @Route("/nuevo/{project}", name="project_filters_new")
-     * @ParamConverter()
-     * @Template()
-     *
-     * @param Project $project
+     * @param ProjectVariable $projectVariable
      * @param Request $request
      *
      * @return array
      */
-    public function newAction(Project $project, Request $request)
+    public function indexAction(ProjectVariable $projectVariable, Request $request)
+    {
+        $page = $request->query->get('page', 1);
+        $options = ['project_variable' => $projectVariable];
+        $projectFilterList = $this->projectFilterRepository->findAll($page, $options);
+
+        return ['projectFilterList' => $projectFilterList, 'projectVariable' => $projectVariable];
+    }
+
+    /**
+     * @Route("/nuevo/{id}", name="project_filters_new")
+     * @ParamConverter()
+     * @Template()
+     *
+     * @param ProjectVariable $projectVariable
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function newAction(ProjectVariable $projectVariable, Request $request)
     {
         $projectFilter = new ProjectFilter();
-        $projectFilter->setProject($project);
+        $projectFilter->setProjectVariable($projectVariable);
         $form = $this->createForm(new ProjectFilterType(), $projectFilter);
         $form->handleRequest($request);
 
@@ -63,11 +65,11 @@ class ProjectFilterController extends AbstractController
             $this->projectFilterService->flush();
 
             return $this->redirectToRoute('project_filters', [
-                'project' => $project->getId(),
+                'id' => $projectVariable->getId(),
             ]);
         }
 
-        return ['form' => $form->createView(), 'project' => $project];
+        return ['form' => $form->createView(), 'projectVariable' => $projectVariable];
     }
 
     /**
@@ -90,11 +92,11 @@ class ProjectFilterController extends AbstractController
             $this->projectFilterService->flush();
 
             return $this->redirectToRoute('project_filters', [
-                'project' => $projectFilter->getProject()->getId(),
+                'id' => $projectFilter->getProjectVariable()->getId(),
             ]);
         }
 
-        return ['form' => $form->createView(), 'project' => $projectFilter->getProject()];
+        return ['form' => $form->createView(), 'projectVariable' => $projectFilter->getProjectVariable()];
     }
 
     /**
@@ -111,7 +113,7 @@ class ProjectFilterController extends AbstractController
         $this->projectFilterService->flush();
 
         return $this->redirectToRoute('project_filters', [
-            'project' => $projectFilter->getProject()->getId()
+            'id' => $projectFilter->getProjectVariable()->getId()
         ]);
     }
 }

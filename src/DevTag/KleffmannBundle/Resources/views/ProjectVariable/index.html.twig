@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}{{ 'Project Variables to'|trans }} {{ project.name|upper }}{% endblock %}
+{% block title %}{{ 'Project Variables to'|trans }} {{ project.name|title }}{% endblock %}
 {% block subtitle %}{{ 'Variables List'|trans }}{% endblock %}
 
 {% block content %}
@@ -26,6 +26,7 @@
                             <td>{{ projectVariable.name }}</td>
                             <td>{{ projectVariable.value }}</td>
                             <td>
+                                {{ util.button_icon('project_filters', {id: projectVariable.id}, 'Project Filters'|trans, 'info', 'filter') }}
                                 {{ util.button_icon('project_variables_edit', {id: projectVariable.id}, 'Edit Project Variable'|trans, 'warning', 'pencil') }}
                                 {{ util.button_icon('project_variables_delete', {id: projectVariable.id}, 'Delete Project Variable'|trans, 'danger', 'remove') }}
                             </td>

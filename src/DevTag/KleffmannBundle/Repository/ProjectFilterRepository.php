@@ -16,10 +16,11 @@ class ProjectFilterRepository extends EntityRepository
 
     /**
      * @param int $page
+     * @param array $options
      *
      * @return array
      */
-    public function findAll($page = null)
+    public function findAll($page = null, array $options = [])
     {
         $queryBuilder = $this->getEntityManager()
             ->createQueryBuilder();
@@ -27,8 +28,8 @@ class ProjectFilterRepository extends EntityRepository
         $queryBuilder
             ->select('pf')
             ->from('DevTagKleffmannBundle:ProjectFilter', 'pf')
-            ->where('pf.project = :id_project')
-            ->setParameter('id_project', $this->project->getId())
+            ->where('pf.projectVariable = :project_variable')
+            ->setParameter('project_variable', $options['project_variable'])
             ->orderBy('pf.id', 'DESC');
 
         if (is_null($page)) {
@@ -37,21 +38,5 @@ class ProjectFilterRepository extends EntityRepository
         }
 
         return $this->paginator->paginate($queryBuilder, $page, $this->recordsPerPage);
-    }
-
-    /**
-     * @param Project $project
-     */
-    public function setProject(Project $project)
-    {
-        $this->project = $project;
-    }
-
-    /**
-     * @return Project
-     */
-    public function getProject()
-    {
-        return $this->project;
     }
 }

@@ -18,16 +18,10 @@ class ProjectFilter
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Project")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="ProjectVariable")
+     * @ORM\JoinColumn(name="project_variable_id", referencedColumnName="id")
      */
-    protected $project;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Interviewer")
-     * @ORM\JoinColumn(name="interviewer_id", referencedColumnName="id")
-     */
-    protected $interviewer;
+    protected $projectVariable;
 
     /**
      * @ORM\Column(type="string")
@@ -112,53 +106,7 @@ class ProjectFilter
     {
         return $this->value;
     }
-
-    /**
-     * Set project
-     *
-     * @param \DevTag\KleffmannBundle\Entity\Project $project
-     * @return ProjectFilter
-     */
-    public function setProject(\DevTag\KleffmannBundle\Entity\Project $project = null)
-    {
-        $this->project = $project;
-
-        return $this;
-    }
-
-    /**
-     * Get project
-     *
-     * @return \DevTag\KleffmannBundle\Entity\Project 
-     */
-    public function getProject()
-    {
-        return $this->project;
-    }
-
-    /**
-     * Set interviewer
-     *
-     * @param \DevTag\KleffmannBundle\Entity\Interviewer $interviewer
-     * @return ProjectFilter
-     */
-    public function setInterviewer(\DevTag\KleffmannBundle\Entity\Interviewer $interviewer = null)
-    {
-        $this->interviewer = $interviewer;
-
-        return $this;
-    }
-
-    /**
-     * Get interviewer
-     *
-     * @return \DevTag\KleffmannBundle\Entity\Interviewer 
-     */
-    public function getInterviewer()
-    {
-        return $this->interviewer;
-    }
-
+    
     /**
      * Set state
      *
@@ -226,5 +174,28 @@ class ProjectFilter
     public function getDistrict()
     {
         return $this->district;
+    }
+
+    /**
+     * Set projectVariable
+     *
+     * @param \DevTag\KleffmannBundle\Entity\ProjectVariable $projectVariable
+     * @return ProjectFilter
+     */
+    public function setProjectVariable(\DevTag\KleffmannBundle\Entity\ProjectVariable $projectVariable = null)
+    {
+        $this->projectVariable = $projectVariable;
+
+        return $this;
+    }
+
+    /**
+     * Get projectVariable
+     *
+     * @return \DevTag\KleffmannBundle\Entity\ProjectVariable 
+     */
+    public function getProjectVariable()
+    {
+        return $this->projectVariable;
     }
 }

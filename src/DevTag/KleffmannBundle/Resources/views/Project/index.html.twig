@@ -27,7 +27,6 @@
                         <td>{{ project.customer.name }}</td>
                         <td>
                             {{ util.button_icon('project_zones', {project: project.id}, 'Project Zones'|trans, 'success', 'globe') }}
-                            {{ util.button_icon('project_filters', {project: project.id}, 'Project Filters'|trans, 'info', 'filter') }}
                             {{ util.button_icon('project_variables', {project: project.id}, 'Project Variables'|trans, 'default', 'hdd') }}
                             {{ util.button_icon('devtag_kleffmann_project_edit', {id: project.id}, 'Edit Project'|trans, 'warning', 'pencil') }}
                             {{ util.button_icon('devtag_kleffmann_project_delete', {id: project.id}, 'Delete Project'|trans, 'danger', 'remove') }}
